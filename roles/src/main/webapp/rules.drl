@@ -1,0 +1,69 @@
+###############################################################################
+package org.jahia.modules.roles.rules
+
+#list any import classes here.
+import org.jahia.services.content.rules.*
+import org.apache.log4j.Logger
+
+expander rules.dsl
+
+#declare any global variables here
+global User user
+global Service service
+global Logger logger
+global RoleService roleService
+###############################################################################
+
+rule "Initial permissions-to-role assignment"
+	when
+		A property j:assignedPermissions has been set on a node
+			- the node has the type jnt:role
+	then
+		Log "Grant permissions " + propertyValue + " to role " + node.getPath()
+		Grant a list of permissions propertyValue to role node.getPath()
+		Remove this property
+end
+
+rule "Initial role-to-user assignment"
+	when
+		A property j:grantToPrincipals has been set on a node
+			- the node has the type jnt:role
+	then
+		Log "Granting to principals " + propertyValue + " the role " + node.getPath()
+		Grant role node.getPath() to principals propertyValue
+		Remove this property
+end
+
+rule "Create permission for site languages"
+	when
+		A property j:languages has been set on a node
+			- the node has the type jnt:virtualsite
+	then
+		Update site language permissions for node
+		Create a role "translator-*" for each language based on role "translator" for node
+		Grant permissions in group "languages" to role node.getPath() + "/roles/editor"
+		Grant permissions in group "languages" to role node.getPath() + "/roles/editor-in-chief"
+		Grant permissions in group "languages" to role node.getPath() + "/roles/publisher"
+		Grant permissions in group "languages" to role node.getPath() + "/roles/seo-manager"
+		Grant permissions in group "languages" to role node.getPath() + "/roles/site-administrator"
+		Grant permissions in group "languages" to role node.getPath() + "/roles/translator"
+		Grant permissions in group "languages" to role node.getPath() + "/roles/web-designer"
+end
+
+rule "Init ACLs for new site"
+    when
+        A new node is created
+            - the node has the type jnt:virtualsite
+    then
+        Assign permissions "rew--" on the node to the role "editor"
+        Assign permissions "rewap" on the node to the role "editor-in-chief"
+        Assign permissions "rew-p" on the node to the role "publisher"
+        Assign permissions "rew--" on the node to the role "seo-manager"
+        Assign permissions "rewap" on the node to the role "site-administrator"
+        Assign permissions "rew--" on the node to the role "translator"
+        Assign permissions "rew--" on the node to the role "web-designer"
+        Grant permission "start" from workflow "jBPM:1-step-publication" to role "editor-in-chief"  for type "nt:base" on the node
+        Grant permission "review" from workflow "jBPM:1-step-publication" to role "editor-in-chief"  for type "nt:base" on the node
+        Grant permission "start" from workflow "jBPM:1-step-publication" to role "editor"  for type "nt:base" on the node
+        Grant permission "review" from workflow "jBPM:1-step-publication" to role "publisher"  for type "nt:base" on the node     
+end

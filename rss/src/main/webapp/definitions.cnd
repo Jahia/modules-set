@@ -1,0 +1,5 @@
+<jnt = 'http://www.jahia.org/jahia/nt/1.0'>
+
+[jnt:rss] > jnt:content, mix:title, jmix:queryContent
+ - url (string) mandatory indexed=no
+ - nbEntries (long) = 10 indexed=no

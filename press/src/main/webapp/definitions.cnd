@@ -1,0 +1,9 @@
+<jnt = 'http://www.jahia.org/jahia/nt/1.0'>
+
+[jnt:press] > jnt:content, mix:title, jmix:editorialContent
+ - body (string, richtext) i18n
+ - date (date)
+ - pdfVersion (weakreference, file) i18n
+
+[jnt:pressReleases] > jnt:content, jmix:queryContent
+ - searchPath (weakreference, file[folder])

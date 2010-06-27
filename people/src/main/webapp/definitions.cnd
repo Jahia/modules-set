@@ -1,0 +1,13 @@
+<jnt = 'http://www.jahia.org/jahia/nt/1.0'>
+
+[jnt:people] > jnt:content, jmix:editorialContent
+ - firstname (string)
+ - lastname (string) primary
+ - function (string) i18n
+ - businessUnit (string, choicelist[resourceBundle]) analyzer='keyword' facetable < sales,marketing, GA, production, humanressources
+ - telephone (string)
+ - cellular (string)
+ - fax (string)
+ - email (string)
+ - biography (string, richtext) i18n
+ - picture (weakreference, file[mime='image/*'])

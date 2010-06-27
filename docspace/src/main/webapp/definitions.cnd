@@ -1,0 +1,15 @@
+<jnt = 'http://www.jahia.org/jahia/nt/1.0'>
+
+[jnt:aclUsers] > jnt:content, jmix:bindedComponent, jmix:siteComponentContent
+
+[jnt:docspaceTree] > jnt:content, jmix:siteComponentContent
+
+[jnt:docspaceFormCreation] > jnt:content, jmix:siteComponentContent
+
+[jnt:lastDocspaceDoc] > jnt:content, jmix:queryContent
+ - startNode (weakreference)
+
+[jnt:lastDocspace] > jnt:content, jmix:queryContent
+ - startNode (weakreference)
+
+[jnt:displayVersion] > jnt:content, jmix:bindedComponent, jmix:siteComponentContent
