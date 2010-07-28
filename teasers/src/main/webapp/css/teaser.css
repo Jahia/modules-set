@@ -1,0 +1,40 @@
+
+/******************************************************************************
+* Box teaser
+******************************************************************************/
+
+#bodywrapper .boxteaser {
+	position: relative;
+	height:1%;
+	background:#fff url(../../../../default/src/main/webapp/css/img/boxteaser-bg.png) no-repeat top right;
+	padding-top:5px;
+	margin-bottom:5px;
+}
+
+#bodywrapper .teaser p, #bodywrapper .teaser h3.teaser-title {
+	margin: 0;
+	padding: 0;
+	line-height:110%;
+	font-size:1em
+}
+#bodywrapper .teaser h3.teaser-title {
+font-weight:bold
+}
+
+#bodywrapper .teaser .more{
+	position:absolute;
+	bottom:0.2em;
+	right:1em;	
+}
+#bodywrapper .teaser-fixed-height {
+
+	height:5.5em;
+	overflow:hidden;
+	position:relative;
+	padding-bottom:2em;
+	margin:0.5em;
+}
+#bodywrapper .teaser-fixed-height .teaser-content{
+	overflow: hidden;
+	height:5.6em;
+}
