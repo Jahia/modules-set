@@ -12,6 +12,12 @@
     <name>Jahia Default Modules</name>
     <packaging>pom</packaging>
 
+    <scm>
+        <connection>scm:git:git@github.com:Jahia/modules-set.git</connection>
+        <url>scm:git:git@github.com:Jahia/modules-set.git</url>
+        <developerConnection>scm:git:git@github.com:Jahia/modules-set.git</developerConnection>
+    </scm>
+
     <repositories>
         <repository>
             <id>jahiaRepository</id>
