@@ -28,7 +28,7 @@
     </pluginRepositories>
     
     <dependencies>
-        <!--Cross project dependencies-->
+        <!-- Cross project dependencies -->
         <dependency>
             <groupId>org.jahia.server</groupId>
             <artifactId>jahia-impl</artifactId>
