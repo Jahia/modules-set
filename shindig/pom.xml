@@ -46,12 +46,6 @@
         <shindig.version>2.0.2</shindig.version>
     </properties>
     <dependencies>
-        <dependency>
-            <groupId>org.jahia.server</groupId>
-            <artifactId>jahia-impl</artifactId>
-            <version>6.5-SNAPSHOT</version>
-            <scope>provided</scope>
-        </dependency>
 
         <!-- Shindig WAR overlay -->
         <dependency>

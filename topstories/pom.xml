@@ -45,20 +45,6 @@
     <name>Jahia Topstories</name>
     <packaging>war</packaging>
     <description>These are the custom module (jahiaTopstories) for running on a Jahia server.</description>
-    <dependencies>
-        <dependency>
-            <groupId>org.jahia.server</groupId>
-            <artifactId>jahia-impl</artifactId>
-            <version>6.5-SNAPSHOT</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jahia.server</groupId>
-            <artifactId>jahia-taglib</artifactId>
-            <version>6.5-SNAPSHOT</version>
-            <scope>provided</scope>
-        </dependency>
-    </dependencies>
     <build>
         <plugins>
             <plugin>

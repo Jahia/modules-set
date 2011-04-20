@@ -45,14 +45,6 @@
     <name>Jahia SEO</name>
     <packaging>war</packaging>
     <description>Jahia module that provides SEO-friendly URL mapping for content.</description>
-    <dependencies>
-        <dependency>
-            <groupId>org.jahia.server</groupId>
-            <artifactId>jahia-impl</artifactId>
-            <version>6.5-SNAPSHOT</version>
-            <scope>provided</scope>
-        </dependency>
-    </dependencies>
     <build>
         <plugins>
             <plugin>
