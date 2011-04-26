@@ -32,22 +32,24 @@
             <url>http://maven.jahia.org/maven2</url>
         </pluginRepository>
     </pluginRepositories>
-    
-    <dependencies>
-        <!-- Cross project dependencies -->
-        <dependency>
-            <groupId>org.jahia.server</groupId>
-            <artifactId>jahia-impl</artifactId>
-            <version>6.5-SNAPSHOT</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jahia.server</groupId>
-            <artifactId>jahia-taglib</artifactId>
-            <version>6.5-SNAPSHOT</version>
-            <scope>provided</scope>
-        </dependency>
-    </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- Cross project dependencies -->
+            <dependency>
+                <groupId>org.jahia.server</groupId>
+                <artifactId>jahia-impl</artifactId>
+                <version>6.5-SNAPSHOT</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.jahia.server</groupId>
+                <artifactId>jahia-taglib</artifactId>
+                <version>6.5-SNAPSHOT</version>
+                <scope>provided</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
     <profiles>
       <profile>
         <id>eclipse-integration</id>
