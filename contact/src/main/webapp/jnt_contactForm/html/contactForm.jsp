@@ -12,7 +12,7 @@
     </c:if>
     <template:tokenizedForm>
     <form action="<c:url value='${url.base}${currentNode.path}/*'/>" method="post">
-        <input type="hidden" name="jrc:nodeType" value="jnt:contact"/>
+        <input type="hidden" name="jcrNnodeType" value="jnt:contact"/>
         <input type="hidden" name="jcrRedirectTo" value="<c:url value='${url.base}${renderContext.mainResource.node.path}'/>"/>
         <%-- Define the output format for the newly created node by default html or by jcrRedirectTo--%>
         <input type="hidden" name="jcrNewNodeOutputFormat" value="html"/>
