@@ -12,10 +12,10 @@
     </c:if>
     <template:tokenizedForm>
     <form action="<c:url value='${url.base}${currentNode.path}/*'/>" method="post">
-        <input type="hidden" name="nodeType" value="jnt:contact"/>
-        <input type="hidden" name="redirectTo" value="<c:url value='${url.base}${renderContext.mainResource.node.path}'/>"/>
-        <%-- Define the output format for the newly created node by default html or by redirectTo--%>
-        <input type="hidden" name="newNodeOutputFormat" value="html"/>
+        <input type="hidden" name="jrc:nodeType" value="jnt:contact"/>
+        <input type="hidden" name="jcrRedirectTo" value="<c:url value='${url.base}${renderContext.mainResource.node.path}'/>"/>
+        <%-- Define the output format for the newly created node by default html or by jcrRedirectTo--%>
+        <input type="hidden" name="jcrNewNodeOutputFormat" value="html"/>
         <c:set var="props" value="${currentNode.properties}"/>
         <jcr:nodeType name="jnt:contact" var="contactType"/>
         <c:set var="propDefs" value="${contactType.declaredPropertyDefinitionsAsMap}"/>
@@ -130,7 +130,7 @@
             </c:if>
             <c:if test="${props.captcha.boolean}">
                 <p class="field">
-                    <label class="left" for="captcha"><template:captcha /></label><input type="text" id="captcha" name="captcha"/>
+                    <label class="left" for="captcha"><template:captcha /></label><input type="text" id="captcha" name="jcrCaptcha"/>
                 </p>
             </c:if>
 

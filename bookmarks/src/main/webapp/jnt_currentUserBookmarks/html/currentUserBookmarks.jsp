@@ -51,7 +51,7 @@
     <c:if test="${currentResource.workspace ne 'live'}">
         <script type="text/javascript">
             function deleteBookmark(source) {
-                $.post('<c:url value="${url.base}"/>' + source, {"methodToCall":"delete"},
+                $.post('<c:url value="${url.base}"/>' + source, {"jcrMethodToCall":"delete"},
                         function(result) {
                             $('#bookmarkList${user.identifier}').load('<c:url value="${url.basePreview}${currentNode.path}.html.ajax${ps}"/>');
                         },'json');

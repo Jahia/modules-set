@@ -40,7 +40,7 @@
                 <div class="Form formconverterupload"><!--start formconverterupload-->
                     <form action="<c:url value='${url.base}${currentNode.path}.convert.do'/>" method="post"
                           enctype="multipart/form-data" id="conversionForm">
-                        <input type="hidden" name="redirectTo"
+                        <input type="hidden" name="jcrRedirectTo"
                                value="<c:url value='${url.base}${renderContext.mainResource.node.path}'/>"/>
 
                         <p>

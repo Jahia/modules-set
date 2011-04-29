@@ -39,7 +39,7 @@
 
                         // Send request to the server using POST method
                         $.post("<c:url value='${url.base}${currentNode.path}'/>",
-                        {'j:lastVote': value,methodToCall:"put",cookieName:"rated${currentNode.identifier}",cookieValue:"${currentNode.identifier}"},
+                        {'j:lastVote': value,'jcrMethodToCall':"put",'jcrCookieName':"rated${currentNode.identifier}",'jcrCookieValue':"${currentNode.identifier}"},
                                 function(result) {
                                     // Select stars from "Average rating" control to match the returned average rating value
                                     $("#avg${id}").stars("select",

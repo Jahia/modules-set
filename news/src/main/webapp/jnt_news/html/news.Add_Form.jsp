@@ -11,7 +11,7 @@
  <jcr:nodeProperty node="${currentNode}" name="image" var="newsImage"/>
 
 <form action="<c:url value='${url.base}${currentNode.path}'/>" method="post">
-    <input type="hidden" name="nodeType" value="news"/>
+    <input type="hidden" name="jcrNodeType" value="news"/>
     <div class="newsListItem"><!--start newsListItem -->
 
         <h4><input type="text" name="newsTitle" value="${newsTitle.string}"/></h4>

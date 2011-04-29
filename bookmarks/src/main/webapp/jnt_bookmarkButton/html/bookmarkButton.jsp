@@ -22,8 +22,8 @@
 
         <label for="bookmark"><fmt:message key="bookmark.add"/></label>
         <input type="hidden" name="jcr:title" value=""/>
-        <input type="hidden" name="redirectTo" value="<c:url value='${url.base}${renderContext.mainResource.node.path}'/>">
-        <input type="hidden" name="nodetype" value="jnt:bookmark">
+        <input type="hidden" name="jcrRedirectTo" value="<c:url value='${url.base}${renderContext.mainResource.node.path}'/>">
+        <input type="hidden" name="jcr:nodetype" value="jnt:bookmark">
         <input type="hidden" name="url" value="">
         <input class="button" id="bookmark"  type="submit"/>
         <script type="text/javascript">

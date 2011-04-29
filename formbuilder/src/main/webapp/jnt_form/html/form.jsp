@@ -79,10 +79,10 @@
     <c:if test="${not renderContext.editMode}">
     <template:tokenizedForm>
     <form action="<c:url value='${action}'/>" method="post" id="${currentNode.name}">
-        <input type="hidden" name="nodeType" value="jnt:responseToForm"/>
-        <input type="hidden" name="redirectTo" value="<c:url value='${url.base}${renderContext.mainResource.node.path}'/>"/>
-        <%-- Define the output format for the newly created node by default html or by redirectTo--%>
-        <input type="hidden" name="newNodeOutputFormat" value="html"/>
+        <input type="hidden" name="jcrNodeType" value="jnt:responseToForm"/>
+        <input type="hidden" name="jcrRedirectTo" value="<c:url value='${url.base}${renderContext.mainResource.node.path}'/>"/>
+        <%-- Define the output format for the newly created node by default html or by jcrRedirectTo--%>
+        <input type="hidden" name="jcrNewNodeOutputFormat" value="html"/>
         <c:if test="${not empty chainActive}">
             <input type="hidden" name="chainOfAction" value="${chainActive}"/>
         </c:if>
@@ -96,10 +96,10 @@
     </c:if>
 
     <c:if test="${renderContext.editMode}">
-        <input type="hidden" name="nodeType" value="jnt:responseToForm"/>
-        <input type="hidden" name="redirectTo" value="<c:url value='${url.base}${renderContext.mainResource.node.path}'/>"/>
-        <%-- Define the output format for the newly created node by default html or by redirectTo--%>
-        <input type="hidden" name="newNodeOutputFormat" value="html"/>
+        <input type="hidden" name="jcrNodeType" value="jnt:responseToForm"/>
+        <input type="hidden" name="jcrRedirectTo" value="<c:url value='${url.base}${renderContext.mainResource.node.path}'/>"/>
+        <%-- Define the output format for the newly created node by default html or by jcrRedirectTo--%>
+        <input type="hidden" name="jcrNewNodeOutputFormat" value="html"/>
         <c:if test="${not empty chainActive}">
             <input type="hidden" name="chainOfAction" value="${chainActive}"/>
         </c:if>

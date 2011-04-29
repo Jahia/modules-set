@@ -16,7 +16,7 @@
     <img src="<c:url value='${url.captcha}'/>"/>
 
     <p>
-        <input type="text" name="captcha" value="${sessionScope.formDatas.captcha[0]}"/>
+        <input type="text" name="jcrCaptcha" value="${sessionScope.formDatas.captcha[0]}"/>
         <c:if test="${not empty sessionScope.formError}">
             <label class="error">${sessionScope.formError}</label>
         </c:if>

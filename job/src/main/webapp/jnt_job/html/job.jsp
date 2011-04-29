@@ -57,9 +57,9 @@
         <div class="collapsible" id="collapseBox${currentNode.identifier}">
             <div class="Form jobsApplyForm">
                 <form action="<c:url value='${url.base}${currentNode.path}/*'/>" method="post">
-                    <input type="hidden" name="nodeType" value="jnt:jobApplication"/>
-                    <input type="hidden" name="redirectTo" value="<c:url value='${url.base}${renderContext.mainResource.node.path}'/>"/>
-                    <input type="hidden" name="newNodeOutputFormat" value="html"/>
+                    <input type="hidden" name="jcrNodeType" value="jnt:jobApplication"/>
+                    <input type="hidden" name="jcrRedirectTo" value="<c:url value='${url.base}${renderContext.mainResource.node.path}'/>"/>
+                    <input type="hidden" name="jcrNewNodeOutputFormat" value="html"/>
                     <fieldset>
                         <p class="field">
                             <label class="left" for="job-application-firstname"><fmt:message key="jnt_jobApplication.firstname"/>:</label>

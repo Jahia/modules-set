@@ -174,7 +174,7 @@
         <c:if test="${not renderContext.editMode}">
         <div id="formContainer_${currentNode.name}">
             <form id="form_${currentNode.name}" name="form_${currentNode.name}" method="post" >
-                <input type="hidden" name="returnContentType" value="json"/>
+                <input type="hidden" name="jcrReturnContentType" value="json"/>
                 </c:if>
                 <c:if test="${renderContext.editMode}">
                 <div class="addanswers">
