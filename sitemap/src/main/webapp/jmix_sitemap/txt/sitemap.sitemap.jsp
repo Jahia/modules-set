@@ -6,12 +6,10 @@
 <c:set target="${renderContext}" property="contentType" value="text/plain;charset=UTF-8"/>
 <jcr:jqom var="sitemaps">
     <query:selector nodeTypeName="jmix:sitemap" selectorName="stmp"/>
-    <query:or>
-        <query:descendantNode path="${currentNode.path}" selectorName="stmp"/>
-        <query:sameNode path="${currentNode.path}" selectorName="stmp"/>
-    </query:or>
+    <query:descendantNode path="${currentNode.path}" selectorName="stmp"/>
 </jcr:jqom>
 
+<c:url value="${url.base}${currentNode.path}.html"/>
 <c:forEach items="${sitemaps.nodes}" varStatus="status" var="sitemapEL">
 <c:url value="${url.base}${sitemapEL.path}.html"/>
 

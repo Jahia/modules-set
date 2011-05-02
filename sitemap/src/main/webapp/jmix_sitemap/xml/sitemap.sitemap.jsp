@@ -10,10 +10,7 @@
          xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <jcr:jqom var="sitemaps">
     <query:selector nodeTypeName="jmix:sitemap" selectorName="stmp"/>
-    <query:or>
-        <query:descendantNode path="${currentNode.path}" selectorName="stmp"/>
-        <query:sameNode path="${currentNode.path}" selectorName="stmp"/>
-    </query:or>
+    <query:descendantNode path="${currentNode.path}" selectorName="stmp"/>
 </jcr:jqom>
 <c:if test="${pageContext.request.serverPort != 80}">
     <c:set var="serverUrl" value="${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}"/>
@@ -21,8 +18,17 @@
 <c:if test="${pageContext.request.serverPort == 80}">
     <c:set var="serverUrl" value="${pageContext.request.scheme}://${pageContext.request.serverName}"/>
 </c:if>
+
+    <jcr:nodeProperty node="${currentNode}" name="jcr:lastModified" var="lastModif"/>
+    <url>
+        <loc>${serverUrl}<c:url value="${url.base}${currentNode.path}.html"/></loc>
+        <lastmod><fmt:formatDate value="${lastModif.date.time}" pattern="yyyy-MM-dd"/></lastmod>
+        <changefreq>${currentNode.properties.changefreq.string}</changefreq>
+        <priority>${currentNode.properties.priority.string}</priority>
+    </url>
+
     <c:forEach items="${sitemaps.nodes}" varStatus="status" var="sitemapEL">
-        <jcr:nodeProperty node="${currentNode}" name="jcr:lastModified" var="lastModif"/>
+        <jcr:nodeProperty node="${sitemapEL}" name="jcr:lastModified" var="lastModif"/>
         <url>
             <loc>${serverUrl}<c:url value="${url.base}${sitemapEL.path}.html"/></loc>
             <lastmod><fmt:formatDate value="${lastModif.date.time}" pattern="yyyy-MM-dd"/></lastmod>
