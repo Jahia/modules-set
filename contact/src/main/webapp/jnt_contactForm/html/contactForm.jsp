@@ -130,7 +130,8 @@
             </c:if>
             <c:if test="${props.captcha.boolean}">
                 <p class="field">
-                    <label class="left" for="captcha"><template:captcha /></label><input type="text" id="captcha" name="jcrCaptcha"/>
+                    <label class="left" for="captcha">${fn:escapeXml(jcr:label(props.captcha.definition,currentResource.locale))}</label><template:captcha /><br/>
+					<label class="left" for="inputCaptcha"></label><input type="text" id="inputCaptcha" name="jcrCaptcha"/>
                 </p>
             </c:if>
 
