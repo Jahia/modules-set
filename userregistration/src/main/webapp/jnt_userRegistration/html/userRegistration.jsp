@@ -60,6 +60,7 @@
         });
     </script>
     <div class="Form">
+<template:tokenizedForm>
     <form method="post" action="<c:url value='${url.base}${currentNode.path}.newUser.do'/>" name="newUser" id="newUser">
         <input type="hidden" name="userredirectpage" value="${currentNode.properties['userRedirectPage'].node.path}"/>
         <c:if test="${not empty currentNode.properties['from']}">
@@ -110,5 +111,6 @@
             </div>
         </fieldset>
     </form>
+</template:tokenizedForm>
     </div>
 </c:if>
