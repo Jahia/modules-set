@@ -2,3 +2,5 @@
 *.iml
 *.ipr
 target
+/.settings
+/.project
