@@ -45,21 +45,7 @@
   <name>Jahia Teasers</name>
   <packaging>war</packaging>
 
-  <description>These are the custom templates (jahiaForum) for running on a Jahia server.</description>
-  <dependencies>
-    <dependency>
-		<groupId>atg.taglib.json</groupId>
-		<artifactId>json-taglib</artifactId>
-		<version>0.4.1</version>
-		<scope>runtime</scope>
-	</dependency>
-	<dependency>
-        <groupId>commons-logging</groupId>
-        <artifactId>commons-logging</artifactId>
-        <version>1.1.1</version>
-        <scope>provided</scope>
-	</dependency>
-  </dependencies>
+  <description>These are the custom templates for running on a Jahia server.</description>
 
     <build>
       <plugins>
