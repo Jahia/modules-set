@@ -37,6 +37,7 @@ orderable
  - label (string)
 
 [jnt:fieldset] > jnt:content
+ orderable
  - legend (string)
  + * (jnt:formElement)
 
