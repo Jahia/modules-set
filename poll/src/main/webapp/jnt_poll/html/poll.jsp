@@ -14,7 +14,8 @@
     $.ajaxSetup({
         accepts: {
             script: "application/json"
-        }
+        },
+        cache:false
     })
     function setCookie(c_name,value,expiredays)
     {
