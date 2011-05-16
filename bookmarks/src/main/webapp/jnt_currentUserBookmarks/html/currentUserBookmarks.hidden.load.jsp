@@ -24,3 +24,4 @@
 <query:definition var="listQuery"
          statement="select * from [jnt:bookmark] as b where isdescendantnode(b,['${user.path}'])"/>
 <c:set target="${moduleMap}" property="listQuery" value="${listQuery}"/>
+<template:addCacheDependency flushOnPathMatchingRegexp="${user.path}/bookmarks"/>

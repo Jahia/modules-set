@@ -16,7 +16,7 @@
 <%--@elvariable id="currentResource" type="org.jahia.services.render.Resource"--%>
 <%--@elvariable id="url" type="org.jahia.services.render.URLGenerator"--%>
 
-<form action="<c:url value='${url.base}${currentResource.node.parent.path}.add.do'/>" method="post" name="bookmark" id="bookmarkForm">
+<form action="<c:url value='${url.baseLive}${currentResource.node.parent.path}.add.do'/>" method="post" name="bookmark" id="bookmarkForm">
     <p>
         <label for="bookmark"><fmt:message key="bookmark.add"/></label>
         <input type="hidden" name="jcr:title" value=""/>

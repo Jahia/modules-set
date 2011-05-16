@@ -42,18 +42,18 @@
     <template:initPager totalSize="${moduleMap.end}" pageSize="${currentNode.properties['numberOfBookmarksPerPage'].string}" id="${renderContext.mainResource.node.identifier}"/>
     <template:displayPagination/>
 
-    <c:if test="${currentResource.workspace eq 'live'}">
+    <c:if test="${currentResource.workspace eq 'default'}">
         <script type="text/javascript">
-            $('#bookmarkList${user.identifier}').load('<c:url value="${url.basePreview}${currentNode.path}.html.ajax${ps}"/>');
+            $('#bookmarkList${user.identifier}').load('<c:url value="${url.baseLive}${currentNode.path}.html.ajax${ps}"/>');
         </script>
     </c:if>
 
-    <c:if test="${currentResource.workspace ne 'live'}">
+    <c:if test="${currentResource.workspace ne 'default'}">
         <script type="text/javascript">
             function deleteBookmark(source) {
                 $.post('<c:url value="${url.base}"/>' + source, {"jcrMethodToCall":"delete"},
                         function(result) {
-                            $('#bookmarkList${user.identifier}').load('<c:url value="${url.basePreview}${currentNode.path}.html.ajax${ps}"/>');
+                            $('#bookmarkList${user.identifier}').load('<c:url value="${url.baseLive}${currentNode.path}.html.ajax${ps}"/>');
                         },'json');
             }
         </script>

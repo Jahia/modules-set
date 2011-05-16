@@ -16,7 +16,7 @@
 <%--@elvariable id="currentResource" type="org.jahia.services.render.Resource"--%>
 <%--@elvariable id="url" type="org.jahia.services.render.URLGenerator"--%>
 <c:if test="${renderContext.loggedIn}" >
-<form action="<c:url value='${url.basePreview}${currentResource.node.parent.path}.add.do'/>" method="post" name="bookmark" id="bookmarkForm">
+<form action="<c:url value='${url.baseLive}${renderContext.user.localPath}.add.do'/>" method="post" name="bookmark" id="bookmarkForm">
     <p>
         <jcr:node path="${renderContext.user.localPath}" var="user" />
 
@@ -30,7 +30,7 @@
             document.forms['bookmark'].elements['jcr:title'].value = document.title;
             document.forms['bookmark'].elements['url'].value = document.location;
             var options = {
-                success: function() { $('#bookmarkList${user.identifier}').load('<c:url value="${url.basePreview}${user.path}.bookmarks.html.ajax"/>'); }
+                success: function() { $('#bookmarkList${user.identifier}').load('<c:url value="${url.baseLive}${user.path}.bookmarks.html.ajax"/>'); }
             }
             $(document).ready(function() {
                 // bind 'myForm' and provide a simple callback function
