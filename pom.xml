@@ -12,6 +12,10 @@
     <name>Jahia Default Modules</name>
     <packaging>pom</packaging>
 
+    <properties>
+      <jahia.dependency.version>6.5-SNAPSHOT</jahia.dependency.version>
+    </properties>
+
     <scm>
         <connection>scm:git:git@github.com:Jahia/modules-set.git</connection>
         <url>scm:git:git@github.com:Jahia/modules-set.git</url>
@@ -39,13 +43,13 @@
             <dependency>
                 <groupId>org.jahia.server</groupId>
                 <artifactId>jahia-impl</artifactId>
-                <version>6.5-SNAPSHOT</version>
+                <version>${jahia.dependency.version}</version>
                 <scope>provided</scope>
             </dependency>
             <dependency>
                 <groupId>org.jahia.server</groupId>
                 <artifactId>jahia-taglib</artifactId>
-                <version>6.5-SNAPSHOT</version>
+                <version>${jahia.dependency.version}</version>
                 <scope>provided</scope>
             </dependency>
         </dependencies>
