@@ -13,10 +13,10 @@
 <%--@elvariable id="currentResource" type="org.jahia.services.render.Resource"--%>
 <%--@elvariable id="url" type="org.jahia.services.render.URLGenerator"--%>
 <div class="formMarginLeft">
-    <img src="<c:url value='${url.captcha}'/>"/>
+    <template:captcha />
 
     <p>
-        <input type="text" name="jcrCaptcha" value="${sessionScope.formDatas.captcha[0]}"/>
+        <input type="text" id="inputCaptcha" name="jcrCaptcha"/>
         <c:if test="${not empty sessionScope.formError}">
             <label class="error">${sessionScope.formError}</label>
         </c:if>
