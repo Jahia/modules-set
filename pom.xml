@@ -13,7 +13,7 @@
     <packaging>pom</packaging>
 
     <properties>
-      <jahia.dependency.version>6.5-SNAPSHOT</jahia.dependency.version>
+      <jahia.dependency.version>6.5.0.0</jahia.dependency.version>
     </properties>
 
     <scm>
