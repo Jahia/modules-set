@@ -3,7 +3,7 @@
     <parent>
         <groupId>org.jahia.modules</groupId>
         <artifactId>jahia-modules</artifactId>
-        <version>6.5.0.0</version>
+        <version>6.5.1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.jahia.modules</groupId>
@@ -13,7 +13,7 @@
     <packaging>pom</packaging>
 
     <properties>
-      <jahia.dependency.version>6.5.0.0</jahia.dependency.version>
+      <jahia.dependency.version>6.5.1.0-SNAPSHOT</jahia.dependency.version>
     </properties>
 
     <scm>
