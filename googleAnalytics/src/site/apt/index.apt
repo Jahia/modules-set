@@ -1,13 +1,13 @@
-Google Analytics module
+Jahia 6.5 - Google Analytics module
 
 * {How it works ?}
   two things:
 
-  - a filter that render the JavaScript.
-  when Google analytics is activated and set, a filter add in each page (page template, or content template) the
-  Google analytics JavaScript.
-  - a binded component.
-  with a binded component you can select on which content or content type a Google analytics information will be store.
+    * a filter that render the JavaScript. When Google analytics is activated and set, a filter add in each page
+    (page template, or content template) the Google analytics JavaScript.
+
+    * a binded component. With a binded component you can select on which content or content type a Google analytics
+    information will be store.
 
 * {Activate Google Analytics}
 
@@ -32,8 +32,11 @@ Google Analytics module
 +----------
 
   specific properties of the filter:
-  - scriptMap: name of the map that contains all contents assigned with the binded component
 
-  - template:  script that will be executed to render the JavaScript. the variables available in the context are:
-    - webPropertyID: the Google Web ID set in the website
-    - scriptMap (gaMap in the example): a map that contains all references to the binded component meet in context
+    * scriptMap: name of the map that contains all contents assigned with the binded component
+
+    * template:  script that will be executed to render the JavaScript. the variables available in the context are:
+
+        * webPropertyID: the Google Web ID set in the website
+
+        * scriptMap (gaMap in the example): a map that contains all references to the binded component meet in context
