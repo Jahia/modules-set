@@ -47,7 +47,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.jahia.modules</groupId>
     <artifactId>jahia-default-modules</artifactId>
-    <version>1.0</version>
+    <version>1.1-SNAPSHOT</version>
     <name>Jahia Default Modules</name>
     <packaging>pom</packaging>
 
