@@ -331,15 +331,30 @@ public final class WebClippingRewriter {
                         Matcher matcher = pattern.matcher(hrefUrl);
                         if (!matcher.find()) {
                             String rewritedUrl = getRewritedUrl(hrefUrl, context);
-                            final Attribute target = attributes.get("target");
-                            if (target != null && !target.getValue().equals("_self") && !target.getValue().equals("_parent")) {
-                                rewritedUrl = getAbsoluteURL(hrefUrl);
+                            boolean changedHost = false;
+                            try {
+                                URL defaultURL = new URL(url);
+                                URL currentURL = new URL(getAbsoluteURL(hrefUrl));
+                                if (!currentURL.getHost().equals(defaultURL.getHost())) {
+                                    changedHost = true;
+                                }
+                            } catch (MalformedURLException e) {
                             }
-                            stringBuffer.append("<a href=\"").append(rewritedUrl).append("\" ");
+                            if (!changedHost) {
+                                final Attribute target = attributes.get("target");
+                                if (target != null && !target.getValue().equals("_self") && !target.getValue().equals(
+                                        "_parent")) {
+                                    rewritedUrl = getAbsoluteURL(hrefUrl);
+                                }
+                                stringBuffer.append("<a href=\"").append(rewritedUrl).append("\" ");
+                            } else {
+                                stringBuffer.append("<a target=\"new\" href=\"").append(getAbsoluteURL(hrefUrl)).append(
+                                        "\" ");
+                            }
                             Iterator atList = attributes.iterator();
                             while (atList.hasNext()) {
                                 Attribute attribute = (Attribute) atList.next();
-                                if (!"href".equalsIgnoreCase(attribute.getName())) {
+                                if (!"href".equalsIgnoreCase(attribute.getName()) && (!changedHost || !"target".equalsIgnoreCase(attribute.getKey()))) {
                                     stringBuffer.append(attribute.getName()).append("=").append(attribute.getQuoteChar()).append(attribute.getValue()).append(attribute.getQuoteChar()).append(' ');
                                 }
                             }

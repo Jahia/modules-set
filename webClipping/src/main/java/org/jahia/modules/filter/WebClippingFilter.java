@@ -44,6 +44,7 @@ import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.HashMap;
@@ -94,11 +95,23 @@ public class WebClippingFilter extends AbstractFilter {
     public String prepare(RenderContext renderContext, Resource resource, RenderChain chain) throws Exception {
         if (!renderContext.isEditMode()) {
             String url;
+            String defaultUrl = resource.getNode().getPropertyAsString("url");
             if (renderContext.getRequest().getParameter("jahia_url_web_clipping") != null && renderContext.getRequest().getParameter("jahia_url_web_clipping").length() > 0) {
                 //todo encode this url, for users can't tape directly url.
                 url = renderContext.getRequest().getParameter("jahia_url_web_clipping");
             } else {
-                url = resource.getNode().getPropertyAsString("url");
+                url = defaultUrl;
+            }
+            try {
+                URL defaultURL = new URL(defaultUrl);
+                URL currentURL = new URL(url);
+                if(!currentURL.getHost().equals(defaultURL.getHost())) {
+                    log.error("Someone try to enter a non valid URL "+url);
+                    url = defaultUrl;
+                }
+            } catch (MalformedURLException e) {
+                log.error(e.getMessage(), e);
+                return "The submitted URL is malformed";
             }
             String original_method = getOriginalMethod(renderContext);
             Map map = new HashMap();
