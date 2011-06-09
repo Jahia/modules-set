@@ -27,7 +27,7 @@
             <fmt:message key="${socialNetwork.string}.url.share" var="shareUrl"/>
             <c:set var="shareUrl" value="${fn:replace(shareUrl,'[url]',parentPageUrl)}"/>
             <c:set var="shareUrl" value="${fn:replace(shareUrl,'[title]',parentPageTitle)}"/>
-
+            <c:url var="shareUrl" value="${shareUrl}" />
             ${currentNode.properties['jcr:title'].string}<a href="${shareUrl}"><img src="<c:url value='${url.currentModule}/images/${socialNetwork.string}_32.png'/>" alt="${socialNetwork.string}" /></a>
         </li>
     </c:forEach>
