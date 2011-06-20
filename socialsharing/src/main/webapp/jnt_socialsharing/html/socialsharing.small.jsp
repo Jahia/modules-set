@@ -16,6 +16,9 @@
 <template:addResources type="css" resources="socialsharing.css" />
 
 <ul class="socialsharing-small">
+<li>
+    <fmt:message key='socialsharing.title'/>:&nbsp;
+</li>
     <c:forEach items="${currentNode.properties.socialNetworks}" var="socialNetwork">
         <li>
             <%--Retrieve the parent page--%>
