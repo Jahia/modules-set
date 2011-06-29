@@ -64,7 +64,7 @@
                         $("#all_votes${id}").text(result.j_nbOfVotes);
                         $("#all_avg${id}").text(('' + result.j_sumOfVotes / result.j_nbOfVotes).substring(0, 3));
                         // Display confirmation message to the user
-                        $("#messages${id}").html("<br/>Rating saved (" + value + "). Thanks!").stop().css("opacity", 1).fadeIn(30);
+                        $("#messages${id}").html("<br/><fmt:message key="label.ratingSaved"/> (" + value + "). <fmt:message key="label.thanks"/>!").stop().css("opacity", 1).fadeIn(30);
                         // Hide confirmation message and enable stars for "Rate this" control, after 2 sec...
                         setTimeout(function() {
                             $("#messages${id}").fadeOut(1000, function() {
@@ -85,8 +85,8 @@
 
     <div class="ratings">
 
-        <div class="rating-L"><strong>Average rating</strong>
-        <span>(<span id="all_votes${id}">${nbVotes.long}</span> votes; <span
+        <div class="rating-L"><strong><fmt:message key="label.AverageRating"/></strong>
+        <span>(<span id="all_votes${id}">${nbVotes.long}</span> <fmt:message key="label.votes"/>; <span
                 id="all_avg${id}">${fn:substring(avg,0,3)}</span>)</span>
 
             <form id="avg${id}" style="width: 200px" action="">
@@ -147,8 +147,8 @@
         </script>
         <div class="ratings">
 
-            <div class="rating-L"><strong>Average rating</strong>
-        <span>(<span id="all_votes${id}">${nbVotes.long}</span> votes; <span
+            <div class="rating-L"><strong><fmt:message key="label.AverageRating"/></strong>
+        <span>(<span id="all_votes${id}">${nbVotes.long}</span> <fmt:message key="label.votes"/>; <span
                 id="all_avg${id}">${fn:substring(avg,0,3)}</span>)</span>
 
                 <form id="avg${id}" style="width: 200px" action="">
