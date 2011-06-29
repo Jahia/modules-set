@@ -19,6 +19,6 @@
 <query:definition var="listQuery" statement="${lastNewsStatement}" limit="${maxNews.long}"  />
 
 <c:set target="${moduleMap}" property="editable" value="false" />
-<c:set target="${moduleMap}" property="emptyListMessage" value="No news found" />
+<c:set target="${moduleMap}" property="emptyListMessage"><fmt:message key="label.noNewsFound"/></c:set>
 <c:set target="${moduleMap}" property="listQuery" value="${listQuery}" />
 <c:set target="${moduleMap}" property="subNodesView" value="${currentNode.properties['j:subNodesView'].string}" />
