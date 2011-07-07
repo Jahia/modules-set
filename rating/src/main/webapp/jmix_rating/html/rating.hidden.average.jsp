@@ -108,7 +108,7 @@
                         <option value="4"><fmt:message key="label.rateThis.good"/></option>
                         <option value="5"><fmt:message key="label.rateThis.excellent"/></option>
                     </select>
-                    <input type="submit" value="Rate it!"/>
+                    <input type="submit" value="<fmt:message key="label.rateThis.rateIt"/>"/>
                 </form>
             </div>
 
