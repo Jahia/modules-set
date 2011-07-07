@@ -18,12 +18,11 @@
 
 <form action="<c:url value='${url.baseLive}${currentResource.node.parent.path}.add.do'/>" method="post" name="bookmark" id="bookmarkForm">
     <p>
-        <label for="bookmark"><fmt:message key="bookmark.add"/></label>
         <input type="hidden" name="jcr:title" value=""/>
         <input type="hidden" name="jcrRedirectTo" value="<c:url value='${url.base}${renderContext.mainResource.node.path}'/>">
         <input type="hidden" name="jcrNodeType" value="jnt:bookmark">
         <input type="hidden" name="url" value="">
-        <input class="button" id="bookmark"  type="submit"/>
+        <input class="button" id="bookmark"  type="submit" value="<fmt:message key="bookmark.add"/>"/>
         <script type="text/javascript">
             document.forms['bookmark'].elements['jcr:title'].value = document.title;
             document.forms['bookmark'].elements['url'].value = document.location;
