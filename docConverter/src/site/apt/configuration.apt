@@ -4,35 +4,45 @@ Configuration
   either to a local one or a remote service.
   To use the converter service you need an OpenOffice v2.0.3 or higher (the latest stable 3.x version is recommended) installed.
   
+  In order to enable the service the following setting should be set to true in <<<jahia.properties>>> file:
+
++------------------------
+######################################################################
+### Document Converter Service #######################################
+######################################################################
+# Set this to true to enable the document conversion service
+documentConverter.enabled = true
++------------------------
+  
+  
 * {Local} OpenOffice instance
 
   The converter service is capable of creating an OpenOffice process and using it, in case Jahia
   and OpenOffice are located on the same machine.
   
   In such case converter service starts locally an instance of the OpenOffice service for processing conversion tasks.
-  The configuration in this case is as follows (snapshot of the <<<WEB-INF/etc/spring/applicationcontext-doc-converter.xml>>> file):
+  
+  The configuration in this case is pretty simple: a service needs to be enabled (see above) and a path to the OpenOffice
+  folder has to be provided in the <<<jahia.properties>>> file:
 
 
 +------------------------
-<bean id="DocumentConverterService"
-  class="org.jahia.services.transform.DocumentConverterService"
-  init-method="start" destroy-method="stop">
-  
-    <property name="enabled" value="true"/>
-    <property name="officeManagerBeanName" value="localOfficeManagerFactory"/>
-</bean>
-
-<bean name="localOfficeManagerFactory"
-  class="org.jahia.services.transform.LocalOfficeManagerFactory"
-  lazy-init="true">
-  
-    <property name="officeHome" value="/usr/lib/openoffice"/>
-</bean>
+######################################################################
+### Document Converter Service #######################################
+######################################################################
+# Set this to true to enable the document conversion service
+documentConverter.enabled = false
+# The fiesystem path to the OpenOffice
+# Usually for Linux it is: /usr/lib/openoffice
+# for Windows: c:/Program Files (x86)/OpenOffice.org 3
+# and for Mac OS X: /Applications/OpenOffice.org.app/Contents
+documentConverter.officeHome = /usr/lib/openoffice
 +------------------------   
 
-  Additionally the <<<LocalOfficeManagerFactory>>> supports specifying port number,
+  For an advanced configuration, the <<<LocalOfficeManagerFactory>>> supports specifying port number,
   template profile directory, task execution timeout, task queue timeout and maximum
-  number of tasks per process. 
+  number of tasks per process. The default configuration is located in the <<<WEB-INF/etc/spring/applicationcontext-doc-converter.xml>>> file
+  and can be overridden from your custom module if needed.
 
 * {Remote} OpenOffice service
 
