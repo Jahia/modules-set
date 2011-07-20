@@ -47,6 +47,8 @@
             <span class="jobtxt">${values.skills}</span>
         </p>
 
+        <c:set var="writeable" value="${currentResource.workspace eq 'live'}" />
+        <c:if test='${writeable}'>
         <div class="jobAction">
             <a onclick="ShowHideLayer('${currentNode.identifier}'); return false;" href="#apply"
                class="jobApply">Apply</a>
@@ -56,6 +58,7 @@
 
         <div class="collapsible" id="collapseBox${currentNode.identifier}">
             <div class="Form jobsApplyForm">
+                <template:tokenizedForm>
                 <form action="<c:url value='${url.base}${currentNode.path}/*'/>" method="post">
                     <input type="hidden" name="jcrNodeType" value="jnt:jobApplication"/>
                     <input type="hidden" name="jcrRedirectTo" value="<c:url value='${url.base}${renderContext.mainResource.node.path}'/>"/>
@@ -63,30 +66,46 @@
                     <fieldset>
                         <p class="field">
                             <label class="left" for="job-application-firstname"><fmt:message key="jnt_jobApplication.firstname"/>:</label>
-                            <input type="text" name="firstname" id="job-application-firstname"/>
+                            <input type="text" name="firstname" id="job-application-firstname" ${disabled}/>
                         </p>
 
                         <p class="field">
                             <label class="left" for="job-application-lastname"><fmt:message key="jnt_jobApplication.lastname"/>:</label>
-                            <input type="text" name="lastname" id="job-application-lastname"/>
+                            <input type="text" name="lastname" id="job-application-lastname" ${disabled}/>
                         </p>
 
                         <p class="field">
                             <label class="left" for="job-application-email"><fmt:message key="jnt_jobApplication.email"/>:</label>
-                            <input type="text" name="email" id="job-application-email"/>
+                            <input type="text" name="email" id="job-application-email" ${disabled}/>
                         </p>
 
                         <p class="field">
                             <label class="left" for="job-application-text"><fmt:message key="jnt_jobApplication.text"/>:</label>
-                            <textarea name="text" id="job-application-text"></textarea>
+                            <textarea name="text" id="job-application-text" ${disabled}></textarea>
                         </p>
                     <div class="formMarginLeft">
-                    	<input type="submit" class="button" value="Apply"/>
+                    	<input type="submit" class="button" value="Apply" ${disabled}/>
                     </div>
                     </fieldset>
 
                 </form>
+                </template:tokenizedForm>
             </div>
         </div>
+        </c:if>
+
+        <c:if test="${jcr:hasPermission(currentNode,'jcr:read_default')}">
+            <template:addResources type="javascript" resources="jquery.min.js"/>
+            <fieldset>
+                <legend><fmt:message key="label.results"/></legend>
+
+                <div id="results-${currentNode.identifier}" >
+                </div>
+            </fieldset>
+            <script type="text/javascript">
+                $('#results-${currentNode.identifier}').load('<c:url value="${url.baseLive}${currentNode.path}.results.html.ajax"/>');
+            </script>
+        </c:if>
+
     </div>
 </div>
