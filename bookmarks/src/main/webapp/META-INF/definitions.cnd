@@ -3,7 +3,7 @@
 [jnt:bookmarkButton] > jnt:content,jmix:siteComponent
 
 [jnt:bookmark] > jnt:content, mix:title
-- url (string) 
+- url (string) indexed=no
 - date (date)
 
 [jnt:bookmarks] > jnt:content, mix:title
