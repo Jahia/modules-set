@@ -5,8 +5,8 @@ orderable
 
 [jnt:formListElement] > jnt:content
 orderable
- - label (string) i18n
- - value (string)
+ - label (string) i18n indexed=no
+ - value (string) indexed=no
 
 [jnt:formElement] > jnt:content abstract
 orderable
@@ -18,64 +18,64 @@ orderable
 [jnt:responseToForm] > jnt:content,nt:unstructured
 
 [jnt:inputText] > jnt:formElement
- - label (string) mandatory
+ - label (string) mandatory indexed=no
  - size (long) = 20 autocreated
  - maxLength (long) = 30 autocreated
- - defaultValue (string)
- - mask (string)
+ - defaultValue (string) indexed=no
+ - mask (string) indexed=no
 
 [jnt:dateField] > jnt:formElement
- - label (string) mandatory
+ - label (string) mandatory indexed=no
 
 [jnt:inputMultiline] > jnt:formElement
- - label (string) mandatory
+ - label (string) mandatory indexed=no
  - cols (long) = 20 autocreated
  - rows (long) = 6 autocreated
- - defaultValue (string)
+ - defaultValue (string) indexed=no
 
 [jnt:passwordField] > jnt:formElement
- - label (string)
+ - label (string) indexed=no
 
 [jnt:fieldset] > jnt:content
  orderable
- - legend (string)
+ - legend (string) indexed=no
  + * (jnt:formElement)
 
 [jnt:checkboxField] > jnt:formElement
- - label (string) mandatory
+ - label (string) mandatory indexed=no
  + * (jnt:formListElement)
 
 [jnt:selectField] > jnt:formElement
- - label (string)
+ - label (string) indexed=no
  + * (jnt:formListElement)
 
 [jnt:radiobuttonField] > jnt:formElement
- - label (string) mandatory
+ - label (string) mandatory indexed=no
  + * (jnt:formListElement)
 
 [jnt:submitButton] > jnt:formButton
- - label (string) mandatory
+ - label (string) mandatory indexed=no
  
 [jnt:resetButton] > jnt:formButton
- - label (string) mandatory
+ - label (string) mandatory indexed=no
 
 [jnt:birthdate] > jnt:formElement
- - label (string)
+ - label (string) indexed=no
 
 [jnt:addressBlock] > jnt:formElement
 
 [jnt:automaticList] > jnt:formElement
- - label (string) mandatory
- - type (string, choicelist[choicelisttypes])
+ - label (string) mandatory indexed=no
+ - type (string, choicelist[choicelisttypes]) indexed=no
 
 [jnt:formAction] > jnt:content abstract
 
 [jnt:mailFormAction] > jnt:formAction
- - j:action (string) = 'mail' autocreated hidden
- - j:to (string,choicelist[users]) mandatory
+ - j:action (string) = 'mail' autocreated hidden indexed=no
+ - j:to (string,choicelist[users]) mandatory indexed=no
 
 [jnt:defaultFormAction] > jnt:formAction
- - j:action (string) = 'default' autocreated hidden
+ - j:action (string) = 'default' autocreated hidden indexed=no
 
 [jnt:actionList] > jnt:content, jmix:list
  orderable
@@ -114,4 +114,4 @@ orderable
 [jnt:captcha] > jnt:formElement
 
 [jnt:fileElement] > jnt:formElement
- - label (string) 
+ - label (string) indexed=no

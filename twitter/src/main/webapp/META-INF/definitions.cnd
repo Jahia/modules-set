@@ -2,25 +2,25 @@
 <jmix = 'http://www.jahia.org/jahia/mix/1.0'>
 
 [jnt:twitterFeed] > jmix:socialComponent
-- userAccount (string) mandatory
+- userAccount (string) mandatory indexed=no
 - numberOfTweets (string, choicelist) = '5' indexed=no < '5', '10', '15', '20', '25', '30'
-- shellBackgroundColor (string) = '#1d6ab3'
-- shellTextColor (string) = '#ffffff'
-- tweetBackgroundColor (string) = '#dfe8ed'
-- tweetTextColor (string) = '#000000'
-- tweetLinksColor (string) = '#0000f5'
-- tweetWidth (long) = 250 indexed=no
+- shellBackgroundColor (string) = '#1d6ab3' indexed=no
+- shellTextColor (string) = '#ffffff' indexed=no
+- tweetBackgroundColor (string) = '#dfe8ed' indexed=no
+- tweetTextColor (string) = '#000000' indexed=no
+- tweetLinksColor (string) = '#0000f5' indexed=no
+- tweetWidth (long) = 250 indexed=no 
 - tweetHeight (long) = 300 indexed=no
-- autoWidth (boolean) = false
-- pollForNewResults (boolean) = true
-- includeScrollbar (boolean) = false
-- showAvatars (boolean) = true
-- showTimestamps (boolean) = true
-- showHashtags (boolean) = true
+- autoWidth (boolean) = false indexed=no
+- pollForNewResults (boolean) = true indexed=no
+- includeScrollbar (boolean) = false indexed=no
+- showAvatars (boolean) = true indexed=no
+- showTimestamps (boolean) = true indexed=no
+- showHashtags (boolean) = true indexed=no
 
 
 [jnt:twitterSearch] > jmix:socialComponent
-- search (string)
+- search (string) indexed=no
 - numberOfTweets (string, choicelist) = '15' indexed=no < '5', '10', '15', '20', '25', '30'
-- timeUpdate (long) = 15
+- timeUpdate (long) = 15 indexed=no
 - lang (string, choicelist) indexed=no < 'en', 'fr'

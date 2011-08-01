@@ -10,7 +10,7 @@
  - reference (string)
  - businessUnit (string) i18n facetable
  - contract (string, choicelist[resourceBundle]) facetable  < contract1, contract2, contract3, contract4
- - date (string)
+ - date (string) nofulltext
  - town (string)
  - country (string, choicelist[country,flag]) facetable
  - educationLevel (string) i18n analyzer='keyword'
