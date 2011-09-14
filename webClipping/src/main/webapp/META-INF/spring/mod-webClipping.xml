@@ -4,6 +4,7 @@
     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
     <bean class="org.jahia.modules.filter.WebClippingFilter">
         <property name="priority" value="45"/>
+        <property name="description" value="Gets and returns the webclipped content"/>
         <property name="applyOnNodeTypes" value="jnt:webClipping"/>
         <property name="skipOnConfiguration" value="include,wrapper"/>
         <!--property name="cacheProviders" ref="ehCacheProvider"/-->
