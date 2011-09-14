@@ -13,7 +13,7 @@
 <%--@elvariable id="currentResource" type="org.jahia.services.render.Resource"--%>
 <%--@elvariable id="url" type="org.jahia.services.render.URLGenerator"--%>
 <div class="formMarginLeft">
-    <template:captcha />
+    <template:captcha displayReloadLink="true" />
 
     <p>
         <input type="text" id="inputCaptcha" name="jcrCaptcha"/>
