@@ -56,8 +56,8 @@
                     $("#messages${id}").text('${functions:escapeJavaScript(i18nSaving)}').stop().css("opacity", 1).fadeIn(30);
 
                     <%-- Send request to the server using POST method --%>
-                    $.post("<c:url value='${url.base}${bindedComponent.path}'/>", {'j:lastVote': value,'jcrMethodToCall':"put",
-                        'jcr:mixinTypes':['jmix:rating'],'jcrCookieName':"rated${bindedComponent.identifier}",
+                    $.post("<c:url value='${url.base}${bindedComponent.path}'/>.rate.do", {'j:lastVote': value,'jcrMethodToCall':"post",
+                        'jcrCookieName':"rated${bindedComponent.identifier}",
                         'jcrCookieValue':"${currentNode.identifier}"}, function(
                             result) {
                         <%-- Select stars from "Average rating" control to match the returned average rating value --%>
