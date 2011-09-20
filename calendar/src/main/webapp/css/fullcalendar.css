@@ -8,7 +8,9 @@
  * Date: Sat Apr 9 14:09:51 2011 -0700
  *
  */
-
+.calendar {
+	margin-bottom:1em
+	}
 
 .fc {
 	direction: ltr;
