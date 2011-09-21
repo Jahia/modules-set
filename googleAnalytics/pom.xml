@@ -52,23 +52,6 @@
     <packaging>war</packaging>
     <description>This is the custom module (googleAnalytics) for running on a Jahia server.</description>
 
-    <dependencies>
-        <dependency>
-	      <groupId>com.google.gdata</groupId>
-	      <artifactId>gdata-analytics-meta</artifactId>
-	      <version>2.1</version>
-	    </dependency>
-        <dependency>
-	      <groupId>com.google.gdata</groupId>
-	      <artifactId>gdata-analytics</artifactId>
-	      <version>2.1</version>
-	    </dependency>
-        <dependency>
-	      <groupId>com.google.gdata</groupId>
-	      <artifactId>jsr305</artifactId>
-	      <version>1.0</version>
-	    </dependency>
-    </dependencies>
     <build>
         <plugins>
             <plugin>
