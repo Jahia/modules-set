@@ -79,6 +79,7 @@
                             <package-name>${project.name}</package-name>
                             <depends>Jahia SEO</depends>
                             <root-folder>${project.artifactId}</root-folder>
+                            <module-type>module</module-type>
                         </manifestEntries>
                     </archive>
                 </configuration>

@@ -79,6 +79,7 @@
                             <package-name>${project.name}</package-name>
                             <root-folder>${project.artifactId}</root-folder>
                             <depends>Jahia Static Assets</depends>
+                            <module-type>module</module-type>
                         </manifestEntries>
                     </archive>
                 </configuration>

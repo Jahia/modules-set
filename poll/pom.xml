@@ -80,6 +80,7 @@
                         <package-name>${project.name}</package-name>
                         <root-folder>poll</root-folder>
                         <depends>Jahia Static Assets</depends>
+                        <module-type>module</module-type>
                     </manifestEntries>
                 </archive>
                 <archiveClasses>true</archiveClasses>

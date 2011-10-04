@@ -80,6 +80,7 @@
                         <package-name>${project.name}</package-name>
                         <root-folder>docConverter</root-folder>
 			            <depends>Default Jahia Templates</depends>
+                        <module-type>system</module-type>
                     </manifestEntries>
                 </archive>
                 <archiveClasses>true</archiveClasses>
