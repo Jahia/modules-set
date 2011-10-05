@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<content xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+         xmlns:test_templates="http://www.jahia.org/jahia/test_templates/nt/1.0"
+         xmlns:jnt="http://www.jahia.org/jahia/nt/1.0" xmlns:test="http://www.apache.org/jackrabbit/test"
+         xmlns:sv="http://www.jcp.org/jcr/sv/1.0" xmlns:jmix="http://www.jahia.org/jahia/mix/1.0"
+         xmlns:j="http://www.jahia.org/jahia/1.0" xmlns:mix="http://www.jcp.org/jcr/mix/1.0" xmlns:rep="internal">
+    <templateSets jcr:primaryType="jnt:templateSets">
+        <news j:installedModules="default" j:siteType="module" j:title="Jahia News" j:wcagCompliance="true"
+              jcr:primaryType="jnt:virtualsite">
+            <templates jcr:primaryType="jnt:templatesFolder" j:rootTemplatePath="/base">
+                <news-template j:applyOn="jnt:news" j:defaultTemplate="true" j:priority="100"
+                               jcr:primaryType="jnt:contentTemplate">
+                    <pagecontent jcr:primaryType="jnt:contentList">
+                        <row column="1col16" jcr:primaryType="jnt:row"/>
+                    </pagecontent>
+                    <row-col1 jcr:primaryType="jnt:contentList">
+                        <mainResourceDisplay j:mainResourceView="fullpage" jcr:primaryType="jnt:mainResourceDisplay"/>
+                    </row-col1>
+                </news-template>
+            </templates>
+
+            <files jcr:primaryType="jnt:folder"/>
+            <categories jcr:primaryType="jnt:category" jcr:title="Categories"/>
+            <contents jcr:primaryType="jnt:contentFolder">
+            </contents>
+            <portlets jcr:primaryType="jnt:portletFolder"/>
+        </news>
+    </templateSets>
+</content>
