@@ -47,7 +47,7 @@
     </parent>
     <groupId>org.jahia.modules</groupId>
     <artifactId>socialsharing</artifactId>
-    <name>Social Sharing</name>
+    <name>Jahia Social Sharing</name>
     <packaging>war</packaging>
     <description>This is a custom module for running on a Jahia server.</description>
     <build>

@@ -48,7 +48,7 @@
     </parent>
     <groupId>org.jahia.modules</groupId>
     <artifactId>videostreaming</artifactId>
-    <name>Video Streaming</name>
+    <name>Jahia Video Streaming</name>
     <packaging>war</packaging>
     <description>This is a custom module for running on a Jahia server.</description>
     <build>

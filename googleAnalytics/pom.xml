@@ -48,7 +48,7 @@
     </parent>
     <groupId>org.jahia.modules</groupId>
     <artifactId>googleAnalytics</artifactId>
-    <name>googleAnalytics</name>
+    <name>Jahia Google Analytics</name>
     <packaging>war</packaging>
     <description>This is the custom module (googleAnalytics) for running on a Jahia server.</description>
 
