@@ -40,7 +40,7 @@
 
 <div id="bookmarkList${user.identifier}">
     <template:initPager totalSize="${moduleMap.end}" pageSize="${currentNode.properties['numberOfBookmarksPerPage'].string}" id="${renderContext.mainResource.node.identifier}"/>
-    <template:displayPagination/>
+    <template:displayPagination id="${renderContext.mainResource.node.identifier}"/>
 
     <c:if test="${currentResource.workspace eq 'default'}">
         <script type="text/javascript">
