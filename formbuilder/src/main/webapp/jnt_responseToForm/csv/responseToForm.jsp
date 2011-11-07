@@ -15,15 +15,18 @@
 <jcr:node var="fieldsetsNode" path="${currentNode.parent.parent.path}/fieldsets"/>
 <c:forEach items="${fieldsetsNode.nodes}" var="fieldset" varStatus="fieldsetStatus">
 	<c:forEach items="${jcr:getChildrenOfType(fieldset, 'jnt:formElement')}" var="field" varStatus="fieldStatus">
-        <c:if test="${jcr:isNodeType(field, 'jnt:automaticList')}" var="isAutomaticList">
-            <jcr:nodeProperty node="${def}" name="type" var="type"/>
-            <c:set var="renderers" value="${fn:split(type.string,'=')}"/>
-            <c:if test="${fn:length(renderers) > 1}"><c:set var="renderer" value="${renderers[1]}"/></c:if>
-            <c:if test="${not (fn:length(renderers) > 1)}"><c:set var="renderer" value=""/></c:if>
-            ${fieldsetStatus.index + fieldStatus.index > 0 ? ',' : ''}<jcr:nodePropertyRenderer node="${currentNode}" name="${field.name}" renderer="${renderer}"/>
-        </c:if>
-        <c:if test="${not isAutomaticList}">
-        	${fieldsetStatus.index + fieldStatus.index > 0 ? ',' : ''}${currentNode.propertiesAsString[field.name]}
-        </c:if>
+        <c:choose>
+            <c:when test="${jcr:isNodeType(field, 'jnt:automaticList')}">
+                <jcr:nodeProperty node="${def}" name="type" var="type"/>
+                <c:set var="renderers" value="${fn:split(type.string,'=')}"/>
+                <c:if test="${fn:length(renderers) > 1}"><c:set var="renderer" value="${renderers[1]}"/></c:if>
+                <c:if test="${not (fn:length(renderers) > 1)}"><c:set var="renderer" value=""/></c:if>
+                ${fieldsetStatus.index + fieldStatus.index > 0 ? ',' : ''}<jcr:nodePropertyRenderer node="${currentNode}" name="${field.name}" renderer="${renderer}"/>
+            </c:when>
+
+            <c:otherwise>
+                ${fieldsetStatus.index + fieldStatus.index > 0 ? ',' : ''}${currentNode.propertiesAsString[field.name]}
+            </c:otherwise>
+        </c:choose>
 	</c:forEach>
 </c:forEach>

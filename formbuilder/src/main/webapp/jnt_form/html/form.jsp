@@ -40,21 +40,21 @@
         </script>
     </template:addResources>
 </c:if>
-<c:set var="displayCSV" value="true"/>
+<c:set var="displayCSV" value="false"/>
 <c:set var="action" value="${url.base}${currentNode.path}/responses/*"/>
 <c:if test="${not empty actionNode.nodes}">
     <c:if test="${fn:length(actionNode.nodes) > 1}">
         <c:set var="action" value="${url.base}${currentNode.path}/responses.chain.do"/>
         <c:set var="chainActive" value=""/>
         <c:forEach items="${actionNode.nodes}" var="node" varStatus="stat">
-            <c:if test="${jcr:isNodeType(node, 'jnt:mailFormAction')}"><c:set var="displayCSV" value="false"/></c:if>
+            <c:if test="${jcr:isNodeType(node, 'jnt:defaultFormAction')}"><c:set var="displayCSV" value="true"/></c:if>
             <c:set var="chainActive" value="${chainActive}${node.properties['j:action'].string}"/>
             <c:if test="${not stat.last}"><c:set var="chainActive" value="${chainActive},"/></c:if>
         </c:forEach>
     </c:if>
     <c:if test="${fn:length(actionNode.nodes) eq 1}">
         <c:forEach items="${actionNode.nodes}" var="node">
-            <c:if test="${jcr:isNodeType(node, 'jnt:mailFormAction')}"><c:set var="displayCSV" value="false"/></c:if>
+            <c:if test="${jcr:isNodeType(node, 'jnt:defaultFormAction')}"><c:set var="displayCSV" value="true"/></c:if>
             <c:if test="${node.properties['j:action'].string != 'default'}">
                 <c:set var="action" value="${url.base}${currentNode.path}/responses.${node.properties['j:action'].string}.do"/>
             </c:if>
@@ -119,7 +119,7 @@
 <br/><br/>
 <c:if test="${displayCSV eq 'true'}">
     <div>
-        <h2><fmt:message key="form.responses"/> (<a href="<c:url value='${currentNode.path}.csv' context='${url.base}'/>" target="_blank">CSV</a>)</h2>
+        <h2><fmt:message key="form.responses"/> (<a href="<c:url value='${url.base}${currentNode.path}.csv'/>" target="_blank">CSV</a>)</h2>
         <template:list path="responses" listType="jnt:responsesList" editable="true" />
     </div>
 </c:if>
