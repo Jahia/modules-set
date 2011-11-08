@@ -77,7 +77,7 @@
 		                    <Specification-Version>${project.version}</Specification-Version>
 		                    <Specification-Vendor>${jahia.manifest.vendor.name}</Specification-Vendor>
                             <package-name>${project.name}</package-name>
-                            <depends>Jahia SEO</depends>
+                            <depends>Default Jahia Templates,Jahia Grid Pages,Jahia SEO</depends>
                             <root-folder>${project.artifactId}</root-folder>
                             <module-type>module</module-type>
                         </manifestEntries>
