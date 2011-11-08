@@ -14,31 +14,26 @@
 <%--@elvariable id="url" type="org.jahia.services.render.URLGenerator"--%>
 <template:addResources type="javascript" resources="jquery.min.js,jquery.validate.js,jquery.maskedinput.js"/>
 <template:addResources type="css" resources="formbuilder.css"/>
-<jcr:node var="fieldsetsNode" path="${currentNode.parent.parent.path}/fieldsets"/>
-<div>
-    <c:forEach items="${fieldsetsNode.nodes}" var="fieldset">
-        <c:forEach
-                items="${jcr:getPropertiesAsStringFromNodeNameOfThatType(currentNode,fieldset,'jnt:formElement')}"
-                var="entry">
-            <jcr:node var="def" path="${fieldset.path}/${entry.key}"/>
-            <c:if test="${jcr:isNodeType(def, 'jnt:automaticList')}" var="isAutomaticList">
-                <jcr:nodeProperty node="${def}" name="type" var="type"/>
-                <c:set var="renderers" value="${fn:split(type.string,'=')}"/>
-                <c:if test="${fn:length(renderers) > 1}"><c:set var="renderer" value="${renderers[1]}"/></c:if>
-                <c:if test="${not (fn:length(renderers) > 1)}"><c:set var="renderer" value=""/></c:if>
-                <p><label>${entry.key}</label>&nbsp;<span>Value:<jcr:nodePropertyRenderer node="${currentNode}"
-                                                                                          name="${entry.key}"
-                                                                                          renderer="${renderer}"/></span>
-                </p>
+<tr>
+    <td>
+        <fmt:formatDate value="${currentNode.properties['jcr:created'].date.time}" pattern="yyyy-MM-dd HH:mm"/>
+    </td>
+    <td>
+        ${currentNode.properties['jcr:createdBy'].string}
+    </td>
+    <%--<td>--%>
+        <%--${currentNode.properties['originUrl'].string}--%>
+    <%--</td>--%>
+    <c:forEach items="${formFields}" var="formField">
+        <td>
+            <c:if test="${not empty formField.value}">
+                <jcr:nodePropertyRenderer node="${currentNode}"
+                                          name="${formField.key}"
+                                          renderer="${formField.value}"/>
             </c:if>
-            <c:if test="${not isAutomaticList}">
-                <p>
-                    <label>${entry.key}</label>&nbsp;<span>Value : ${entry.value}</span>
-                </p>
+            <c:if test="${empty formField.value}">
+                <jcr:nodeProperty node="${currentNode}" name="${formField.key}"/>
             </c:if>
-        </c:forEach>
-        <c:forEach items="${currentNode.nodes}" var="subResponseNode">
-            <template:module node="${subResponseNode}" view="default"/>
-        </c:forEach>
+        </td>
     </c:forEach>
-</div>
+</tr>

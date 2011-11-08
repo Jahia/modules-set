@@ -12,21 +12,4 @@
 <%--@elvariable id="renderContext" type="org.jahia.services.render.RenderContext"--%>
 <%--@elvariable id="currentResource" type="org.jahia.services.render.Resource"--%>
 <%--@elvariable id="url" type="org.jahia.services.render.URLGenerator"--%>
-<jcr:node var="fieldsetsNode" path="${currentNode.parent.parent.path}/fieldsets"/>
-<c:forEach items="${fieldsetsNode.nodes}" var="fieldset" varStatus="fieldsetStatus">
-	<c:forEach items="${jcr:getChildrenOfType(fieldset, 'jnt:formElement')}" var="field" varStatus="fieldStatus">
-        <c:choose>
-            <c:when test="${jcr:isNodeType(field, 'jnt:automaticList')}">
-                <jcr:nodeProperty node="${def}" name="type" var="type"/>
-                <c:set var="renderers" value="${fn:split(type.string,'=')}"/>
-                <c:if test="${fn:length(renderers) > 1}"><c:set var="renderer" value="${renderers[1]}"/></c:if>
-                <c:if test="${not (fn:length(renderers) > 1)}"><c:set var="renderer" value=""/></c:if>
-                ${fieldsetStatus.index + fieldStatus.index > 0 ? ',' : ''}<jcr:nodePropertyRenderer node="${currentNode}" name="${field.name}" renderer="${renderer}"/>
-            </c:when>
-
-            <c:otherwise>
-                ${fieldsetStatus.index + fieldStatus.index > 0 ? ',' : ''}${currentNode.propertiesAsString[field.name]}
-            </c:otherwise>
-        </c:choose>
-	</c:forEach>
-</c:forEach>
+<fmt:formatDate value="${currentNode.properties['jcr:created'].date.time}" pattern="yyyy-MM-dd HH:mm"/>,${currentNode.properties['jcr:createdBy'].string},${currentNode.properties['originUrl'].string}<c:forEach items="${formFields}" var="formField" varStatus="status">${status.index + status.index > 0 ? ',' : ''}<jcr:nodeProperty node="${currentNode}" name="${formField.key}"/></c:forEach>

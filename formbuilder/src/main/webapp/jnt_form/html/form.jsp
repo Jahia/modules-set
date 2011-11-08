@@ -16,6 +16,7 @@
 <template:addResources type="css" resources="formbuilder.css"/>
 <jcr:node var="actionNode" path="${currentNode.path}/action"/>
 <jcr:node var="fieldsetsNode" path="${currentNode.path}/fieldsets"/>
+<jcr:node var="formButtonsNode" path="${currentNode.path}/formButtons"/>
 <c:if test="${not renderContext.editMode}">
     <template:addResources>
         <script type="text/javascript">
@@ -48,6 +49,7 @@
         <c:set var="chainActive" value=""/>
         <c:forEach items="${actionNode.nodes}" var="node" varStatus="stat">
             <c:if test="${jcr:isNodeType(node, 'jnt:defaultFormAction')}"><c:set var="displayCSV" value="true"/></c:if>
+            <c:if test="${jcr:isNodeType(node, 'jnt:redirectFormAction')}"><c:set var="hasRedirect" value="true"/></c:if>
             <c:set var="chainActive" value="${chainActive}${node.properties['j:action'].string}"/>
             <c:if test="${not stat.last}"><c:set var="chainActive" value="${chainActive},"/></c:if>
         </c:forEach>
@@ -69,10 +71,12 @@
     ${currentNode.propertiesAsString['j:intro']}
 </div>
 <c:if test="${renderContext.editMode}">
+    <c:forEach items="${actionNode.nodes}" var="formElement">
+        <template:module node="${formElement}" editable="true"/>
+    </c:forEach>
     <div class="addaction">
-        <span><fmt:message key="form.addAction"/> </span>
-        <c:set var="editable" value="${not empty actionNode.nodes}"/>
-        <template:list path="action" listType="jnt:actionList" editable="true"/>
+        <span><fmt:message key="label.form.addAction"/> : </span>
+        <template:module node="${actionNode}" view="hidden.placeholder"/>
     </div>
 </c:if>
 <div class="Form FormBuilder">
@@ -81,16 +85,24 @@
     <c:if test="${not renderContext.editMode}">
         <template:tokenizedForm>
             <form action="<c:url value='${action}'/>" method="post" id="${currentNode.name}">
+                <input type="hidden" name="originUrl" value="${pageContext.request.requestURL}"/>
                 <input type="hidden" name="jcrNodeType" value="jnt:responseToForm"/>
+                <c:if test="${empty hasRedirect}">
                 <input type="hidden" name="jcrRedirectTo" value="<c:url value='${url.base}${renderContext.mainResource.node.path}'/>"/>
+                </c:if>
                     <%-- Define the output format for the newly created node by default html or by jcrRedirectTo--%>
                 <input type="hidden" name="jcrNewNodeOutputFormat" value="html"/>
                 <c:if test="${not empty chainActive}">
                     <input type="hidden" name="chainOfAction" value="${chainActive}"/>
                 </c:if>
-                <template:list path="fieldsets" listType="jnt:fieldsetstList" editable="true"/>
+                <c:forEach items="${fieldsetsNode.nodes}" var="fieldset">
+                    <template:module node="${fieldset}" editable="true"/>
+                </c:forEach>
+
                 <div class="divButton">
-                    <template:list path="formButtons" listType="jnt:formButtonsList" editable="true"/>
+                    <c:forEach items="${formButtonsNode.nodes}" var="formButton">
+                        <template:module node="${formButton}" editable="true"/>
+                    </c:forEach>
                 </div>
                 <div class="validation"></div>
             </form>
@@ -105,13 +117,22 @@
         <c:if test="${not empty chainActive}">
             <input type="hidden" name="chainOfAction" value="${chainActive}"/>
         </c:if>
+
+        <c:forEach items="${fieldsetsNode.nodes}" var="fieldset">
+            <template:module node="${fieldset}" editable="true"/>
+        </c:forEach>
+
         <div class="addfieldsets">
-            <span><fmt:message key="form.addFieldSet"/></span>
-            <template:list path="fieldsets" listType="jnt:fieldsetstList" editable="true"/>
+            <span><fmt:message key="label.form.addFieldSet"/> : </span>
+            <template:module node="${fieldsetsNode}" view="hidden.placeholder"/>
         </div>
+
+        <c:forEach items="${formButtonsNode.nodes}" var="formButton">
+            <template:module node="${formButton}" editable="true"/>
+        </c:forEach>
         <div class="addbuttons">
-            <span><fmt:message key="form.addButtons"/></span>
-            <template:list path="formButtons" listType="jnt:formButtonsList" editable="true"/>
+            <span><fmt:message key="label.form.addButtons"/> : </span>
+            <template:module node="${formButtonsNode}" view="hidden.placeholder"/>
         </div>
     </c:if>
 
@@ -119,8 +140,8 @@
 <br/><br/>
 <c:if test="${displayCSV eq 'true'}">
     <div>
-        <h2><fmt:message key="form.responses"/> (<a href="<c:url value='${url.base}${currentNode.path}.csv'/>" target="_blank">CSV</a>)</h2>
-        <template:list path="responses" listType="jnt:responsesList" editable="true" />
+        <h2><fmt:message key="form.responses"/> : <a href="<c:url value='${url.base}${currentNode.path}/responses.csv'/>" target="_blank">CSV</a> - <a href="<c:url value='${url.base}${currentNode.path}/responses.html'/>" target="_blank">HTML</a></h2>
+        <%--<template:list path="responses" listType="jnt:responsesList" editable="true" />--%>
     </div>
 </c:if>
 

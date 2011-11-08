@@ -41,6 +41,7 @@
 package org.jahia.modules.formbuilder.actions;
 
 import org.jahia.bin.Action;
+import org.jahia.modules.formbuilder.taglib.FormFunctions;
 import org.jahia.services.content.JCRSessionWrapper;
 import org.slf4j.Logger;
 import org.apache.velocity.tools.generic.DateTool;
@@ -58,6 +59,7 @@ import org.jahia.settings.SettingsBean;
 
 import javax.jcr.NodeIterator;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.*;
 
 /**
@@ -116,6 +118,7 @@ public class MailAction extends Action {
             Map<String,Object> bindings = new HashMap<String,Object>();
             bindings.put("formDatas",formDatas);
             bindings.put("formNode",node.getParent());
+            bindings.put("formFields", FormFunctions.getFormFields(node.getParent()));
             bindings.put("submitter",renderContext.getUser());
             bindings.put("date",new DateTool());
             bindings.put("submissionDate", Calendar.getInstance());

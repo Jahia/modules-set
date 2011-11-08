@@ -77,6 +77,10 @@ orderable
 [jnt:defaultFormAction] > jnt:formAction
  - j:action (string) = 'default' autocreated hidden indexed=no
 
+[jnt:redirectFormAction] > jnt:formAction
+ - j:action (string) = 'redirect' autocreated hidden indexed=no
+ - node (weakreference,picker[type='editoriallink']) mandatory indexed=no
+
 [jnt:actionList] > jnt:content, jmix:list
  orderable
  + * (jnt:formAction) = jnt:formAction version
@@ -96,10 +100,10 @@ orderable
 [jnt:form] > jnt:content, jmix:formContent, mix:title
  orderable
  - j:intro (string)
- + action (jnt:actionList)
- + fieldsets (jnt:fieldsetstList)
- + formButtons (jnt:formButtonsList)
- + responses (jnt:responsesList)
+ + action (jnt:actionList) = jnt:actionList autocreated
+ + fieldsets (jnt:fieldsetstList) = jnt:fieldsetstList autocreated
+ + formButtons (jnt:formButtonsList) = jnt:formButtonsList autocreated
+ + responses (jnt:responsesList) = jnt:responsesList autocreated
 
 [jnt:required] > jnt:formElementValidation
 
@@ -115,3 +119,6 @@ orderable
 
 [jnt:fileElement] > jnt:formElement
  - label (string) indexed=no
+
+[jnt:htmlInput] > jnt:formElement
+ - html (string,richtext)

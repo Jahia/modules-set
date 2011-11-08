@@ -19,7 +19,7 @@
     </c:forEach>
     <c:if test="${renderContext.editMode}">
         <div class="addelements">
-            <span><fmt:message key="checkbox.addElements"/> </span>
+            <span><fmt:message key="label.fieldSet.addElements"/> : </span>
             <template:module path="*"/>
         </div>
     </c:if>

@@ -9,7 +9,7 @@
 <body>
 <h2>${bundle.getString("mail.a.form.type")} #if($formNode.hasProperty("jcr:title")) ${formNode.getProperty("jcr:title").string} #else ${formNode.getName()} #end ${bundle.getString("mail.submitted.values")}</h2>
 <ol>
-#foreach( $it in $formDatas.keySet())
+#foreach( $it in $formFields.keySet())
     <li><label style="font:bold">${it}&nbsp;:</label>&nbsp;<span>${formDatas.get($it)}</span></li>
 #end
     </ol>

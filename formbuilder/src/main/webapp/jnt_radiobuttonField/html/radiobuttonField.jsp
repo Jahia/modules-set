@@ -21,21 +21,26 @@
     <label for="${currentNode.name}">${option.properties.label.string}</label>
 </c:forEach>
 <c:if test="${renderContext.editMode}">
-    <p><fmt:message key="checkbox.listOfOptions"/></p>
+    <p><fmt:message key="label.listOfOptions"/> </p>
     <ol>
         <c:forEach items="${jcr:getNodes(currentNode,'jnt:formListElement')}" var="option">
             <li><template:module node="${option}" view="default" editable="true"/></li>
         </c:forEach>
     </ol>
-    <p><fmt:message key="checkbox.listOfValidation"/></p>
+    <div class="addvalidation">
+        <span><fmt:message key="label.addListOption"/> </span>
+        <template:module path="*" nodeTypes="jnt:formListElement"/>
+    </div>
+
+    <p><fmt:message key="label.listOfValidation"/> </p>
     <ol>
     <c:forEach items="${jcr:getNodes(currentNode,'jnt:formElementValidation')}" var="formElement" varStatus="status">
         <li><template:module node="${formElement}" view="edit"/></li>
     </c:forEach>
     </ol>
-        <div class="addvalidation">
-        <span><fmt:message key="checkbox.addElements"/></span>
-        <template:module path="*"/>
+    <div class="addvalidation">
+        <span><fmt:message key="label.addValidation"/> </span>
+        <template:module path="*" nodeTypes="jnt:formElementValidation"/>
     </div>
 </c:if>
 </div>

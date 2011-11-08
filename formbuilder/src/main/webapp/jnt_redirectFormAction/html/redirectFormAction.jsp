@@ -1,0 +1,1 @@
+Action : Redirect to ${currentNode.properties['node'].node.path}
