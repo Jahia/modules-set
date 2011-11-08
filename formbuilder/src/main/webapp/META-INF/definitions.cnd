@@ -3,69 +3,55 @@
 [jnt:formElementValidation] > jnt:content abstract
 orderable
 
-[jnt:formListElement] > jnt:content
+[jnt:formListElement] > jnt:content,mix:title
 orderable
- - label (string) i18n indexed=no
- - value (string) indexed=no
 
-[jnt:formElement] > jnt:content abstract
+[jnt:formElement] > jnt:content,mix:title abstract
 orderable
 + * (jnt:formElementValidation)
 
-[jnt:formButton] > jnt:content abstract
+[jnt:formButton] > jnt:content,mix:title abstract
  orderable
 
 [jnt:responseToForm] > jnt:content,nt:unstructured
 
 [jnt:inputText] > jnt:formElement
- - label (string) mandatory indexed=no
  - size (long) = 20 autocreated
  - maxLength (long) = 30 autocreated
  - defaultValue (string) indexed=no
  - mask (string) indexed=no
 
 [jnt:dateField] > jnt:formElement
- - label (string) mandatory indexed=no
 
 [jnt:inputMultiline] > jnt:formElement
- - label (string) mandatory indexed=no
  - cols (long) = 20 autocreated
  - rows (long) = 6 autocreated
  - defaultValue (string) indexed=no
 
 [jnt:passwordField] > jnt:formElement
- - label (string) indexed=no
 
-[jnt:fieldset] > jnt:content
+[jnt:fieldset] > jnt:content, mix:title
  orderable
- - legend (string) indexed=no
  + * (jnt:formElement)
 
 [jnt:checkboxField] > jnt:formElement
- - label (string) mandatory indexed=no
  + * (jnt:formListElement)
 
 [jnt:selectField] > jnt:formElement
- - label (string) indexed=no
  + * (jnt:formListElement)
 
 [jnt:radiobuttonField] > jnt:formElement
- - label (string) mandatory indexed=no
  + * (jnt:formListElement)
 
 [jnt:submitButton] > jnt:formButton
- - label (string) mandatory indexed=no
- 
+
 [jnt:resetButton] > jnt:formButton
- - label (string) mandatory indexed=no
 
 [jnt:birthdate] > jnt:formElement
- - label (string) indexed=no
 
 [jnt:addressBlock] > jnt:formElement
 
 [jnt:automaticList] > jnt:formElement
- - label (string) mandatory indexed=no
  - type (string, choicelist[choicelisttypes]) indexed=no
 
 [jnt:formAction] > jnt:content abstract
@@ -118,7 +104,6 @@ orderable
 [jnt:captcha] > jnt:formElement
 
 [jnt:fileElement] > jnt:formElement
- - label (string) indexed=no
 
 [jnt:htmlInput] > jnt:formElement
  - html (string,richtext)

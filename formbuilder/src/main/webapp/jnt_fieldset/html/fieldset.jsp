@@ -13,7 +13,7 @@
 <%--@elvariable id="currentResource" type="org.jahia.services.render.Resource"--%>
 <%--@elvariable id="url" type="org.jahia.services.render.URLGenerator"--%>
 <fieldset>
-    <legend>${currentNode.properties.legend.string}</legend>
+    <legend>${currentNode.properties['jcr:title'].string}</legend>
     <c:forEach items="${jcr:getNodes(currentNode,'jnt:formElement')}" var="formElement">
         <template:module node="${formElement}" editable="true"/>
     </c:forEach>

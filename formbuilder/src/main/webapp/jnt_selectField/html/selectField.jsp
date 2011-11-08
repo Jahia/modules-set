@@ -14,13 +14,11 @@
 <%--@elvariable id="url" type="org.jahia.services.render.URLGenerator"--%>
 
 
-<c:set value="${currentNode.propertiesAsString}" var="props"/>
-
 <p class="field">
-<label class="left" for="${currentNode.name}">${props.label}</label>
-<select name="${currentNode.name}">
+<label class="left" for="${currentNode.name}">${currentNode.properties['jcr:title'].string}</label>
+<select ${disabled} name="${currentNode.name}">
     <c:forEach items="${jcr:getNodes(currentNode,'jnt:formListElement')}" var="option">
-        <option value="${option.properties.value.string}" <c:if test="${not empty sessionScope.formError and sessionScope.formDatas[currentNode.name][0] eq option.properties.value.string}">selected="true"</c:if>>${option.properties.label.string}</option>
+        <option value="${option.name}" <c:if test="${not empty sessionScope.formError and sessionScope.formDatas[currentNode.name][0] eq option.name}">selected="true"</c:if>>${option.properties['jcr:title'].string}</option>
     </c:forEach>
 </select>
 <c:if test="${renderContext.editMode}">

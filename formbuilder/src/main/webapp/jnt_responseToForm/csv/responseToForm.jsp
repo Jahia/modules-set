@@ -12,4 +12,4 @@
 <%--@elvariable id="renderContext" type="org.jahia.services.render.RenderContext"--%>
 <%--@elvariable id="currentResource" type="org.jahia.services.render.Resource"--%>
 <%--@elvariable id="url" type="org.jahia.services.render.URLGenerator"--%>
-<fmt:formatDate value="${currentNode.properties['jcr:created'].date.time}" pattern="yyyy-MM-dd HH:mm"/>,${currentNode.properties['jcr:createdBy'].string},${currentNode.properties['originUrl'].string}<c:forEach items="${formFields}" var="formField" varStatus="status">${status.index + status.index > 0 ? ',' : ''}<jcr:nodeProperty node="${currentNode}" name="${formField.key}"/></c:forEach>
+<fmt:formatDate value="${currentNode.properties['jcr:created'].date.time}" pattern="yyyy-MM-dd HH:mm"/>,${currentNode.properties['jcr:createdBy'].string},${currentNode.properties['originUrl'].string}<c:forEach items="${formFields}" var="formField" varStatus="status">,<jcr:nodeProperty node="${currentNode}" name="${formField.key}"/></c:forEach>

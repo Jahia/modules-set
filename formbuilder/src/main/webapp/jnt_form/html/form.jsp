@@ -17,6 +17,10 @@
 <jcr:node var="actionNode" path="${currentNode.path}/action"/>
 <jcr:node var="fieldsetsNode" path="${currentNode.path}/fieldsets"/>
 <jcr:node var="formButtonsNode" path="${currentNode.path}/formButtons"/>
+<c:set var="writeable" value="${currentResource.workspace eq 'live'}" />
+<c:if test='${not writeable}'>
+    <c:set var="disabled" value='disabled="true"' scope="request" />
+</c:if>
 <c:if test="${not renderContext.editMode}">
     <template:addResources>
         <script type="text/javascript">
@@ -68,7 +72,7 @@
 
 
 <div class="intro">
-    ${currentNode.propertiesAsString['j:intro']}
+    ${currentNode.properties['j:intro'].string}
 </div>
 <c:if test="${renderContext.editMode}">
     <c:forEach items="${actionNode.nodes}" var="formElement">
@@ -140,7 +144,7 @@
 <br/><br/>
 <c:if test="${displayCSV eq 'true'}">
     <div>
-        <h2><fmt:message key="form.responses"/> : <a href="<c:url value='${url.base}${currentNode.path}/responses.csv'/>" target="_blank">CSV</a> - <a href="<c:url value='${url.base}${currentNode.path}/responses.html'/>" target="_blank">HTML</a></h2>
+        <h2><fmt:message key="form.responses"/> : <a href="<c:url value='${url.baseLive}${currentNode.path}/responses.csv'/>" target="_blank">CSV</a> - <a href="<c:url value='${url.baseLive}${currentNode.path}/responses.html'/>" target="_blank">HTML</a></h2>
         <%--<template:list path="responses" listType="jnt:responsesList" editable="true" />--%>
     </div>
 </c:if>

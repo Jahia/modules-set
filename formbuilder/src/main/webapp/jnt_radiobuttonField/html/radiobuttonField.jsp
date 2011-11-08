@@ -13,12 +13,11 @@
 <%--@elvariable id="currentResource" type="org.jahia.services.render.Resource"--%>
 <%--@elvariable id="url" type="org.jahia.services.render.URLGenerator"--%>
 
-<c:set value="${currentNode.propertiesAsString}" var="props"/>
-<label class="left" for="${currentNode.name}">${props.label}</label>
+<label class="left" for="${currentNode.name}">${currentNode.properties['jcr:title'].string}</label>
 <div class="formMarginLeft">
 <c:forEach items="${jcr:getNodes(currentNode,'jnt:formListElement')}" var="option">
-    <input type="radio" name="${currentNode.name}" id="${currentNode.name}" value="${option.properties.value.string}" <c:if test="${not empty sessionScope.formError and sessionScope.formDatas[currentNode.name][0] eq option.properties.value.string}">checked="true"</c:if>/>
-    <label for="${currentNode.name}">${option.properties.label.string}</label>
+    <input ${disabled} type="radio" name="${currentNode.name}" id="${currentNode.name}" value="${option.name}" <c:if test="${not empty sessionScope.formError and sessionScope.formDatas[currentNode.name][0] eq option.name}">checked="true"</c:if>/>
+    <label for="${currentNode.name}">${option.properties['jcr:title'].string}</label>
 </c:forEach>
 <c:if test="${renderContext.editMode}">
     <p><fmt:message key="label.listOfOptions"/> </p>

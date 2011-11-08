@@ -20,8 +20,8 @@
 </script>
 </template:addResources>
 <p class="field">
-<label class="left">${fn:escapeXml(currentNode.properties.label.string)}</label>
-<input type="file" id="${currentNode.name}" name="${currentNode.name}"/>
+<label class="left">${fn:escapeXml(currentNode.properties['jcr:title'].string)}</label>
+<input ${disabled} type="file" id="${currentNode.name}" name="${currentNode.name}"/>
 <c:if test="${renderContext.editMode}">
 <div class="formMarginLeft">
     <p><fmt:message key="label.listOfValidation"/></p>

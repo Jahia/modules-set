@@ -12,11 +12,9 @@
 <%--@elvariable id="currentResource" type="org.jahia.services.render.Resource"--%>
 <%--@elvariable id="url" type="org.jahia.services.render.URLGenerator"--%>
 
-<c:set value="${currentNode.propertiesAsString}" var="props"/>
-
 <p class="field">
-    <label class="left" for="${currentNode.name}">${props.label}</label>
-    <textarea type="text" name="${currentNode.name}" cols="${props.cols}" rows="${props.rows}"><c:if test="${not empty sessionScope.formError}">${sessionScope.formDatas[currentNode.name][0]}</c:if><c:if test="${empty sessionScope.formError}">${props.defaultValue}</c:if>
+    <label class="left" for="${currentNode.name}">${currentNode.properties['jcr:title'].string}</label>
+    <textarea ${disabled} type="text" name="${currentNode.name}" cols="${currentNode.properties['cols'].string}" rows="${currentNode.properties['rows'].string}"><c:if test="${not empty sessionScope.formError}">${sessionScope.formDatas[currentNode.name][0]}</c:if><c:if test="${empty sessionScope.formError}">${currentNode.properties['defaultValue'].string}</c:if>
     </textarea>
 
 <c:if test="${renderContext.editMode}">

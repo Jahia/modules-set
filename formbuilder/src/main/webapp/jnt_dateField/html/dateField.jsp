@@ -13,8 +13,8 @@
 <%--@elvariable id="currentResource" type="org.jahia.services.render.Resource"--%>
 <%--@elvariable id="url" type="org.jahia.services.render.URLGenerator"--%>
 <p class="field">
-<label class="left">${fn:escapeXml(currentNode.properties.label.string)}</label>
-<input type="text" id="${currentNode.name}" name="${currentNode.name}"
+<label class="left">${fn:escapeXml(currentNode.properties['jcr:title'].string)}</label>
+<input ${disabled} type="text" id="${currentNode.name}" name="${currentNode.name}"
        value="${not empty sessionScope.formError ? sessionScope.formDatas[currentNode.name][0] : ''}" readonly="readonly"/>
 <ui:dateSelector fieldId="${currentNode.name}"/>
 <c:if test="${renderContext.editMode}">

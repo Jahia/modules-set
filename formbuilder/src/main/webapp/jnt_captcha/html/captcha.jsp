@@ -16,7 +16,7 @@
     <template:captcha />
 
     <p>
-        <input type="text" id="inputCaptcha" name="jcrCaptcha"/>
+        <input ${disabled} type="text" id="inputCaptcha" name="jcrCaptcha"/>
         <c:if test="${not empty sessionScope.formError}">
             <label class="error">${sessionScope.formError}</label>
         </c:if>
