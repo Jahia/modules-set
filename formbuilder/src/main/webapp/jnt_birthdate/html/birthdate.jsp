@@ -1,9 +1,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<label class="left">${fn:escapeXml(currentNode.properties.label.string)}</label>
+<label class="left">${fn:escapeXml(currentNode.properties['jcr:title'].string)}</label>
 <span>
-          <select name="year">
+          <select ${disabled} name="year">
               <option><fmt:message key="label.year"/></option>
               <option>1950</option>
               <option>1951</option>
@@ -28,7 +28,7 @@
               <option>1970</option>
               <option>1971</option>
           </select>
-    <select name="month">
+    <select ${disabled} name="month">
         <option><fmt:message key="label.month"/></option>
               <option>1</option>
               <option>2</option>
@@ -43,7 +43,7 @@
               <option>11</option>
               <option>12</option>
           </select>
-    <select name="day">
+    <select ${disabled} name="day">
         <option><fmt:message key="label.day"/></option>
               <option>1</option>
               <option>2</option>

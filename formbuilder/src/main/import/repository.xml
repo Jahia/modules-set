@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<content xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+         xmlns:jnt="http://www.jahia.org/jahia/nt/1.0" xmlns:sv="http://www.jcp.org/jcr/sv/1.0"
+         xmlns:jmix="http://www.jahia.org/jahia/mix/1.0" xmlns:j="http://www.jahia.org/jahia/1.0"
+         xmlns:mix="http://www.jcp.org/jcr/mix/1.0" xmlns:rep="internal">
+    <templateSets jcr:primaryType="jnt:templateSets">
+        <formbuilder changefreq="monthly" j:dependencies="default" j:installedModules="Jahia Form Builder"
+                     j:originWS="default" j:siteType="module" j:title="Jahia Form Builder" j:wcagCompliance="true"
+                     jcr:mixinTypes="jmix:sitemap" jcr:primaryType="jnt:virtualsite" priority="0.5">
+            <portlets j:originWS="default" jcr:primaryType="jnt:portletFolder"/>
+            <files j:originWS="default" jcr:primaryType="jnt:folder"/>
+            <contents j:originWS="default" jcr:primaryType="jnt:contentFolder"/>
+            <templates j:originWS="default" j:rootTemplatePath="/base" jcr:primaryType="jnt:templatesFolder">
+                <files j:originWS="default" jcr:primaryType="jnt:folder"/>
+                <contents j:originWS="default" jcr:primaryType="jnt:contentFolder"/>
+                <formresponse-template j:applyOn="jnt:responsesList" j:defaultTemplate="true" j:hiddenTemplate="false"
+                                       j:originWS="default" jcr:primaryType="jnt:contentTemplate">
+                    <pagecontent j:originWS="default" jcr:primaryType="jnt:contentList">
+                        <row column="1col16" j:originWS="default" jcr:primaryType="jnt:row"/>
+                    </pagecontent>
+                    <row-col1 j:originWS="default" jcr:primaryType="jnt:contentList">
+                        <pager displayPager="true"
+                               j:bindedComponent="/templateSets/formbuilder/templates/formresponse-template/row-col1/main-resource-display"
+                               j:originWS="default" jcr:primaryType="jnt:pager" pageSize="10"/>
+                        <main-resource-display j:originWS="default" jcr:primaryType="jnt:mainResourceDisplay"/>
+                    </row-col1>
+                </formresponse-template>
+            </templates>
+        </formbuilder>
+    </templateSets>
+</content>
+

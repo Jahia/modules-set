@@ -20,18 +20,18 @@
 </script>
 </template:addResources>
 <p class="field">
-<label class="left">${fn:escapeXml(currentNode.properties.label.string)}</label>
-<input type="file" id="${currentNode.name}" name="${currentNode.name}"/>
+<label class="left">${fn:escapeXml(currentNode.properties['jcr:title'].string)}</label>
+<input ${disabled} type="file" id="${currentNode.name}" name="${currentNode.name}"/>
 <c:if test="${renderContext.editMode}">
 <div class="formMarginLeft">
-    <p><fmt:message key="checkbox.listOfValidation"/></p>
+    <p><fmt:message key="label.listOfValidation"/></p>
     <ol>
     <c:forEach items="${jcr:getNodes(currentNode,'jnt:formElementValidation')}" var="formElement" varStatus="status">
         <li><template:module node="${formElement}" view="edit"/></li>
     </c:forEach>
     </ol>
         <div class="addvalidation">
-        <span><fmt:message key="checkbox.addElements"/></span>
+        <span><fmt:message key="label.addValidation"/></span>
         <template:module path="*"/>
     </div>
 </div>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+        version="2.0">
+
+    <description>Jahia Formbuilder module tag library</description>
+    <display-name>Jahia Formbuilder Service</display-name>
+    <tlib-version>6.6</tlib-version>
+    <short-name>formbuilder</short-name>
+    <uri>http://www.jahia.org/tags/formbuilder</uri>
+
+    <function>
+        <name>getFormFields</name>
+        <function-class>org.jahia.modules.formbuilder.taglib.FormFunctions</function-class>
+        <function-signature>java.util.Map getFormFields(org.jahia.services.content.JCRNodeWrapper)</function-signature>
+    </function>
+</taglib>

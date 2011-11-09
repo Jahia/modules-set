@@ -4,6 +4,7 @@
 <%@ taglib prefix="utility" uri="http://www.jahia.org/tags/utilityLib" %>
 <%@ taglib prefix="template" uri="http://www.jahia.org/tags/templateLib" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="formbuilder" uri="http://www.jahia.org/tags/formbuilder" %>
 <%--@elvariable id="currentNode" type="org.jahia.services.content.JCRNodeWrapper"--%>
 <%--@elvariable id="out" type="java.io.PrintWriter"--%>
 <%--@elvariable id="script" type="org.jahia.services.render.scripting.Script"--%>
@@ -12,6 +13,7 @@
 <%--@elvariable id="renderContext" type="org.jahia.services.render.RenderContext"--%>
 <%--@elvariable id="currentResource" type="org.jahia.services.render.Resource"--%>
 <%--@elvariable id="url" type="org.jahia.services.render.URLGenerator"--%>
-<c:forEach items="${currentNode.nodes}" var="subResponseNode">
-    <template:module node="${subResponseNode}" view="default"/>
+<c:set value="${formbuilder:getFormFields(currentNode.parent)}" var="formFields" scope="request"/>
+date,user,url<c:forEach items="${formFields}" var="formField" varStatus="status">,${formField.key}</c:forEach>
+<c:forEach items="${currentNode.nodes}" var="subResponseNode"><template:module node="${subResponseNode}" view="default"/>
 </c:forEach>
