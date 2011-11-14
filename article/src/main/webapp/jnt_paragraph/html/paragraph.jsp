@@ -6,8 +6,9 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%--@elvariable id="currentNode" type="org.jahia.services.content.JCRNodeWrapper"--%>
 <%--@elvariable id="renderContext" type="org.jahia.services.render.RenderContext"--%>
-
-<h3>${currentNode.properties["jcr:title"].string}</h3>
+<c:if test="${not empty currentNode.properties['jcr:title']}">
+    <h3>${currentNode.properties["jcr:title"].string}</h3>
+</c:if>
 <c:if test="${not empty currentNode.properties.insertText.string}">
     <div class='${currentNode.properties.insertType.string}-top float${currentNode.properties.insertPosition.string}'
          style='width:${currentNode.properties.insertWidth.string}px'>
@@ -16,12 +17,12 @@
         </div>
     </div>
 </c:if>
-<div class="float${currentNode.properties.align.string}">
-    <c:if test="${!empty currentNode.properties.image}">
+<c:if test="${!empty currentNode.properties.image}">
+    <div class="float${currentNode.properties.align.string}">
         <c:url value="${url.files}${currentNode.properties.image.node.path}" var="imageUrl"/>
         <img src="${imageUrl}" alt="${imageUrl}" align="${currentNode.properties.align.string}"/>
-    </c:if>
-</div>
+    </div>
+</c:if>
 <div>
     ${currentNode.properties.body.string}
 </div>
