@@ -18,7 +18,7 @@
 </c:if>
 <div class="float${currentNode.properties.align.string}">
     <c:if test="${!empty currentNode.properties.image}">
-        <c:url value="${url.files}${ncurrentNode.properties.image.node.path}" var="imageUrl"/>
+        <c:url value="${url.files}${currentNode.properties.image.node.path}" var="imageUrl"/>
         <img src="${imageUrl}" alt="${imageUrl}" align="${currentNode.properties.align.string}"/>
     </c:if>
 </div>
