@@ -15,7 +15,7 @@
 <%--@elvariable id="url" type="org.jahia.services.render.URLGenerator"--%>
 <c:set value="${formbuilder:getFormFields(currentNode.parent)}" var="formFields" scope="request"/>
 <template:include view="hidden.header"/>
-<table>
+<table class="table">
     <tr>
         <th><fmt:message key="label.date"/></th>
         <th><fmt:message key="label.user"/></th>
