@@ -10,6 +10,7 @@
 <template:addResources type="css" resources="news.css"/>
 
  <jcr:nodeProperty node="${currentNode}" name="jcr:title" var="newsTitle"/>
+ <c:set var="newsTitleEscaped" value="${not empty newsTitle ? fn:escapeXml(newsTitle.string) : ''}"/> 
  <jcr:nodeProperty node="${currentNode}" name="date" var="newsDate"/>
  <jcr:nodeProperty node="${currentNode}" name="desc" var="newsDesc"/>
  <jcr:nodeProperty node="${currentNode}" name="image" var="newsImage"/>
@@ -17,8 +18,8 @@
 <div class="newsSummary">
     <!--start newsListItem -->
     <c:url value="${url.files}${newsImage.node.path}" var="imageUrl"/>
-    <div class="newsSummaryImg"><img src="${imageUrl}" alt='${fn:escapeXml(newsTitle)}'/></div>
-    <h4><a href="<c:url value='${url.base}${currentNode.path}.html'/>">${fn:escapeXml(newsTitle)}</a></h4>
+    <div class="newsSummaryImg"><img src="${imageUrl}" alt="${newsTitleEscaped}"/></div>
+    <h4><a href="<c:url value='${url.base}${currentNode.path}.html'/>">${newsTitleEscaped}</a></h4>
     <p class="newsSummaryresume"> ${fn:substring(functions:removeHtmlTags(newsDesc.string),0,120)}</p>
     <div class="clear"> </div>
 </div>
