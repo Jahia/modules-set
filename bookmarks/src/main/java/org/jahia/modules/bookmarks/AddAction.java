@@ -79,11 +79,11 @@ public class AddAction extends Action {
         try {
             userBookmarks = jcrSessionWrapper.getNode(userPath + "/" + bookmarkPath);
         } catch (PathNotFoundException pnf) {
-            userBookmarks =  contentManager.addNode(jcrSessionWrapper.getNode(userPath), bookmarkPath, "jnt:bookmarks", null, null);
+            userBookmarks =  contentManager.addNode(jcrSessionWrapper.getNode(userPath), bookmarkPath, "jnt:bookmarks", null, null,Locale.getDefault());
             userBookmarks.saveSession();
         }
-        if (userBookmarks != null &&  !contentManager.checkExistence(userBookmarks.getPath() + "/" + req.getParameter("jcr:title").replace(" ","-"), jcrSessionWrapper)) {
-            JCRNodeWrapper bookmark = contentManager.addNode(userBookmarks, req.getParameter("jcr:title").replace(" ","-"), "jnt:bookmark", null, null);
+        if (userBookmarks != null &&  !contentManager.checkExistence(userBookmarks.getPath() + "/" + req.getParameter("jcr:title").replace(" ","-"), jcrSessionWrapper, Locale.getDefault())) {
+            JCRNodeWrapper bookmark = contentManager.addNode(userBookmarks, req.getParameter("jcr:title").replace(" ","-"), "jnt:bookmark", null, null, Locale.getDefault());
             bookmark.setProperty("date", new GregorianCalendar());
             if (req.getParameter("url") != null) { bookmark.setProperty("url", req.getParameter("url")); }
             bookmark.setProperty("jcr:title", req.getParameter("jcr:title"));
