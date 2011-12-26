@@ -32,9 +32,9 @@
 </c:if>
 <a href='<c:url value="${url.base}${currentNode.properties.base.node.path}.html"/>'>${currentNode.properties.base.node.properties["jcr:title"].string}
     level ${level}</a>
-<c:forEach items="${jcr:getChildrenOfType(currentNode.properties.base.node,'jnt:page')}" var="child" varStatus="childStatus">
+<c:forEach items="${jcr:getChildrenOfType(currentNode.properties.base.node,'jmix:sitemap')}" var="child" varStatus="childStatus">
     <c:if test="${childStatus.first}">
-        <ul <c:if test="${level eq 1}"><c:set var="nbSubItems" value="${jcr:getChildrenOfType(currentNode.properties.base.node,'jnt:page')}"/> id="primaryNav" class="col${fn:length(nbSubItems)}"</c:if>>
+        <ul <c:if test="${level eq 1}"><c:set var="nbSubItems" value="${jcr:getChildrenOfType(currentNode.properties.base.node,'jmix:sitemap')}"/> id="primaryNav" class="col${fn:length(nbSubItems)}"</c:if>>
     </c:if>
     <template:module node="${child}" view="sitemap" editable="false">
         <template:param name="level" value="${level +1}"/>

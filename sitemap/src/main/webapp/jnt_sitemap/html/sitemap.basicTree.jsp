@@ -27,7 +27,7 @@
    <li>
    </c:if>
    <a href='<c:url value="${url.base}${currentNode.properties.base.node.path}.html"/>'>${currentNode.properties.base.node.properties["jcr:title"].string}</a>
-   <c:forEach items="${jcr:getChildrenOfType(currentNode.properties.base.node,'jnt:page')}" var="child" varStatus="childStatus">
+   <c:forEach items="${jcr:getChildrenOfType(currentNode.properties.base.node,'jmix:sitemap')}" var="child" varStatus="childStatus">
    <c:if test="${childStatus.first}">
        <ul <c:if test="${level eq 1}"><c:set var="nbSubItems" value="${jcr:getChildrenOfType(currentNode.properties.base.node,'jnt:page')}"/></c:if>>
    </c:if>

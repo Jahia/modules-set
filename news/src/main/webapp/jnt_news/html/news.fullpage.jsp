@@ -14,7 +14,7 @@
 
 <jcr:nodeProperty node="${currentNode}" var="newsCategories" name="j:defaultCategory"/>
 <div class="newsItem"><!--start newsItem -->
-    <h2>${newsTitle.string}</h2>
+    <h2>${fn:escapeXml(newsTitle.string)}</h2>
 
     <p class="newsInfo">
         <span class="newsLabelDate"><fmt:message key="label.date"/>:</span>

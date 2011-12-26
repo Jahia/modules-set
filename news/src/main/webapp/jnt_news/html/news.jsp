@@ -1,6 +1,7 @@
 <%@ taglib prefix="jcr" uri="http://www.jahia.org/tags/jcr" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="utility" uri="http://www.jahia.org/tags/utilityLib" %>
 <%@ taglib prefix="template" uri="http://www.jahia.org/tags/templateLib" %>
 <%@ taglib prefix="functions" uri="http://www.jahia.org/tags/functions" %>
@@ -9,10 +10,11 @@
 
 
 <jcr:nodeProperty node="${currentNode}" name="image" var="newsImage"/>
+<jcr:nodeProperty node="${currentNode}" name="jcr:title" var="newsTitle"/>
 
 
 <div class="newsListItem"><!--start newsListItem -->
-    <h4><a href="<c:url value='${url.base}${currentNode.path}.html'/>"><jcr:nodeProperty node="${currentNode}" name="jcr:title"/></a></h4>
+    <h4><a href="<c:url value='${url.base}${currentNode.path}.html'/>">${fn:escapeXml(newsTitle.string)}</a></h4>
 
     <p class="newsInfo">
         <span class="newsLabelDate"><fmt:message key="label.date"/>:</span>
@@ -31,7 +33,6 @@
         ${functions:abbreviate(functions:removeHtmlTags(currentNode.properties.desc.string),400,450,'...')}
     </p>
 
-    <div class="more"><span><a href="<c:url value='${url.base}${currentNode.path}.html'/>"><fmt:message key="label.read"/>: <jcr:nodeProperty
-            node="${currentNode}" name="jcr:title"/></a></span></div>
+    <div class="more"><span><a href="<c:url value='${url.base}${currentNode.path}.html'/>"><fmt:message key="label.read"/>: ${fn:escapeXml(newsTitle.string)}</a></span></div>
     <div class="clear"></div>
 </div>

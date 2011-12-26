@@ -9,5 +9,5 @@
  extends = jnt:content
  itemtype = options
  - j:level (string,choicelist[resourceBundle]) = 'first' indexed=no < 'first','second','third'
- - j:endDate (date) indexed=no
+ - j:endDate (date) nofulltext
  

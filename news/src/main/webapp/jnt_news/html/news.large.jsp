@@ -1,17 +1,19 @@
 <%@ taglib prefix="jcr" uri="http://www.jahia.org/tags/jcr" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="utility" uri="http://www.jahia.org/tags/utilityLib" %>
 <%@ taglib prefix="template" uri="http://www.jahia.org/tags/templateLib" %>
 <template:addResources type="css" resources="news.css"/>
 
-
+ <jcr:nodeProperty node="${currentNode}" name="jcr:title" var="newsTitle"/>
+ <c:set var="newsTitleEscaped" value="${not empty newsTitle ? fn:escapeXml(newsTitle.string) : ''}"/>
  <jcr:nodeProperty node="${currentNode}" name="date" var="newsDate"/>
  <jcr:nodeProperty node="${currentNode}" name="desc" var="newsDesc"/>
  <jcr:nodeProperty node="${currentNode}" name="image" var="newsImage"/>
 
 <div class="newsListItem"><!--start newsListItem -->
-    <h4><a href="<c:url value='${url.base}${currentNode.path}.detail.html'/>"><jcr:nodeProperty node="${currentNode}" name="jcr:title"/></a></h4>
+    <h4><a href="<c:url value='${url.base}${currentNode.path}.detail.html'/>">${newsTitleEscaped}</a></h4>
 
     <p class="newsInfo">
         <span class="newsLabelDate"><fmt:message key="label.date"/> :</span>
@@ -29,7 +31,7 @@
     </div>
 
     <div class="more"><span><a href="<c:url value='${url.base}${currentNode.path}.detail.html'/>">
-        <fmt:message key="label.read"/>: <jcr:nodeProperty node="${currentNode}" name="jcr:title"/>
+        <fmt:message key="label.read"/>: ${newsTitleEscaped}
     </a></span></div>
     <div class="clear"></div>
 </div>
