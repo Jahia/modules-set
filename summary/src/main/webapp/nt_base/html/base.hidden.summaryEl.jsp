@@ -5,12 +5,4 @@
 <%@ taglib prefix="template" uri="http://www.jahia.org/tags/templateLib" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-<c:if test="${not empty currentNode.properties['jcr:title']}">
-    <li><a href="#anchor${currentNode.UUID}">${currentNode.properties['jcr:title'].string}</a></li>
-</c:if>
-
-<c:if test="${empty currentNode.properties['jcr:title']}">
-    <c:if test="${not empty currentNode.properties['j:nodename']}">
-        <li><a href="#anchor${currentNode.UUID}">${currentNode.properties['j:nodename'].string}</a></li>
-    </c:if>
-</c:if>
+<li><a href="#anchor${currentNode.UUID}">${currentNode.displayableName}</a></li>
