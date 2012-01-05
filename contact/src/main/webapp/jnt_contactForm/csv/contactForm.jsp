@@ -4,6 +4,7 @@
 <%@ taglib prefix="functions" uri="http://www.jahia.org/tags/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="template" uri="http://www.jahia.org/tags/templateLib" %>
+<% pageContext.setAttribute("newLineChar", "\n"); %> 
 <c:set target="${renderContext}" property="contentType" value="text/csv;charset=UTF-8"/>
 <c:remove var="itemsList" scope="request"/>
 <c:forTokens items="firstname,lastname,title,age,birthdate,gender,profession,maritalStatus,hobbies,contact,address,city,state,zip,country,remarks" delims="," var="propName" varStatus="status">
@@ -18,5 +19,5 @@
 </c:forTokens>
 <c:forEach items="${jcr:getChildrenOfType(currentNode, 'jnt:contact')}" var="subchild" varStatus="status" end="20">
 <c:if test="${status.first}">
-<template:module node="${subchild}" view="headers"/>
-</c:if><template:module node="${subchild}"/></c:forEach>
+<template:module node="${subchild}" view="headers"/>${fn:escapeXml(newLineChar)}
+</c:if><template:module node="${subchild}"/>${fn:escapeXml(newLineChar)}</c:forEach>
