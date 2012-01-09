@@ -15,5 +15,5 @@
 <%--@elvariable id="url" type="org.jahia.services.render.URLGenerator"--%>
 <c:set value="${formbuilder:getFormFields(currentNode.parent)}" var="formFields" scope="request"/>
 date,user,url<c:forEach items="${formFields}" var="formField" varStatus="status">,${formField.key}</c:forEach>
-<c:forEach items="${currentNode.nodes}" var="subResponseNode"><template:module node="${subResponseNode}" view="default"/>
+<c:forEach items="${jcr:getDescendantNodes(currentNode,'jnt:responseToForm')}" var="subResponseNode"><template:module node="${subResponseNode}" view="default"/>
 </c:forEach>
