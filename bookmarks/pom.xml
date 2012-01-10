@@ -48,7 +48,7 @@
     </parent>
     <groupId>org.jahia.modules</groupId>
     <artifactId>bookmarks</artifactId>
-    <name>Jahia Bookmarks</name>
+    <name>Jahia My Bookmarks</name>
     <packaging>war</packaging>
     <description>This is a custom module for running on a Jahia server.</description>
     <build>
