@@ -20,7 +20,7 @@
 <c:if test="${not empty bindedComponent}">
     <c:set var="cookieName" value="rated${bindedComponent.identifier}"/>
 <c:choose>
-    <c:when test="${renderContext.loggedIn and (empty cookie[cookieName])}">
+    <c:when test="${renderContext.liveMode and renderContext.loggedIn and (empty cookie[cookieName])}">
     <jcr:nodeProperty node="${bindedComponent}" name="j:nbOfVotes" var="nbVotes"/>
     <jcr:nodeProperty node="${bindedComponent}" name="j:sumOfVotes" var="sumVotes"/>
     <c:set var="id" value="${bindedComponent.identifier}"/>
