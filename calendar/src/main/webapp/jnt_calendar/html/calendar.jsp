@@ -20,7 +20,7 @@
 <template:addResources type="css" resources="fullcalendar.css"/>
 <template:addResources type="javascript" resources="jquery.min.js"/>
 <template:addResources type="javascript" resources="fullcalendar.js"/>
-
+<template:addResources type="javascript" resources="i18n/calendar-${renderContext.mainResourceLocale}.js"/>
 <c:set var="linked" value="${ui:getBindedComponent(currentNode, renderContext, 'j:bindedComponent')}"/>
 <template:addCacheDependency node="${linked}"/>
 <c:forEach items="${linked.nodes}" var="linkedChild" varStatus="status">
@@ -36,32 +36,42 @@
         </c:otherwise>
     </c:choose>
 </c:forEach>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            // page is now ready, initialize the calendar...
-            $('#calendar${currentNode.identifier}').fullCalendar({
-                <c:if test="${not empty param.calStartDate}">
-                year : ${fn:substring(param.calStartDate,0,4)},
-                month : (${fn:substring(param.calStartDate,5,7)}-1),
-                date : ${fn:substring(param.calStartDate,8,10)},
+<script type="text/javascript">
+    function MergeJSON(o, ob) {
+        for (var z in ob) {
+            o[z] = ob[z];
+        }
+        return o;
+    }
+    $(document).ready(function () {
+        // page is now ready, initialize the calendar...
+        var calendarOptions = {
+            <c:if test="${not empty param.calStartDate}">
+            year: ${fn:substring(param.calStartDate,0,4)},
+            month:(${fn:substring(param.calStartDate,5,7)}-1),
+            date: ${fn:substring(param.calStartDate,8,10)},
+            </c:if>
+            events:[
+                <c:forEach items="${datas}" var="data" varStatus="status">
+                <c:url value="${url.base}${renderContext.mainResource.node.path}.html" var="eventUrl">
+                <c:param name="filter" value="{name:'${currentNode.properties.startDateProperty.string}',value:'${data.key}',op:'eq',uuid:'${linked.identifier}',format:'yyyy-MM-dd',type:'date'}"/>
+                <c:param name="calStartDate" value="${data.key}"/>
+                </c:url>
+                <c:if test="${not status.first}">,
                 </c:if>
-                events: [
-                    <c:forEach items="${datas}" var="data" varStatus="status">
-                    <c:url value="${url.base}${renderContext.mainResource.node.path}.html" var="eventUrl">
-                    <c:param name="filter" value="{name:'${currentNode.properties.startDateProperty.string}',value:'${data.key}',op:'eq',uuid:'${linked.identifier}',format:'yyyy-MM-dd',type:'date'}"/>
-                    <c:param name="calStartDate" value="${data.key}"/>
-                    </c:url>
-                    <c:if test="${not status.first}">,
-                    </c:if>
-                    {
-                        title : '${data.value}',
-                        start : '${data.key}',
-                        url : "${eventUrl}"
-                    }
-                    </c:forEach>
-                ]
-            })
-        });
-    </script>
-<div class="calendar" id="calendar${currentNode.identifier}"></div>
+                {
+                    title:'${data.value}',
+                    start:'${data.key}',
+                    url:"${eventUrl}"
+                }
+                </c:forEach>
+            ]
+        };
+        if (!(typeof i18nDefaults === "undefined")) {
+            MergeJSON(calendarOptions, i18nDefaults);
+        }
+        $('#calendar${currentNode.identifier}').fullCalendar(calendarOptions);
 
+    });
+</script>
+<div class="calendar" id="calendar${currentNode.identifier}"></div>

@@ -1,0 +1,33 @@
+var i18nDefaults = {
+
+    monthNames:
+        ['Janvier','FÃ©vrier','Mars','Avril','Mai','Juin','Juillet','AoÃ»t','Septembre','Octobre','Novembre','DÃ©cembre'],
+    monthNamesShort:
+        ['janv.','fÃ©vr.','mars','avr.','mai','juin','juil.','aoÃ»t','sept.','oct.','nov.','dÃ©c.'],
+    dayNames: ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche'],
+    dayNamesShort: ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'],
+    titleFormat: {
+        month: 'MMMM yyyy', // ex : Janvier 2010
+        week: "d[ MMMM][ yyyy]{ - d MMMM yyyy}", // ex : 10 â€” 16 Janvier 2010, semaine Ã  cheval : 28 DÃ©cembre 2009 - 3 Janvier 2010
+        day: 'dddd d MMMM yyyy' // ex : Jeudi 14 Janvier 2010
+    },
+    columnFormat: {
+        month: 'ddd', // Ven.
+        week: 'ddd d', // Ven. 15
+        day: '' // affichage dÃ©ja complet au niveau du 'titleFormat'
+    },
+    axisFormat: 'H:mm', // la demande de ferdinand.amoi : 15:00 (pour 15, simplement supprimer le ':mm'
+    timeFormat : {
+        ''
+            :
+            'H:mm',// Ã©vÃ©nements vue mensuelle.
+        agenda
+            :
+            'H:mm{ - H:mm}' // Ã©vÃ©nements vue agenda
+    }
+    ,
+    firstDay:0 // Lundi premier jour de la semaine
+};
+
+jQuery.fullCalendar.setDefaults(i18nDefaults);
+
