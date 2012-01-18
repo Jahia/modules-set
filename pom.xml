@@ -50,7 +50,7 @@
     <version>1.2-SNAPSHOT</version>
     <name>Jahia Default Modules</name>
     <packaging>pom</packaging>
-
+    <url>http://www.jahia.com/jahia-modules/jahia-default-modules</url>
     <scm>
         <connection>scm:git:git@github.com:Jahia/modules-set.git</connection>
         <url>scm:git:git@github.com:Jahia/modules-set.git</url>
@@ -210,6 +210,42 @@
                 <module>videostreaming</module>
                 <module>webClipping</module>
             </modules>
+        </profile>
+        <profile>
+            <id>maven-3</id>
+            <activation>
+                <file>
+                    <!--  This employs that the basedir expression is only recognized by Maven 3.x (see MNG-2363) -->
+                    <exists>${basedir}</exists>
+                </file>
+            </activation>
+            <build>
+                <pluginManagement>
+                    <plugins>
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-site-plugin</artifactId>
+                            <version>${maven3.site.plugin.version}</version>
+                            <configuration>
+                                <relativizeDecorationLinks>true</relativizeDecorationLinks>
+                            </configuration>
+                        </plugin>
+                    </plugins>
+                </pluginManagement>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-site-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>attach-descriptor</id>
+                                <goals>
+                                    <goal>attach-descriptor</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
         </profile>
     </profiles>
 

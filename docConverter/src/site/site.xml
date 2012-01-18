@@ -8,17 +8,4 @@
         <src>images/logo-top.png</src>
         <href>../../../index.html</href>
     </bannerLeft>
-    <body>
-        <menu ref="parent" />
-        <menu name="Overview">
-            <item name="Introduction" href="index.html"/>
-            <item name="Configureation" href="configuration.html">
-                <item name="Local" href="configuration.html#Local"/>
-                <item name="Remote" href="configuration.html#Remote"/>
-            </item>
-            <item name="Usage" href="usage.html"/>
-        </menu>
-        <menu ref="modules" />
-        <menu ref="reports"/>
-    </body>
 </project>
