@@ -27,9 +27,4 @@ under the License.
         <src>images/logo-top.png</src>
         <href>../../../index.html</href>
     </bannerLeft>
-    <body>
-        <menu ref="parent" />
-        <menu ref="modules" />
-        <menu ref="reports"/>
-    </body>
 </project>

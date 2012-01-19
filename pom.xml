@@ -56,7 +56,9 @@
         <url>scm:git:git@github.com:Jahia/modules-set.git</url>
         <developerConnection>scm:git:git@github.com:Jahia/modules-set.git</developerConnection>
     </scm>
-
+    <properties>
+        <maven3.site.plugin.version>3.0</maven3.site.plugin.version>
+    </properties>
     <repositories>
         <repository>
             <id>jahiaRepository</id>
