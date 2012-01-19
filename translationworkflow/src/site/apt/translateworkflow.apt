@@ -4,7 +4,7 @@ Custom Workflow
 
   Jahia provide some keyword that you can use to deifne to which people you want to send the mail.
 
---------------------------------
++--------------------------------
 <mail name="done">
    <from users="jahiaSettingsProperty"/>
    <to users="currentWorkflowStarter"/>
@@ -13,7 +13,7 @@ Custom Workflow
    <text>Your request for translation has been accepted</text>
    <transition to="end"/>
 </mail>
---------------------------------
++--------------------------------
 
   <<jahiaSettingsProperty>> will return the mail_from property defined in jahia.properties or the administration center.
 
