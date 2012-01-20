@@ -17,6 +17,9 @@
 <jcr:node var="actionNode" path="${currentNode.path}/action"/>
 <jcr:node var="fieldsetsNode" path="${currentNode.path}/fieldsets"/>
 <jcr:node var="formButtonsNode" path="${currentNode.path}/formButtons"/>
+<template:addCacheDependency node="${actionNode}"/>
+<template:addCacheDependency node="${fieldsetsNode}"/>
+<template:addCacheDependency node="${formButtonsNode}"/>
 <c:set var="writeable" value="${currentResource.workspace eq 'live'}" />
 <c:if test='${not writeable}'>
     <c:set var="disabled" value='disabled="true"' scope="request" />
