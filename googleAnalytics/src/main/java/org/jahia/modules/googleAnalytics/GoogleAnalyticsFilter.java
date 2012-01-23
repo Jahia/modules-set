@@ -97,6 +97,11 @@ public class GoogleAnalyticsFilter extends AbstractFilter implements Application
                     ScriptContext scriptContext = new GoogleScriptContext();
                     final Bindings bindings = scriptEngine.createBindings();
                     bindings.put("webPropertyID", webPropertyID);
+                    String url = resource.getNode().getUrl();
+                    if (renderContext.getRequest().getAttribute("analytics-path") != null) {
+                        url = (String) renderContext.getRequest().getAttribute("analytics-path");
+                    }
+                    bindings.put("resourceUrl", url);
                     bindings.put("resource", resource);
                     bindings.put("gaMap",renderContext.getRequest().getAttribute("gaMap"));
                     scriptContext.setBindings(bindings, ScriptContext.GLOBAL_SCOPE);

@@ -3,7 +3,7 @@ println("<script type=\"text/javascript\">\n" +
                     "  var _gaq = _gaq || [];\n");
 
 println(" _gaq.push(['_setAccount', '${webPropertyID}']);\n" +
-                    "  _gaq.push(['_trackPageview', '${resource.node.url}']);\n")
+                    "  _gaq.push(['_trackPageview', '${resourceUrl}']);\n")
 gaMap.each {
   entry-> println("  _gaq.push(['_trackPageview', '${entry.value}']);\n")
 }
