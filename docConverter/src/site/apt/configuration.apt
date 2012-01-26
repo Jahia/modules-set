@@ -41,14 +41,16 @@ documentConverter.officeHome = /usr/lib/openoffice
 
   For an advanced configuration, the <<<LocalOfficeManagerFactory>>> supports specifying port number,
   template profile directory, task execution timeout, task queue timeout and maximum
-  number of tasks per process. The default configuration is located in the <<<WEB-INF/etc/spring/applicationcontext-doc-converter.xml>>> file
+  number of tasks per process. The default configuration is located in the <<<org/jahia/defaults/config/spring/applicationcontext-doc-converter.xml>>> file
+  packaged inside the JAR <<<WEB-INF/lib/jahia-impl-\<>>><version><<<\>.jar>>>
+  
   and can be overridden from your custom module if needed.
 
 * {Remote} OpenOffice service
 
   The converter service is capable of using an OpenOffice process started as a service on a remote machine.
   
-  This connection is configured as given below (snapshot of the <<<WEB-INF/etc/spring/applicationcontext-doc-converter.xml>>> file):
+  This connection is configured as given below (snapshot of the <<<applicationcontext-doc-converter.xml>>> file):
 
 
 +------------------------
