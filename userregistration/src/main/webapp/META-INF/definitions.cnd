@@ -7,3 +7,8 @@
  - cc (string) indexed=no
  - bcc (string) indexed=no
  - userRedirectPage (weakreference) mandatory indexed=no
+
+[jnt:askForPasswordRecovery] > jnt:content, jmix:formContent
+ - passChangePage (weakreference) mandatory < jnt:page
+
+[jnt:passwordRecoveryForm] > jnt:content, jmix:formContent

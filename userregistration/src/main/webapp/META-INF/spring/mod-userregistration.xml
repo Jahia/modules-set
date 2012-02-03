@@ -9,4 +9,17 @@
         <property name="mailService" ref="MailService"/>
         <property name="templatePath" value="/mails/templates/userhasregistered.vm"/>
     </bean>
+
+    <bean class="org.jahia.modules.userregistration.actions.RecoverPassword">
+        <property name="name" value="recoverPassword"/>
+        <property name="requireAuthenticatedUser" value="false"/>
+        <property name="userManagerService" ref="JahiaUserManagerService"/>
+        <property name="mailService" ref="MailService"/>
+        <property name="templatePath" value="/mails/templates/recoveruserpassword.vm"/>
+    </bean>
+
+    <bean class="org.jahia.modules.userregistration.actions.UnauthenticatedChangePasswordAction">
+        <property name="name" value="unauthenticatedChangePassword"/>
+        <property name="requireAuthenticatedUser" value="false"/>
+    </bean>
 </beans>
