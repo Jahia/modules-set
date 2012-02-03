@@ -6,9 +6,11 @@
 <%--@elvariable id="currentNode" type="org.jahia.services.content.JCRNodeWrapper"--%>
 <%--@elvariable id="renderContext" type="org.jahia.services.render.RenderContext"--%>
 
-<c:set var="userPath" value='<%=request.getSession().getAttribute(request.getParameter("key"))%>' />
+<c:set var="token" value='<%=request.getSession().getAttribute("passwordRecoveryToken")%>' />
 
-<c:if test="${not empty userPath}">
+<c:choose>
+    <c:when test="${not empty token.userpath and token.authkey eq param['key']}">
+        
     <template:addResources type="javascript" resources="jquery.min.js"/>
     <template:addResources>
         <script type="text/javascript">
@@ -32,7 +34,7 @@
                             function(data) {
                                 alert(data['errorMessage']);
                                 if (data['result'] == 'success') {
-                                    $form.remove();
+                                    window.location.reload();
                                 }
                             },
                             "json");
@@ -43,9 +45,9 @@
 
     <template:tokenizedForm>
         <form id="changePasswordForm_${currentNode.identifier}"
-              action="<c:url value='${url.base}${userPath}.unauthenticatedChangePassword.do'/>"
+              action="<c:url value='${url.base}${token.userpath}.unauthenticatedChangePassword.do'/>"
               method="post">
-            <input type="hidden" name="authKey" value="${param.key}" />
+            <input type="hidden" name="authKey" value="${token.authkey}" />
             <p class="field">
                 <label for="password_${currentNode.identifier}" class="left"><fmt:message key="label.password" /></label>
                 <input type="password" id="password_${currentNode.identifier}" name="password" class="full" />
@@ -59,7 +61,11 @@
             </p>
         </form>
     </template:tokenizedForm>
-</c:if>
+    </c:when>
+    <c:otherwise>
+        <a href="<c:url value="${url.base}${renderContext.site.home.path}.html"/>"><fmt:message key='passwordrecovery.back'/></a>
+    </c:otherwise>
+</c:choose>
 
 <c:if test="${renderContext.editMode}">
     <fmt:message key="${fn:replace(currentNode.primaryNodeTypeName, ':', '_')}" />

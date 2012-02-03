@@ -45,6 +45,7 @@ import org.jahia.bin.Action;
 import org.jahia.bin.ActionResult;
 import org.jahia.engines.EngineMessage;
 import org.jahia.engines.EngineMessages;
+import org.jahia.params.ProcessingContext;
 import org.jahia.registries.ServicesRegistry;
 import org.jahia.services.content.JCRSessionWrapper;
 import org.jahia.services.pwdpolicy.JahiaPasswordPolicyService;
@@ -74,11 +75,12 @@ public class UnauthenticatedChangePasswordAction extends Action {
     @Override
     public ActionResult doExecute(HttpServletRequest req, RenderContext renderContext, Resource resource, JCRSessionWrapper session, Map<String, List<String>> parameters, URLResolver urlResolver) throws Exception {
         String authKey = getParameter(parameters, "authKey");
-        if (StringUtils.isEmpty(authKey) || req.getSession().getAttribute(authKey) == null) {
+        RecoverPassword.PasswordToken passwordRecoveryToken = (RecoverPassword.PasswordToken) req.getSession().getAttribute("passwordRecoveryToken");
+        if (StringUtils.isEmpty(authKey) || passwordRecoveryToken == null || !passwordRecoveryToken.getAuthkey().equals(authKey) || !passwordRecoveryToken.getUserpath().equals(resource.getNode().getPath())) {
             return ActionResult.BAD_REQUEST;
         }
         HttpSession httpSession = req.getSession();
-        httpSession.removeAttribute(authKey);
+        httpSession.removeAttribute("passwordRecoveryToken");
         httpSession.removeAttribute("passwordRecoveryAsked");
 
         String passwd = req.getParameter("password").trim();
@@ -112,6 +114,9 @@ public class UnauthenticatedChangePasswordAction extends Action {
                     // change password
                     user.setPassword(passwd);
                     json.put("errorMessage", JahiaResourceBundle.getJahiaInternalResource("org.jahia.admin.userMessage.passwordChanged.label", renderContext.getUILocale()));
+
+                    httpSession.setAttribute(ProcessingContext.SESSION_USER, user);
+
                     json.put("result", "success");
                 }
             }

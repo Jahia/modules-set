@@ -124,7 +124,7 @@ public class RecoverPassword extends Action {
         String from = SettingsBean.getInstance().getMail_from();
 
         String authKey = DigestUtils.md5Hex(username + System.currentTimeMillis());
-        req.getSession().setAttribute(authKey, user.getLocalPath());
+        req.getSession().setAttribute("passwordRecoveryToken", new PasswordToken(authKey, user.getLocalPath()));
 
         Map<String,Object> bindings = new HashMap<String,Object>();
         bindings.put("link", req.getScheme() + "://" + req.getServerName() + ":" + req.getServerPort() +
@@ -152,5 +152,23 @@ public class RecoverPassword extends Action {
 
     public void setTemplatePath(String templatePath) {
         this.templatePath = templatePath;
+    }
+    
+    public class PasswordToken {
+        String authkey;
+        String userpath;
+
+        public PasswordToken(String authkey, String userpath) {
+            this.authkey = authkey;
+            this.userpath = userpath;
+        }
+
+        public String getAuthkey() {
+            return authkey;
+        }
+
+        public String getUserpath() {
+            return userpath;
+        }
     }
 }
