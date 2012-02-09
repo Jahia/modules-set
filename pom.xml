@@ -162,7 +162,6 @@
                 <module>googleAnalytics</module>
                 <module>location</module>
                 <module>person</module>
-                <module>poll</module>
                 <module>press</module>
                 <module>rating</module>
                 <module>seo</module>
@@ -194,7 +193,6 @@
                 <module>location</module>
                 <module>news</module>
                 <module>person</module>
-                <module>poll</module>
                 <module>press</module>
                 <module>publication</module>
                 <module>rating</module>
