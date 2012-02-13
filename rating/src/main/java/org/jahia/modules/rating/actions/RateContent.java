@@ -46,7 +46,7 @@ public class RateContent extends Action {
                 List<String> values = parameters.get("j:lastVote");
                 node.setProperty("j:lastVote", values.get(0));
                 node.setProperty("j:nbOfVotes",node.getProperty("j:nbOfVotes").getLong()+1);
-                node.setProperty("j:sumOfVotes",node.getProperty("j:sumOfVotes").getLong()+values.get(0));
+                node.setProperty("j:sumOfVotes",node.getProperty("j:sumOfVotes").getLong()+ Long.valueOf(values.get(0)));
                 session.save();
                 try {
                     return new ActionResult(HttpServletResponse.SC_OK, node.getPath(), Render.serializeNodeToJSON(node));
