@@ -12,6 +12,6 @@
  - question (string) mandatory
  + answers (jnt:answersList)
  - totalOfVotes (long) = 0  hidden autocreated
-
+ - endDate (date)
 
 

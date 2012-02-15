@@ -4,6 +4,7 @@
 <%@ taglib prefix="utility" uri="http://www.jahia.org/tags/utilityLib" %>
 <%@ taglib prefix="template" uri="http://www.jahia.org/tags/templateLib" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<jsp:useBean id="now" class="java.util.Date"/>
 <template:addResources type="javascript" resources="jquery.min.js"/>
 <template:addResources type="css" resources="poll.css"/>
 
@@ -16,7 +17,8 @@
             script: "application/json"
         },
         cache:false
-    })
+    });
+
     function setCookie(c_name,value,expiredays)
     {
         var exdate=new Date();
@@ -40,9 +42,10 @@
         }
         return "";
     }
-    if (getCookie('poll${currentNode.identifier}-${renderContext.user.username}') == 'true') {
+
+    function displayResults() {
         var data = {};
-        $.post("<c:url value='${url.base}${currentNode.path}.pollResults.do'/>", data, function(result) {
+        $.post("<c:url value='${url.base}${currentNode.path}.pollResults.do'/>", data, function (result) {
 
 
             var answers = result.answerNodes;
@@ -66,19 +69,19 @@
             pollVotes = Math.floor(result.totalOfVotes);
 
 
-            for (i=0; i<answers.length; i++) {
+            for (i = 0; i < answers.length; i++) {
                 var statAnswerLabel = document.createElement("div");
-                statAnswerLabel.id = "statContainer_${currentNode.name}_label_a"+[i];
+                statAnswerLabel.id = "statContainer_${currentNode.name}_label_a" + [i];
                 statAnswerLabel.innerHTML = answers[i].label;
 
 
                 var statAnswerValue = document.createElement("div");
-                statAnswerValue.id = "statContainer_${currentNode.name}_value_a"+[i];
+                statAnswerValue.id = "statContainer_${currentNode.name}_value_a" + [i];
                 statAnswerValue.innerHTML = answers[i].nbOfVotes;
                 answerVotes = Math.floor(answers[i].nbOfVotes);
-                percentage = (answerVotes == 0 || pollVotes == 0)?0:answerVotes/pollVotes*100;
+                percentage = (answerVotes == 0 || pollVotes == 0) ? 0 : answerVotes / pollVotes * 100;
                 statAnswerValue.style.width = (percentage * 1) + "%";
-                statAnswerValue.className  = "barPoll barPollColor"+[i%8];
+                statAnswerValue.className = "barPoll barPollColor" + [i % 8];
 
                 statDiv.appendChild(statAnswerLabel);
                 statDiv.appendChild(statAnswerValue);
@@ -86,10 +89,12 @@
             }
 
             document.getElementById("stats_${currentNode.name}").appendChild(statDiv);
-           $('#pollForm${currentNode.identifier}').hide();
+            $('#pollForm${currentNode.identifier}').hide();
         }, "json");
+    }
 
-
+    if (getCookie('poll${currentNode.identifier}-${renderContext.user.username}') == 'true') {
+        displayResults();
     }
 
     function doVote(answers) {
@@ -162,7 +167,11 @@
 
 
     }
-
+    <c:if test="${not renderContext.editMode}">
+        <c:if test="${now.time > currentNode.properties.endDate.time.time}">
+            displayResults();
+        </c:if>
+    </c:if>
 </script>
 </template:addResources>
 <div class=poll>
