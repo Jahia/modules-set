@@ -5,7 +5,7 @@
 <%@ taglib prefix="template" uri="http://www.jahia.org/tags/templateLib" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <jsp:useBean id="now" class="java.util.Date"/>
-<template:addResources type="javascript" resources="jquery.min.js"/>
+<template:addResources type="javascript" resources="jquery.min.js,poll.js"/>
 <template:addResources type="css" resources="poll.css"/>
 
 <template:addResources>
@@ -19,157 +19,13 @@
         cache:false
     });
 
-    function setCookie(c_name,value,expiredays)
-    {
-        var exdate=new Date();
-        exdate.setDate(exdate.getDate()+expiredays);
-        document.cookie=c_name+ "=" +escape(value)+
-                ((expiredays==null) ? "" : ";expires="+exdate.toUTCString());
+    if (getCookie('poll${currentNode.identifier}') == 'true') {
+        displayResults("<c:url value='${url.base}${currentNode.path}'/>", '${currentNode.identifier}');
     }
 
-    function getCookie(c_name)
-    {
-        if (document.cookie.length>0)
-        {
-            c_start=document.cookie.indexOf(c_name + "=");
-            if (c_start!=-1)
-            {
-                c_start=c_start + c_name.length+1;
-                c_end=document.cookie.indexOf(";",c_start);
-                if (c_end==-1) c_end=document.cookie.length;
-                return unescape(document.cookie.substring(c_start,c_end));
-            }
-        }
-        return "";
-    }
-
-    function displayResults() {
-        var data = {};
-        $.post("<c:url value='${url.base}${currentNode.path}.pollResults.do'/>", data, function (result) {
-
-
-            var answers = result.answerNodes;
-            /* strAnswers = "";
-             for (i=0; i<answers.length; i++) {
-             strAnswers += "\nAnswer["+[i]+"] label : " + answers[i].label + "\nAnswer["+[i]+"] votes: " + answers[i].nbOfVotes;
-             }
-
-             alert("Question: " + result.question + "\nTotal votes: " + result.totalOfVotes + "\nanswers: " + strAnswers);
-             */
-
-            statDivTest = document.getElementById("statContainer_${currentNode.name}");
-            if (statDivTest != null) {
-                statDivTest.parentNode.removeChild(statDivTest);
-            }
-
-
-            var statDiv = document.createElement("div");
-            statDiv.id = "statContainer_${currentNode.name}";
-            // statDiv.style.zIndex = 99999;
-            pollVotes = Math.floor(result.totalOfVotes);
-
-
-            for (i = 0; i < answers.length; i++) {
-                var statAnswerLabel = document.createElement("div");
-                statAnswerLabel.id = "statContainer_${currentNode.name}_label_a" + [i];
-                statAnswerLabel.innerHTML = answers[i].label;
-
-
-                var statAnswerValue = document.createElement("div");
-                statAnswerValue.id = "statContainer_${currentNode.name}_value_a" + [i];
-                statAnswerValue.innerHTML = answers[i].nbOfVotes;
-                answerVotes = Math.floor(answers[i].nbOfVotes);
-                percentage = (answerVotes == 0 || pollVotes == 0) ? 0 : answerVotes / pollVotes * 100;
-                statAnswerValue.style.width = (percentage * 1) + "%";
-                statAnswerValue.className = "barPoll barPollColor" + [i % 8];
-
-                statDiv.appendChild(statAnswerLabel);
-                statDiv.appendChild(statAnswerValue);
-
-            }
-
-            document.getElementById("stats_${currentNode.name}").appendChild(statDiv);
-            $('#pollForm${currentNode.identifier}').hide();
-        }, "json");
-    }
-
-    if (getCookie('poll${currentNode.identifier}-${renderContext.user.username}') == 'true') {
-        displayResults();
-    }
-
-    function doVote(answers) {
-
-        var answersList = document.forms['form_${currentNode.name}'].voteAnswer;
-        answerUUID = null;
-
-        for (i=0; i< answersList.length; i++) {
-            answer = answersList[i];
-            if (answer.checked) {
-                answerUUID = answer.value;
-                break;
-            }
-        }
-
-
-        if (answerUUID == null) {
-            alert("Please select an answer");
-        }
-
-        var data = {};
-        data["answerUUID"] = answerUUID;
-        $.post("<c:url value='${url.base}${currentNode.path}.pollVote.do'/>", data, function(result) {
-
-
-            var answers = result.answerNodes;
-            /* strAnswers = "";
-             for (i=0; i<answers.length; i++) {
-             strAnswers += "\nAnswer["+[i]+"] label : " + answers[i].label + "\nAnswer["+[i]+"] votes: " + answers[i].nbOfVotes;
-             }
-
-             alert("Question: " + result.question + "\nTotal votes: " + result.totalOfVotes + "\nanswers: " + strAnswers);
-             */
-
-            statDivTest = document.getElementById("statContainer_${currentNode.name}");
-            if (statDivTest != null) {
-                statDivTest.parentNode.removeChild(statDivTest);
-            }
-
-
-            var statDiv = document.createElement("div");
-            statDiv.id = "statContainer_${currentNode.name}";
-            // statDiv.style.zIndex = 99999;
-            pollVotes = Math.floor(result.totalOfVotes);
-
-
-            for (i=0; i<answers.length; i++) {
-                var statAnswerLabel = document.createElement("div");
-                statAnswerLabel.id = "statContainer_${currentNode.name}_label_a"+[i];
-                statAnswerLabel.innerHTML = answers[i].label;
-
-
-                var statAnswerValue = document.createElement("div");
-                statAnswerValue.id = "statContainer_${currentNode.name}_value_a"+[i];
-                statAnswerValue.innerHTML = answers[i].nbOfVotes;
-                answerVotes = Math.floor(answers[i].nbOfVotes);
-                percentage = (answerVotes == 0 || pollVotes == 0)?0:answerVotes/pollVotes*100;
-                statAnswerValue.style.width = (percentage * 1) + "%";
-                statAnswerValue.className  = "barPoll barPollColor"+[i%8];
-
-                statDiv.appendChild(statAnswerLabel);
-                statDiv.appendChild(statAnswerValue);
-
-            }
-
-            document.getElementById("stats_${currentNode.name}").appendChild(statDiv);
-           setCookie('poll${currentNode.identifier}-${renderContext.user.username}','true',365);
-            $('#pollForm${currentNode.identifier}').hide();
-        }, "json");
-
-
-    }
     <c:if test="${not renderContext.editMode}">
         <c:if test="${now.time > currentNode.properties.endDate.time.time}">
-            displayResults();
+            displayResults("<c:url value='${url.base}${currentNode.path}'/>", '${currentNode.identifier}');
         </c:if>
     </c:if>
 </script>
@@ -182,8 +38,8 @@
 
     <div id="pollForm${currentNode.identifier}">
         <c:if test="${not renderContext.editMode}">
-        <div id="formContainer_${currentNode.name}">
-            <form id="form_${currentNode.name}" name="form_${currentNode.name}" method="post" >
+        <div id="formContainer_${currentNode.identifier}">
+            <form id="form_${currentNode.identifier}" name="form_${currentNode.identifier}" method="post" >
                 <input type="hidden" name="jcrReturnContentType" value="json"/>
                 </c:if>
                 <c:if test="${renderContext.editMode}">
@@ -199,13 +55,13 @@
 
                 <c:if test="${not renderContext.editMode}">
                 <div class="validation"></div>
-                <input class="button" type="button" value="Vote" onclick="doVote($('${currentNode.name}_voteAnswer').value);" />
+                <input class="button" type="button" value="Vote" onclick="doVote($('${currentNode.identifier}_voteAnswer').value, '<c:url value="${url.base}${currentNode.path}"/>','${currentNode.identifier}');" />
             </form>
         </div>
         </c:if>
     </div>
 
-    <div id="stats_${currentNode.name}">
+    <div id="stats_${currentNode.identifier}">
 
     </div>
 </div>
