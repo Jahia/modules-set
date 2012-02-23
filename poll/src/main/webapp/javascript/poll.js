@@ -1,9 +1,10 @@
-function setCookie(c_name,value,expiredays)
+function setCookie(c_name,value,expiredays,cookiePath)
 {
     var exdate=new Date();
     exdate.setDate(exdate.getDate()+expiredays);
     document.cookie=c_name+ "=" +escape(value)+
-            ((expiredays==null) ? "" : ";expires="+exdate.toUTCString());
+            ((expiredays==null) ? "" : ";expires="+exdate.toUTCString()) +
+            ((cookiePath==null) ? "" : ";path="+cookiePath);
 }
 
 function getCookie(c_name)
@@ -72,7 +73,7 @@ function displayResults(votePath, identifier) {
     }, "json");
 }
 
-function doVote(answers, votePath, identifier) {
+function doVote(answers, votePath, identifier, cookiePath) {
      var answersList = document.forms['form_'+identifier].voteAnswer;
      answerUUID = null;
 
@@ -135,7 +136,7 @@ function doVote(answers, votePath, identifier) {
          }
 
          document.getElementById("stats_"+identifier).appendChild(statDiv);
-         setCookie('poll'+identifier,'true',365);
+         setCookie('poll'+identifier,'true',365, cookiePath);
          $('#pollForm'+identifier).hide();
      }, "json");
 }
