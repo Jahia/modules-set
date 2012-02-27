@@ -74,20 +74,14 @@ function displayResults(votePath, identifier) {
 }
 
 function doVote(answers, votePath, identifier, cookiePath) {
-     var answersList = document.forms['form_'+identifier].voteAnswer;
-     answerUUID = null;
-
-     for (i=0; i< answersList.length; i++) {
-         answer = answersList[i];
-         if (answer.checked) {
-             answerUUID = answer.value;
-             break;
-         }
-     }
-
+	var answerUUID = null;
+	$(document.forms['form_'+identifier]).find("input:checked[name='voteAnswer']").each(function() {
+		answerUUID = $(this).val();
+	});
 
      if (answerUUID == null) {
          alert("Please select an answer");
+         return false;
      }
 
      var data = {};

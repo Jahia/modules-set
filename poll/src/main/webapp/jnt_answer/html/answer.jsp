@@ -4,5 +4,6 @@
 <%@ taglib prefix="utility" uri="http://www.jahia.org/tags/utilityLib" %>
 <%@ taglib prefix="template" uri="http://www.jahia.org/tags/templateLib" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<span class="poll_answer"><input type="radio" id="${currentNode.parent.parent.name}_voteAnswer" name="voteAnswer" value="${currentNode.UUID}" /> ${currentNode.properties.label.string}</span>
+<c:set var="answerId" value="${currentNode.parent.parent.name}_voteAnswer_${currentNode.UUID}"/>
+<span class="poll_answer"><input type="radio" id="${answerId}" name="voteAnswer" value="${currentNode.UUID}" /><label for="${answerId}"> ${fn:escapeXml(currentNode.properties.label.string)}</label></span>
 <br />
