@@ -32,7 +32,7 @@
 </template:addResources>
 <div class=poll>
     <h3>
-        ${currentNode.propertiesAsString['question']}
+        ${fn:escapeXml(currentNode.propertiesAsString['question'])}
     </h3>
 
     <div id="pollForm${currentNode.identifier}">
@@ -54,7 +54,7 @@
 
                 <c:if test="${not renderContext.editMode}">
                 <div class="validation"></div>
-                <input class="button" type="button" value="Vote" onclick="doVote($('${currentNode.identifier}_voteAnswer').value, '<c:url value="${url.base}${currentNode.path}"/>','${currentNode.identifier}', '<c:url value="${url.context}${url.base}${renderContext.site.path}"/>');" />
+                <input class="button" type="button" value="<fmt:message key='jnt_poll.vote'/>" onclick="doVote($('${currentNode.identifier}_voteAnswer').value, '<c:url value="${url.base}${currentNode.path}"/>','${currentNode.identifier}', '<c:url value="${url.context}${url.base}${renderContext.site.path}"/>');" />
             </form>
         </div>
         </c:if>
