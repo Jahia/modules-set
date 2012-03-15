@@ -89,9 +89,9 @@ public class GoogleAnalyticsFilter extends AbstractFilter implements Application
             if (script != null) {
                 Source source = new Source(previousOut);
                 OutputDocument outputDocument = new OutputDocument(source);
-                List<Element> bodyElementList = source.getAllElements(HTMLElementName.BODY);
-                for (Element element : bodyElementList) {
-                    final EndTag bodyEndTag = element.getEndTag();
+                List<Element> headElementList = source.getAllElements(HTMLElementName.HEAD);
+                for (Element element : headElementList) {
+                    final EndTag headEndTag = element.getEndTag();
                     String extension = StringUtils.substringAfterLast(template, ".");
                     ScriptEngine scriptEngine = scriptEngineUtils.scriptEngine(extension);
                     ScriptContext scriptContext = new GoogleScriptContext();
@@ -111,7 +111,7 @@ public class GoogleAnalyticsFilter extends AbstractFilter implements Application
                     StringWriter writer = (StringWriter) scriptContext.getWriter();
                     final String googleAnalyticsScript = writer.toString();
                     if (StringUtils.isNotBlank(googleAnalyticsScript)) {
-                        outputDocument.replace(bodyEndTag.getBegin(), bodyEndTag.getBegin() + 1,
+                        outputDocument.replace(headEndTag.getBegin(), headEndTag.getBegin() + 1,
                                 "\n" + AggregateCacheFilter.removeEsiTags(googleAnalyticsScript) + "\n<");
                     }
                     break; // avoid to loop if for any reasons multiple body in the page
