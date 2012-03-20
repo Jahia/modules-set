@@ -86,6 +86,9 @@ function doVote(answers, votePath, identifier, cookiePath) {
 
      var data = {};
      data["answerUUID"] = answerUUID;
+     if (document.forms['tokenform_'+identifier]) {
+         data["form-token"] = document.forms['tokenform_'+identifier].elements['form-token'].value;
+     }
      $.post(votePath+'.pollVote.do', data, function(result) {
 
 

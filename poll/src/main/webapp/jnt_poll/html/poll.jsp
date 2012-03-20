@@ -36,28 +36,29 @@
     </h3>
 
     <div id="pollForm${currentNode.identifier}">
-        <c:if test="${not renderContext.editMode}">
-        <div id="formContainer_${currentNode.identifier}">
+      <c:choose>
+        <c:when test="${renderContext.editMode}">
+          <div class="addanswers">
+            <span><fmt:message key="jnt_poll.addAnswers"/></span>
+            <template:list path="answers" listType="jnt:answersList" editable="true"/>
+          </div>
+        </c:when>
+        <c:otherwise>
+          <div id="formContainer_${currentNode.identifier}">
+            <template:tokenizedForm>
+              <form id="tokenform_${currentNode.identifier}" name="tokenform_${currentNode.identifier}" method="post" action="<c:url value="${url.base}${currentNode.path}"/>.pollVote.do">
+              </form>
+            </template:tokenizedForm>  
             <form id="form_${currentNode.identifier}" name="form_${currentNode.identifier}" method="post" >
-                <input type="hidden" name="jcrReturnContentType" value="json"/>
-                </c:if>
-                <c:if test="${renderContext.editMode}">
-                <div class="addanswers">
-                    <span><fmt:message key="jnt_poll.addAnswers"/></span>
-                    </c:if>
-
-                    <template:list path="answers" listType="jnt:answersList" editable="true"/>
-
-                    <c:if test="${renderContext.editMode}">
-                </div>
-                </c:if>
-
-                <c:if test="${not renderContext.editMode}">
+                <input type="hidden" name="jcrReturnContentType" value="json"/>        
+                <template:list path="answers" listType="jnt:answersList" editable="true"/>
                 <div class="validation"></div>
                 <input class="button" type="button" value="<fmt:message key='jnt_poll.vote'/>" onclick="this.disabled = true;doVote($('${currentNode.identifier}_voteAnswer').value, '<c:url value="${url.base}${currentNode.path}"/>','${currentNode.identifier}', '<c:url value="${url.context}${url.base}${renderContext.site.path}"/>');" />
             </form>
-        </div>
-        </c:if>
+
+          </div>
+        </c:otherwise>
+      </c:choose>   
     </div>
 
     <div id="stats_${currentNode.identifier}">
