@@ -159,15 +159,9 @@
                 <module>docConverter</module>
                 <module>event</module>
                 <module>faq</module>
-                <module>formbuilder</module>
-                <module>googleAnalytics</module>
                 <module>location</module>
                 <module>person</module>
-				-->
-                <module>poll</module>
-				<!--
                 <module>press</module>
-                <module>rating</module>
                 <module>seo</module>
                 <module>sitemap</module>
                 <module>topstories</module>
@@ -175,6 +169,9 @@
                 <module>twitter</module>
                 <module>userregistration</module>
 				-->
+                <module>formbuilder</module>
+                <module>googleAnalytics</module>
+                <module>rating</module>
             </modules>
         </profile>
         <profile>
@@ -193,18 +190,12 @@
                 <module>docConverter</module>
                 <module>event</module>
                 <module>faq</module>
-                <module>formbuilder</module>
-                <module>googleAnalytics</module>
                 <module>job</module>
                 <module>location</module>
                 <module>news</module>
                 <module>person</module>
-				-->
-                <module>poll</module>
-				<!--
                 <module>press</module>
                 <module>publication</module>
-                <module>rating</module>
                 <module>rss</module>
                 <module>seo</module>
                 <module>sitemap</module>
@@ -219,6 +210,9 @@
                 <module>videostreaming</module>
                 <module>webClipping</module>
 				-->
+                <module>formbuilder</module>
+                <module>googleAnalytics</module>
+                <module>rating</module>
             </modules>
         </profile>
         <profile>
