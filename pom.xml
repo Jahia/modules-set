@@ -47,7 +47,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.jahia.modules</groupId>
     <artifactId>jahia-default-modules</artifactId>
-    <version>1.2</version>
+    <version>1.2.1-SNAPSHOT</version>
     <name>Jahia Default Modules</name>
     <packaging>pom</packaging>
     <url>http://www.jahia.com/jahia-modules/jahia-default-modules</url>
@@ -153,6 +153,7 @@
                 </property>
             </activation>
             <modules>
+				<!--
                 <module>article</module>
                 <module>bookmarks</module>
                 <module>docConverter</module>
@@ -162,7 +163,9 @@
                 <module>googleAnalytics</module>
                 <module>location</module>
                 <module>person</module>
+				-->
                 <module>poll</module>
+				<!--
                 <module>press</module>
                 <module>rating</module>
                 <module>seo</module>
@@ -171,6 +174,7 @@
                 <module>translationworkflow</module>
                 <module>twitter</module>
                 <module>userregistration</module>
+				-->
             </modules>
         </profile>
         <profile>
@@ -181,6 +185,7 @@
                 </property>
             </activation>
             <modules>
+				<!--
                 <module>article</module>
                 <module>bookmarks</module>
                 <module>calendar</module>
@@ -194,7 +199,9 @@
                 <module>location</module>
                 <module>news</module>
                 <module>person</module>
+				-->
                 <module>poll</module>
+				<!--
                 <module>press</module>
                 <module>publication</module>
                 <module>rating</module>
@@ -211,6 +218,7 @@
                 <module>userregistration</module>
                 <module>videostreaming</module>
                 <module>webClipping</module>
+				-->
             </modules>
         </profile>
         <profile>
