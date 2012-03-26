@@ -12,6 +12,10 @@
  - question (string) mandatory
  + answers (jnt:answersList)
  - totalOfVotes (long) = 0  hidden autocreated
+ - endDate (date)
 
+
+[jnt:lastPolls] > jnt:content, jmix:list, mix:title, jmix:socialComponent, jmix:cache
+  - maxPolls (long) = 10 indexed=no
 
 

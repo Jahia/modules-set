@@ -82,7 +82,7 @@ public class VoteAction extends Action {
 
         // Poll Node management
         // Get the pollNode
-        JCRNodeWrapper pollNode = renderContext.getMainResource().getNode();
+        JCRNodeWrapper pollNode = session.getNodeByUUID(renderContext.getMainResource().getNode().getIdentifier());
 
         // Get a version manager
         VersionManager versionManager = pollNode.getSession().getWorkspace().getVersionManager();
