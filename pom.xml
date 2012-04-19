@@ -161,6 +161,7 @@
                 <module>faq</module>
                 <module>location</module>
                 <module>person</module>
+                <module>poll</module>
                 <module>press</module>
                 <module>seo</module>
                 <module>sitemap</module>
@@ -194,6 +195,7 @@
                 <module>location</module>
                 <module>news</module>
                 <module>person</module>
+                <module>poll</module>
                 <module>press</module>
                 <module>publication</module>
                 <module>rss</module>
