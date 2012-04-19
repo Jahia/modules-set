@@ -3,31 +3,14 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <label class="left">${fn:escapeXml(currentNode.properties['jcr:title'].string)}</label>
 <span>
-          <select ${disabled} name="year">
+    <jsp:useBean id="now" class="java.util.Date" />
+    <fmt:formatDate var="year" value="${now}" pattern="yyyy" />  
+    <select ${disabled} name="year">
               <option><fmt:message key="label.year"/></option>
-              <option>1950</option>
-              <option>1951</option>
-              <option>1952</option>
-              <option>1953</option>
-              <option>1954</option>
-              <option>1955</option>
-              <option>1956</option>
-              <option>1957</option>
-              <option>1958</option>
-              <option>1959</option>
-              <option>1960</option>
-              <option>1961</option>
-              <option>1962</option>
-              <option>1963</option>
-              <option>1964</option>
-              <option>1965</option>
-              <option>1966</option>
-              <option>1967</option>
-              <option>1968</option>
-              <option>1969</option>
-              <option>1970</option>
-              <option>1971</option>
-          </select>
+              <c:forEach var="i" begin="0" end="${year - 1900}" step="1">
+                  <option>${year - i}</option>
+              </c:forEach>  
+    </select>
     <select ${disabled} name="month">
         <option><fmt:message key="label.month"/></option>
               <option>1</option>
