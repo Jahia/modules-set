@@ -195,7 +195,6 @@
                 <module>location</module>
                 <module>news</module>
                 <module>person</module>
-                <module>poll</module>
                 <module>press</module>
                 <module>publication</module>
                 <module>rss</module>
@@ -212,6 +211,7 @@
                 <module>videostreaming</module>
                 <module>webClipping</module>
 				-->
+                <module>poll</module>
                 <module>formbuilder</module>
                 <module>googleAnalytics</module>
                 <module>rating</module>
