@@ -24,7 +24,7 @@
     }
 
     <c:if test="${not renderContext.editMode}">
-        <c:if test="${now.time > currentNode.properties.endDate.time.time}">
+        <c:if test="${currentNode.properties.status.string eq 'closed'}">
             displayResults("<c:url value='${url.base}${currentNode.path}'/>", '${currentNode.identifier}');
         </c:if>
     </c:if>
@@ -35,6 +35,7 @@
         ${fn:escapeXml(currentNode.propertiesAsString['question'])}
     </h3>
 
+    <c:if test="${currentNode.properties.status.string ne 'closed'}">
     <div id="pollForm${currentNode.identifier}">
       <c:choose>
         <c:when test="${renderContext.editMode}">
@@ -60,6 +61,7 @@
         </c:otherwise>
       </c:choose>   
     </div>
+    </c:if>
 
     <div id="stats_${currentNode.identifier}">
 

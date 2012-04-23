@@ -1,0 +1,33 @@
+###############################################################################
+package org.jahia.modules.poll.rules
+
+#list any import classes here.
+import org.jahia.services.content.rules.*
+import org.slf4j.Logger
+
+expander rules.dsl
+
+#declare any global variables here
+global User user
+global Service service
+global Logger logger
+###############################################################################
+
+rule "Change status for end date of poll"
+    salience 25
+    when
+        A property endDate has been set on a node
+             - the node has the type jnt:poll
+    then
+        Execute the action "endDatePollAction" at endDate on the node
+end
+
+rule "Cancel end date of poll"
+    salience 25
+    when
+		A property endDate has been removed from a node
+             - the node has the type jnt:poll
+    then
+    	Log "Canceling end date visibility action on node " + node.getPath()
+        Cancel execution of action "endDatePollAction" on the node
+end

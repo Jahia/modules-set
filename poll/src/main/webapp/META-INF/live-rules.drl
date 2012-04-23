@@ -1,5 +1,5 @@
 ###############################################################################
-package org.jahia.modules.poll.rules
+package org.jahia.modules.poll.rules.live
 
 #list any import classes here.
 import org.jahia.services.content.rules.*
@@ -16,19 +16,9 @@ global Logger logger
 rule "Flush caches for end date of poll"
     salience 25
     when
-        A property endDate has been set on a node
-             - the node has the type jnt:poll
+        A property state has been set on a node
+            - the node has the type jnt:poll
+            - the value is "closed"
     then
-        Execute the action "endDatePollAction" now on the node
-        Execute the action "endDatePollAction" at endDate on the node
-end
-
-rule "Cancel end date of poll"
-    salience 25
-    when
-		A property endDate has been removed from a node
-             - the node has the type jnt:poll
-    then
-    	Log "Canceling end date visibility action on node " + node.getPath()
-        Cancel execution of action "endDatePollAction" on the node
+        Execute the action "pollFlushCacheNodeBackgroundAction" now on the node
 end

@@ -11,10 +11,14 @@
         <property name="name" value="pollResults"/>
     </bean>
 
+    <bean id="endDatePollAction" class="org.jahia.modules.poll.EndDatePollAction">
+        <property name="name" value="endDatePollAction"/>
+    </bean>
+
     <bean id="pollFlushCacheNodeBackgroundAction" parent="abstractFlushCacheOnNodeBackgroundAction">
         <property name="startLevel" value="0"/>
         <property name="levelsUp" value="1"/>
-        <property name="name" value="endDatePollAction"/>
+        <property name="name" value="pollFlushCacheNodeBackgroundAction"/>
     </bean>
 
 </beans>
