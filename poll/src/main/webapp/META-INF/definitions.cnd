@@ -15,3 +15,5 @@
  - endDate (date,datetimepicker)
  - status (string) = 'open' autocreated < 'open','closed'
 
+[jnt:lastPolls] > jnt:content, jmix:list, mix:title, jmix:socialComponent, jmix:cache
+  - maxPolls (long) = 10 indexed=no
