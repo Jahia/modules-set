@@ -36,7 +36,7 @@
     </h3>
 
     <c:if test="${currentNode.properties.status.string ne 'closed'}">
-    <div id="pollForm${currentNode.identifier}">
+    <div class="pollForm${currentNode.identifier}">
       <c:choose>
         <c:when test="${renderContext.editMode}">
           <div class="addanswers">
@@ -63,7 +63,7 @@
     </div>
     </c:if>
 
-    <div id="stats_${currentNode.identifier}">
+    <div class="stats_${currentNode.identifier}">
 
     </div>
 </div>

@@ -68,8 +68,8 @@ function displayResults(votePath, identifier) {
 
         }
 
-        document.getElementById("stats_"+identifier).appendChild(statDiv);
-        $('#pollForm'+identifier).hide();
+        $(".stats_"+identifier).append(statDiv);
+        $('.pollForm'+identifier).hide();
     }, "json");
 }
 
@@ -87,7 +87,7 @@ function doVote(answers, votePath, identifier, cookiePath) {
      var data = {};
      data["answerUUID"] = answerUUID;
      if (document.forms['tokenform_'+identifier]) {
-         data["form-token"] = document.forms['tokenform_'+identifier].elements['form-token'].value;
+         data["form-token"] = $("#tokenform_"+identifier+" input[name='form-token']").val();
      }
      $.post(votePath+'.pollVote.do', data, function(result) {
 
@@ -132,8 +132,8 @@ function doVote(answers, votePath, identifier, cookiePath) {
 
          }
 
-         document.getElementById("stats_"+identifier).appendChild(statDiv);
+         $(".stats_"+identifier).append(statDiv);
          setCookie('poll'+identifier,'true',365, cookiePath);
-         $('#pollForm'+identifier).hide();
+         $('.pollForm'+identifier).hide();
      }, "json");
 }
