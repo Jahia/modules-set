@@ -28,7 +28,7 @@
     <template:addResources>
         <script type="text/javascript">
             $(document).ready(function() {
-                $("#${currentNode.name}").validate({
+                $("\#${currentNode.name}").validate({
                     rules: {
                         <c:forEach items="${fieldsetsNode.nodes}" var="fieldset">
                         <c:forEach items="${jcr:getNodes(fieldset,'jnt:formElement')}" var="formElement" varStatus="status">

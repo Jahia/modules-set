@@ -14,7 +14,7 @@
 <template:addResources>
 <script type="text/javascript">
     $(document).ready(function() {
-         var form = $("#${currentNode.parent.parent.parent.name}");
+         var form = $("\#${currentNode.parent.parent.parent.name}");
         form.attr("enctype", "multipart/form-data");
     })
 </script>

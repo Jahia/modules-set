@@ -15,7 +15,7 @@
     <template:addResources>
     <script type="text/javascript">
         $(document).ready(function() {
-            $("#${currentNode.name}").mask("${currentNode.properties.mask.string}");
+            $("\#${currentNode.name}").mask("${currentNode.properties.mask.string}");
         });
     </script>
     </template:addResources>
