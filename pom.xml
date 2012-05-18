@@ -47,7 +47,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.jahia.modules</groupId>
     <artifactId>jahia-default-modules</artifactId>
-    <version>1.2.1</version>
+    <version>1.2.2-SNAPSHOT</version>
     <name>Jahia Default Modules</name>
     <packaging>pom</packaging>
     <url>http://www.jahia.com/jahia-modules/jahia-default-modules</url>
@@ -169,10 +169,10 @@
                 <module>translationworkflow</module>
                 <module>twitter</module>
                 <module>userregistration</module>
-				-->
                 <module>formbuilder</module>
                 <module>googleAnalytics</module>
                 <module>rating</module>
+				-->
             </modules>
         </profile>
         <profile>
@@ -210,11 +210,11 @@
                 <module>userregistration</module>
                 <module>videostreaming</module>
                 <module>webClipping</module>
-				-->
                 <module>poll</module>
                 <module>formbuilder</module>
                 <module>googleAnalytics</module>
                 <module>rating</module>
+				-->
             </modules>
         </profile>
         <profile>
