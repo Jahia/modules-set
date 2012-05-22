@@ -24,6 +24,7 @@ public class EndDatePollAction implements BackgroundAction {
 
     public void executeBackgroundAction(JCRNodeWrapper node) {
         try {
+            node.checkout();
             node.setProperty("status","closed");
             node.getSession().save();
         } catch (RepositoryException e) {
