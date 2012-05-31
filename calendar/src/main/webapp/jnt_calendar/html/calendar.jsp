@@ -71,7 +71,9 @@
             MergeJSON(calendarOptions, i18nDefaults);
         }
         $('#calendar${currentNode.identifier}').fullCalendar(calendarOptions);
-
+        $('#calendar${currentNode.identifier} a').each(function(elem){
+            jQuery(this).attr("rel","nofollow");
+        });
     });
 </script>
 <div class="calendar" id="calendar${currentNode.identifier}"></div>
