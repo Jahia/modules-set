@@ -156,6 +156,7 @@
                 <module>bookmarks</module>
                 <module>calendar</module>
                 <module>formbuilder</module>
+                <module>location</module>
                 <module>poll</module>
                 <module>userregistration</module>
             </modules>
@@ -171,6 +172,7 @@
                 <module>bookmarks</module>
                 <module>calendar</module>
                 <module>formbuilder</module>
+                <module>location</module>
                 <module>poll</module>
                 <module>userregistration</module>
             </modules>

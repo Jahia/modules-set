@@ -1,0 +1,38 @@
+###############################################################################
+package org.jahia.modules.location.rules
+
+#list any import classes here.
+import org.jahia.modules.location.*
+import org.jahia.services.content.rules.*
+import org.jahia.services.content.*
+import javax.jcr.observation.Event
+import org.slf4j.Logger
+
+expander rules.dsl
+
+#declare any global variables here
+global User user
+global Service service
+global LocationService locationService
+global Logger logger
+global JCRStoreProvider provider
+###############################################################################
+
+rule "Geocode location"
+   when
+       A property j:street has been set on a node
+			- the node has the type jnt:location
+            - not in operation import
+   then
+       Geocode the node
+end
+
+rule "Geocode location aware"
+   when
+       A property j:street has been set on a node
+			- the node has the type jmix:locationAware
+            - not in operation import
+   then
+       Geocode the node
+end
+

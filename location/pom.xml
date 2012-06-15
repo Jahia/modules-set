@@ -52,6 +52,14 @@
     <packaging>war</packaging>
     <description>This is a custom module for running on a Jahia server.</description>
 
+    <dependencies>
+      <dependency>
+        <groupId>com.google.code.geocoder-java</groupId>
+        <artifactId>geocoder-java</artifactId>
+        <version>0.9</version>
+      </dependency>
+    </dependencies>
+
     <build>
         <plugins>
             <plugin>
