@@ -53,7 +53,7 @@
 
                     <%-- Display message to the user at the begining of request --%>
                     <fmt:message key="label.saving" var="i18nSaving"/>
-                    $("#messages${id}").text('${functions:escapeJavaScript(i18nSaving)}').stop().css("opacity", 1).fadeIn(30);
+                    $("#messages${id}").text("${functions:escapeJavaScript(i18nSaving)}").stop().css("opacity", 1).fadeIn(30);
 
                     <%-- Send request to the server using POST method --%>
                     $.post("<c:url value='${url.base}${bindedComponent.path}'/>.rate.do", {'j:lastVote': value,'jcrMethodToCall':"post",

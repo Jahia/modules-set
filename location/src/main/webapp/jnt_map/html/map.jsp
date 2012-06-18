@@ -37,11 +37,11 @@
 	                        longitude: '${targetProps['j:longitude']}',
 	                        </c:if>
 	                        <c:if test="${empty targetProps['j:latitude']}">
-	                        address: '${functions:escapeJavaScript(location)}',
+	                        address: "${functions:escapeJavaScript(location)}",
 	                        </c:if>
-	                        icon: '${functions:escapeJavaScript(currentNode.properties['j:markerImage'].node.url)}',
+	                        icon: "${functions:escapeJavaScript(currentNode.properties['j:markerImage'].node.url)}",
 	                        <c:if test="${not empty targetProps['jcr:title']}">
-	                        title: '${functions:escapeJavaScript(targetProps['jcr:title'])}',
+	                        title: "${functions:escapeJavaScript(targetProps['jcr:title'])}",
 	                        </c:if>
 	                        info: ""
 	                                <c:if test="${not empty targetProps['jcr:title']}">
