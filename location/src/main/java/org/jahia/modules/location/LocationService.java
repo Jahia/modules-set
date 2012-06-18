@@ -29,8 +29,8 @@ public class LocationService {
         if (nodeWrapper.hasProperty("j:country")) {
             address.append(" ").append(nodeWrapper.getProperty("j:country").getString());
         }
-        if (!nodeWrapper.isNodeType("jnt:location") && !nodeWrapper.isNodeType("jmix:locationAware")) {
-            nodeWrapper.addMixin("jmix:locationAware");
+        if (!nodeWrapper.isNodeType("jnt:location") && !nodeWrapper.isNodeType("jmix:geotagged")) {
+            nodeWrapper.addMixin("jmix:geotagged");
         }
         GeocoderRequest geocoderRequest = new GeocoderRequestBuilder().setAddress(address.toString()).getGeocoderRequest();
         GeocodeResponse geocoderResponse = geocoder.geocode(geocoderRequest);
