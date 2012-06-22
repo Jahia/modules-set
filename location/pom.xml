@@ -57,6 +57,7 @@
         <groupId>com.google.code.geocoder-java</groupId>
         <artifactId>geocoder-java</artifactId>
         <version>0.9</version>
+        <classifier>jdk5</classifier>
       </dependency>
     </dependencies>
 
