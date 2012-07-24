@@ -115,9 +115,9 @@ public class NewUser extends Action {
         
         Map<String,Object> bindings = new HashMap<String,Object>();
         bindings.put("newUser",user);
-        
-        mailService.sendMessageWithTemplate(templatePath,bindings,to,from,cc,bcc,resource.getLocale(),"Jahia User Registration");
-
+        if (mailService.isEnabled()) {
+            mailService.sendMessageWithTemplate(templatePath,bindings,to,from,cc,bcc,resource.getLocale(),"Jahia User Registration");
+        }
         return new ActionResult(HttpServletResponse.SC_ACCEPTED,parameters.get("userredirectpage").get(0), new JSONObject());
     }
 
