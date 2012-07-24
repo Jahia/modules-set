@@ -73,7 +73,7 @@ function displayResults(votePath, identifier) {
     }, "json");
 }
 
-function doVote(answers, votePath, identifier, cookiePath) {
+function doVote(answers, votePath, identifier, cookiePath,userIdendifier) {
 	var answerUUID = null;
 	$(document.forms['form_'+identifier]).find("input:checked[name='voteAnswer']").each(function() {
 		answerUUID = $(this).val();
@@ -133,7 +133,7 @@ function doVote(answers, votePath, identifier, cookiePath) {
          }
 
          $(".stats_"+identifier).append(statDiv);
-         setCookie('poll'+identifier,'true',365, cookiePath);
+         setCookie('poll'+userIdendifier + identifier,'true',365, cookiePath);
          $('.pollForm'+identifier).hide();
      }, "json");
 }

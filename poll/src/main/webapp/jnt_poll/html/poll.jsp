@@ -4,10 +4,20 @@
 <%@ taglib prefix="utility" uri="http://www.jahia.org/tags/utilityLib" %>
 <%@ taglib prefix="template" uri="http://www.jahia.org/tags/templateLib" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%--@elvariable id="currentNode" type="org.jahia.services.content.JCRNodeWrapper"--%>
+<%--@elvariable id="propertyDefinition" type="org.jahia.services.content.nodetypes.ExtendedPropertyDefinition"--%>
+<%--@elvariable id="type" type="org.jahia.services.content.nodetypes.ExtendedNodeType"--%>
+<%--@elvariable id="out" type="java.io.PrintWriter"--%>
+<%--@elvariable id="script" type="org.jahia.services.render.scripting.Script"--%>
+<%--@elvariable id="scriptInfo" type="java.lang.String"--%>
+<%--@elvariable id="workspace" type="java.lang.String"--%>
+<%--@elvariable id="renderContext" type="org.jahia.services.render.RenderContext"--%>
+<%--@elvariable id="currentResource" type="org.jahia.services.render.Resource"--%>
+<%--@elvariable id="url" type="org.jahia.services.render.URLGenerator"--%>
 <jsp:useBean id="now" class="java.util.Date"/>
 <template:addResources type="javascript" resources="jquery.min.js,poll.js"/>
 <template:addResources type="css" resources="poll.css"/>
-
+<jcr:node path="${renderContext.user.localPath}" var="user"/>
 <template:addResources>
 
 <script type="text/javascript">
@@ -19,7 +29,7 @@
         cache:false
     });
 
-    if (getCookie('poll${currentNode.identifier}') == 'true') {
+    if (getCookie('poll${user.identifier}${currentNode.identifier}') == 'true') {
         displayResults("<c:url value='${url.base}${currentNode.path}'/>", '${currentNode.identifier}');
     }
 
@@ -54,7 +64,7 @@
                 <input type="hidden" name="jcrReturnContentType" value="json"/>        
                 <template:list path="answers" listType="jnt:answersList" editable="true"/>
                 <div class="validation"></div>
-                <input class="button" type="button" value="<fmt:message key='jnt_poll.vote'/>" onclick="this.disabled = true;doVote($('${currentNode.identifier}_voteAnswer').value, '<c:url value="${url.base}${currentNode.path}"/>','${currentNode.identifier}', '<c:url value="${url.context}${url.base}${renderContext.site.path}"/>');" />
+                <input class="button" type="button" value="<fmt:message key='jnt_poll.vote'/>" onclick="this.disabled = true;doVote($('${currentNode.identifier}_voteAnswer').value, '<c:url value="${url.base}${currentNode.path}"/>','${currentNode.identifier}', '<c:url value="${url.context}${url.base}${renderContext.site.path}"/>','${user.identifier}');" />
             </form>
 
           </div>
