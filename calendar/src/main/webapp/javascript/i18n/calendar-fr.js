@@ -6,6 +6,17 @@ var i18nDefaults = {
         ['janv.','févr.','mars','avr.','mai','juin','juil.','août','sept.','oct.','nov.','déc.'],
     dayNames: ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche'],
     dayNamesShort: ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'],
+    buttonText: {
+        prev: '&nbsp;&#9668;&nbsp;',
+        next: '&nbsp;&#9658;&nbsp;',
+        prevYear: '&nbsp;&lt;&lt;&nbsp;',
+        nextYear: '&nbsp;&gt;&gt;&nbsp;',
+        today: 'aujourd\'hui',
+        month: 'mois',
+        week: 'semaine',
+        day: 'jour'
+    },
+    allDayText: 'Toute la journée',
     titleFormat: {
         month: 'MMMM yyyy', // ex : Janvier 2010
         week: "d[ MMMM][ yyyy]{ - d MMMM yyyy}", // ex : 10 â€” 16 Janvier 2010, semaine Ã  cheval : 28 DÃ©cembre 2009 - 3 Janvier 2010
