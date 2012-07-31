@@ -75,7 +75,7 @@ function displayResults(votePath, identifier) {
 
 function doVote(answers, votePath, identifier, cookiePath,userIdendifier) {
 	var answerUUID = null;
-	$(document.forms['form_'+identifier]).find("input:checked[name='voteAnswer']").each(function() {
+	$("#form_"+identifier+" input:checked[name='voteAnswer']").each(function() {
 		answerUUID = $(this).val();
 	});
 
