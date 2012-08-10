@@ -18,22 +18,22 @@ global Logger logger
 global JCRStoreProvider provider
 ###############################################################################
 
-rule "Add sitemap mixin to page"
-    salience -10
-    no-loop
-    when
-        A new node is created
-            - it has the type jnt:page
-    then
-        Add the type jmix:sitemap
-end
+#rule "Add sitemap mixin to page"
+#    salience -10
+#    no-loop
+#    when
+#        A new node is created
+#            - it has the type jnt:page
+#    then
+#        Add the type jmix:sitemap
+#end
 
-rule "Add sitemap mixin to site"
-    salience -10
-    no-loop
-    when
-        A new node is created
-            - it has the type jnt:virtualsite
-    then
-        Add the type jmix:sitemap
-end
+#rule "Add sitemap mixin to site"
+#    salience -10
+#    no-loop
+#    when
+#        A new node is created
+#            - it has the type jnt:virtualsite
+#    then
+#        Add the type jmix:sitemap
+#end
