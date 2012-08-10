@@ -4,9 +4,9 @@
          xmlns:jmix="http://www.jahia.org/jahia/mix/1.0" xmlns:j="http://www.jahia.org/jahia/1.0"
          xmlns:mix="http://www.jcp.org/jcr/mix/1.0" xmlns:rep="internal">
     <templateSets jcr:primaryType="jnt:templateSets">
-        <formbuilder changefreq="monthly" j:dependencies="default" j:installedModules="Jahia Form Builder"
+        <formbuilder j:dependencies="default" j:installedModules="Jahia Form Builder"
                      j:originWS="default" j:siteType="module" j:title="Jahia Form Builder" j:wcagCompliance="true"
-                     jcr:mixinTypes="jmix:sitemap" jcr:primaryType="jnt:virtualsite" priority="0.5">
+                     jcr:primaryType="jnt:virtualsite">
             <portlets j:originWS="default" jcr:primaryType="jnt:portletFolder"/>
             <files j:originWS="default" jcr:primaryType="jnt:folder"/>
             <contents j:originWS="default" jcr:primaryType="jnt:contentFolder"/>
