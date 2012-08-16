@@ -45,7 +45,6 @@
         <version>6.6.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <groupId>org.jahia.modules</groupId>
     <artifactId>jahia-default-modules</artifactId>
     <version>1.3-SNAPSHOT</version>
     <name>Jahia Default Modules</name>
@@ -156,9 +155,14 @@
                 <module>bookmarks</module>
                 <module>calendar</module>
                 <module>formbuilder</module>
+                <module>googleAnalytics</module>
                 <module>location</module>
                 <module>poll</module>
+                <module>rating</module>
+                <module>sitemap</module>
+                <module>socialsharing</module>
                 <module>userregistration</module>
+                <module>videostreaming</module>
             </modules>
         </profile>
         <profile>
@@ -172,9 +176,14 @@
                 <module>bookmarks</module>
                 <module>calendar</module>
                 <module>formbuilder</module>
+                <module>googleAnalytics</module>
                 <module>location</module>
                 <module>poll</module>
+                <module>rating</module>
+                <module>sitemap</module>
+                <module>socialsharing</module>
                 <module>userregistration</module>
+                <module>videostreaming</module>
             </modules>
         </profile>
         <profile>
@@ -221,7 +230,6 @@
             <plugin>
                 <groupId>org.jahia.server</groupId>
                 <artifactId>maven-jahia-plugin</artifactId>
-                <version>${jahia.plugin.version}</version>
                 <executions>
                     <execution>
                         <id>native2ascii</id>
