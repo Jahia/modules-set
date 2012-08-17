@@ -54,11 +54,9 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by IntelliJ IDEA.
  * User: david
  * Date: Nov 19, 2010
  * Time: 5:44:33 PM
- * To change this template use File | Settings | File Templates.
  */
 public class ResultsAction extends Action {
      private transient static Logger logger = org.slf4j.LoggerFactory.getLogger(VoteAction.class);

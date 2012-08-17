@@ -16,11 +16,9 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by IntelliJ IDEA.
  * User: toto
  * Date: 11/8/11
  * Time: 3:29 PM
- * To change this template use File | Settings | File Templates.
  */
 public class RedirectAction extends Action {
     @Override

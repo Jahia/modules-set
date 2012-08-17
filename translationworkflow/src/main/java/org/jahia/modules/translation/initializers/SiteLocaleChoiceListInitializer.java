@@ -56,11 +56,8 @@ import java.util.Locale;
 import java.util.Map;
 
 /**
- * Created by IntelliJ IDEA.
- *
- * @author : rincevent
- * @since : JAHIA 6.1
- *        Created : 23/12/10
+ * @author rincevent
+ * Created : 23/12/10
  */
 public class SiteLocaleChoiceListInitializer implements ModuleChoiceListInitializer {
     private transient static Logger logger = Logger.getLogger(SiteLocaleChoiceListInitializer.class);

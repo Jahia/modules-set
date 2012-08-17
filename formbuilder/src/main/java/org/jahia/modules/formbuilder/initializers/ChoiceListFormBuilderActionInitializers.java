@@ -52,11 +52,9 @@ import javax.jcr.PropertyType;
 import java.util.*;
 
 /**
- * Created by IntelliJ IDEA.
- *
- * @author : rincevent
- * @since : JAHIA 6.1
- *        Created : 9 mars 2010
+ * @author rincevent
+ * @since JAHIA 6.5
+ * Created : 9 mars 2010
  */
 public class ChoiceListFormBuilderActionInitializers implements ModuleChoiceListInitializer {
     private transient static Logger logger = org.slf4j.LoggerFactory.getLogger(ChoiceListFormBuilderActionInitializers.class);

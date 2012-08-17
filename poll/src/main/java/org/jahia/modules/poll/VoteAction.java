@@ -61,11 +61,9 @@ import java.util.List;
 
 
 /**
- * Created by IntelliJ IDEA.
  * User: fabrice
  * Date: Apr 15, 2010
  * Time: 10:30:20 AM
- * To change this template use File | Settings | File Templates.
  */
 public class VoteAction extends Action {
      private transient static Logger logger = org.slf4j.LoggerFactory.getLogger(VoteAction.class);

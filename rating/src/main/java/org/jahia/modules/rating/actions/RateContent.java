@@ -20,11 +20,9 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by IntelliJ IDEA.
  * User: rincevent
  * Date: 9/14/11   ;
  * Time: 2:15 PM
- * To change this template use File | Settings | File Templates.
  */
 public class RateContent extends Action {
     JCRTemplate jcrTemplate;

@@ -56,11 +56,8 @@ import java.net.URLEncoder;
 import java.util.List;
 
 /**
- * Created by IntelliJ IDEA.
- *
- * @author : rincevent
- * @since : JAHIA 6.1
- *        Created : 17 févr. 2010
+ * @author rincevent
+ * Created : 17 févr. 2010
  */
 public class SitemapJob extends QuartzJobBean {
     private transient static Logger logger = org.slf4j.LoggerFactory.getLogger(SitemapJob.class);
