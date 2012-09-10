@@ -28,9 +28,9 @@
             <span class="categoryLabel"><fmt:message key='label.categories'/> :</span>
             <jcr:nodeProperty node="${currentNode}" name="j:defaultCategory" var="cat"/>
             <c:if test="${cat != null}">
-                        <c:forEach items="${cat}" var="category">
-                            <span class="categorytitle">${category.node.displayableName}</span>
-                        </c:forEach>
+                <c:forEach items="${cat}" var="category">
+                    <span class="categorytitle">${category.node.displayableName}</span>
+                </c:forEach>
 
             </c:if>
         </div>
@@ -42,12 +42,15 @@
     <div class="newsText">
         ${newsDesc.string}
     </div>
-   <c:if test="${!empty jcr:getParentOfType(renderContext.mainResource.node, 'jnt:page')}">
-		<c:url value='${url.base}${jcr:getParentOfType(renderContext.mainResource.node, "jnt:page").path}.html' var="action"/>
-    </c:if>
-    <c:if test="${empty jcr:getParentOfType(renderContext.mainResource.node, 'jnt:page')}">
-        <c:set var="action">javascript:history.back()</c:set>
-    </c:if>
+    <c:set var="parentPage" value="${jcr:getParentOfType(renderContext.mainResource.node, 'jnt:page')}" />
+    <c:choose>
+        <c:when test="${not empty parentPage}">
+            <c:url value='${parentPage.url}' var="action"/>
+        </c:when>
+        <c:otherwise>
+            <c:set var="action">javascript:history.back()</c:set>
+        </c:otherwise>
+    </c:choose>
     <a class="returnLink" href="${action}" title='<fmt:message key="backToPreviousPage"/>'><fmt:message key='label.backToNewsList'/></a>
     <div class="clear"></div>
 </div>
