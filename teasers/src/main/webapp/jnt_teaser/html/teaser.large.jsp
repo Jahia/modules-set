@@ -5,7 +5,8 @@
 <%@ taglib prefix="template" uri="http://www.jahia.org/tags/templateLib" %>
 <template:addResources type="css" resources="teaser.css"/>
 <jcr:nodeProperty node="${currentNode}" name="image" var="image"/>
-
+<template:addCacheDependency uuid="${currentNode.properties.link.string}"/>
+<template:addCacheDependency uuid="${image.string}"/>
     <!--start box -->
     <div class="box2teaser "><!--start box 2 default-->
         <div class="box2teaser-topright"></div><div class="box2teaser-topleft"></div>
