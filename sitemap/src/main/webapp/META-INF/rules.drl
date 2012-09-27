@@ -24,7 +24,7 @@ rule "Add sitemap mixin to page"
     when
         A new node is created
             - it has the type jnt:page
->       siteMapModule : AddedNodeFact( node.installedModules contains "sitemap") from node.getAncestor("jnt:virtualSite")
+            - installed modules contains sitemap
     then
         Add the type jmix:sitemap
 end
