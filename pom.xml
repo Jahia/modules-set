@@ -42,14 +42,13 @@
     <parent>
         <groupId>org.jahia.modules</groupId>
         <artifactId>jahia-modules</artifactId>
-        <version>6.6.0.0</version>
+        <version>6.7.0.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>jahia-default-modules</artifactId>
     <version>1.4-SNAPSHOT</version>
     <name>Jahia Default Modules</name>
     <packaging>pom</packaging>
-    <url>http://www.jahia.com/jahia-modules/jahia-default-modules</url>
     <scm>
         <connection>scm:git:git@github.com:Jahia/modules-set.git</connection>
         <url>scm:git:git@github.com:Jahia/modules-set.git</url>
@@ -58,18 +57,34 @@
     <properties>
         <maven3.site.plugin.version>3.0</maven3.site.plugin.version>
     </properties>
+
     <repositories>
         <repository>
-            <id>jahiaRepository</id>
-            <name>Jahia's Maven Repository</name>
-            <url>http://maven.jahia.org/maven2</url>
+            <id>jahia-public</id>
+            <name>Jahia Public Repository</name>
+            <url>https://devtools.jahia.com/nexus/content/groups/public</url>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
         </repository>
     </repositories>
+
     <pluginRepositories>
         <pluginRepository>
-            <id>jahiaRepository</id>
-            <name>Jahia's Maven Repository</name>
-            <url>http://maven.jahia.org/maven2</url>
+            <id>jahia-public</id>
+            <name>Jahia Public Repository</name>
+            <url>https://devtools.jahia.com/nexus/content/groups/public</url>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
         </pluginRepository>
     </pluginRepositories>
 
@@ -152,17 +167,39 @@
                 </property>
             </activation>
             <modules>
+                <!--
+                <module>article</module>
                 <module>bookmarks</module>
                 <module>calendar</module>
+                <module>contact</module>
+                <module>docConverter</module>
+                <module>event</module>
+                <module>faq</module>
+                -->
                 <module>formbuilder</module>
+                <!--
                 <module>googleAnalytics</module>
+                <module>job</module>
                 <module>location</module>
+                <module>news</module>
+                <module>person</module>
                 <module>poll</module>
+                <module>press</module>
+                <module>publication</module>
                 <module>rating</module>
+                <module>rss</module>
                 <module>sitemap</module>
                 <module>socialsharing</module>
+                <module>staticHTML</module>
+                <module>summary</module>
+                <module>teasers</module>
+                <module>topstories</module>
+                <module>translationworkflow</module>
+                <module>twitter</module>
                 <module>userregistration</module>
                 <module>videostreaming</module>
+                <module>webClipping</module>
+                -->
             </modules>
         </profile>
         <profile>
@@ -173,17 +210,39 @@
                 </property>
             </activation>
             <modules>
+                <!--
+                <module>article</module>
                 <module>bookmarks</module>
                 <module>calendar</module>
+                <module>contact</module>
+                <module>docConverter</module>
+                <module>event</module>
+                <module>faq</module>
+                -->
                 <module>formbuilder</module>
+                <!--
                 <module>googleAnalytics</module>
+                <module>job</module>
                 <module>location</module>
+                <module>news</module>
+                <module>person</module>
                 <module>poll</module>
+                <module>press</module>
+                <module>publication</module>
                 <module>rating</module>
+                <module>rss</module>
                 <module>sitemap</module>
                 <module>socialsharing</module>
+                <module>staticHTML</module>
+                <module>summary</module>
+                <module>teasers</module>
+                <module>topstories</module>
+                <module>translationworkflow</module>
+                <module>twitter</module>
                 <module>userregistration</module>
                 <module>videostreaming</module>
+                <module>webClipping</module>
+                -->
             </modules>
         </profile>
         <profile>
@@ -229,7 +288,7 @@
         <plugins>
             <plugin>
                 <groupId>org.jahia.server</groupId>
-                <artifactId>maven-jahia-plugin</artifactId>
+                <artifactId>jahia-maven-plugin</artifactId>
                 <executions>
                     <execution>
                         <id>native2ascii</id>
