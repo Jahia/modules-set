@@ -18,7 +18,7 @@
     <select ${disabled} name="${currentNode.name}" id="${currentNode.name}">
         <c:forEach items="${options}" var="option">
             <option value="${option.value.string}"
-                    style="background:url(${option.properties.image}) no-repeat top left;padding-left:25px" <c:if test="${not empty sessionScope.formError and sessionScope.formDatas[currentNode.name][0] eq option.value.string}">selected="true"</c:if>>${option.displayName}</option>
+                    style="background:url(${option.properties.image}) no-repeat top left;padding-left:25px" <c:if test="${sessionScope.formDatas[currentNode.name][0] eq option.value.string}">selected="true"</c:if>>${option.displayName}</option>
         </c:forEach>
     </select>
 </p>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/webflow
+		http://www.springframework.org/schema/webflow/spring-webflow.xsd">
+
+    <var name="customFormFlowHandler" class="org.jahia.modules.formbuilder.flow.CustomFormFlowHandler"/>
+    <var name="formDatas" class="java.util.HashMap"/>
+
+    <on-start>
+        <evaluate expression="customFormFlowHandler.init(externalContext.requestMap.currentNode, externalContext.nativeRequest)" />
+    </on-start>
+
+	<view-state id="form-step">
+        <on-render>
+            <evaluate expression="customFormFlowHandler.currentFieldSet" result="requestScope.currentFieldSet" />
+            <evaluate expression="customFormFlowHandler.nextFieldSet" result="requestScope.nextFieldSet" />
+            <evaluate expression="customFormFlowHandler.previousFieldSet" result="requestScope.previousFieldSet" />
+        </on-render>
+
+		<transition on="next" to="form-step" >
+            <evaluate expression="customFormFlowHandler.saveValues(externalContext.nativeRequest)"/>
+            <evaluate expression="customFormFlowHandler.goToNextFieldSet()"/>
+        </transition>
+
+		<transition on="previous" to="form-step" >
+            <evaluate expression="customFormFlowHandler.saveValues(externalContext.nativeRequest)"/>
+            <evaluate expression="customFormFlowHandler.goToPreviousFieldSet()"/>
+        </transition>
+
+		<transition on="finish" to="finish" >
+            <evaluate expression="customFormFlowHandler.saveValues(externalContext.nativeRequest)"/>
+        </transition>
+
+		<transition on="cancel" to="cancel" />
+	</view-state>
+
+    <action-state id="finish">
+        <evaluate expression="customFormFlowHandler.executeActions(externalContext.nativeRequest)" />
+        <transition on="ok" to="success" />
+        <transition on="ko" to="cancel" />
+    </action-state>
+
+
+	<end-state id="success" />
+
+	<end-state id="cancel" />
+
+</flow>

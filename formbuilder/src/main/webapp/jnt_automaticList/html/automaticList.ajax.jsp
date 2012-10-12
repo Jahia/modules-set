@@ -47,5 +47,5 @@
 </template:addResources>
 <p class="field">
     <label for="${currentNode.name}">${fn:escapeXml(currentNode.properties['jcr:title'].string)}</label>
-    <input type="text" id="${currentNode.name}" name="${currentNode.name}" value="${not empty sessionScope.formError ? sessionScope.formDatas[currentNode.name][0] : ''}"/>
+    <input type="text" id="${currentNode.name}" name="${currentNode.name}" value="${not empty sessionScope.formDatas[currentNode.name][0] ? sessionScope.formDatas[currentNode.name][0] : ''}"/>
 </p>

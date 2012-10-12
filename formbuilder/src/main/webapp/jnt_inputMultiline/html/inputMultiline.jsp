@@ -14,7 +14,7 @@
 
 <p class="field">
     <label class="left" for="${currentNode.name}">${currentNode.properties['jcr:title'].string}</label>
-    <textarea ${disabled} type="text" name="${currentNode.name}" cols="${currentNode.properties['cols'].string}" rows="${currentNode.properties['rows'].string}"><c:if test="${not empty sessionScope.formError}">${sessionScope.formDatas[currentNode.name][0]}</c:if><c:if test="${empty sessionScope.formError}">${currentNode.properties['defaultValue'].string}</c:if>
+    <textarea ${disabled} type="text" name="${currentNode.name}" cols="${currentNode.properties['cols'].string}" rows="${currentNode.properties['rows'].string}"><c:if test="${not empty sessionScope.formDatas[currentNode.name][0]}">${sessionScope.formDatas[currentNode.name][0]}</c:if><c:if test="${empty sessionScope.formDatas[currentNode.name][0]}">${currentNode.properties['defaultValue'].string}</c:if>
     </textarea>
 
 <c:if test="${renderContext.editMode}">
