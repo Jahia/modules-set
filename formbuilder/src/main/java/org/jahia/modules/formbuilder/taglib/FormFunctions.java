@@ -7,7 +7,6 @@ import org.jahia.services.content.JCRNodeWrapper;
 
 import javax.jcr.NodeIterator;
 import javax.jcr.RepositoryException;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;

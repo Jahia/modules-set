@@ -40,7 +40,6 @@
 
 package org.jahia.modules.formbuilder.initializers;
 
-import org.slf4j.Logger;
 import org.jahia.services.content.nodetypes.ExtendedPropertyDefinition;
 import org.jahia.services.content.nodetypes.ValueImpl;
 import org.jahia.services.content.nodetypes.initializers.ChoiceListInitializer;
@@ -56,7 +55,6 @@ import java.util.*;
  * Created : 8 mars 2010
  */
 public class ChoiceListTypeInitializers implements ModuleChoiceListInitializer {
-    private transient static Logger logger = org.slf4j.LoggerFactory.getLogger(ChoiceListTypeInitializers.class);
     private String key;
     private Map<String, String> initializersMap;
 

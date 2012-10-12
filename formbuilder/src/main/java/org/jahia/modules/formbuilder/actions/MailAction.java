@@ -44,6 +44,7 @@ import org.jahia.bin.Action;
 import org.jahia.modules.formbuilder.taglib.FormFunctions;
 import org.jahia.services.content.JCRSessionWrapper;
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.velocity.tools.generic.DateTool;
 import org.jahia.bin.ActionResult;
 import org.jahia.bin.Render;
@@ -59,7 +60,6 @@ import org.jahia.settings.SettingsBean;
 
 import javax.jcr.NodeIterator;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.util.*;
 
 /**
@@ -70,7 +70,7 @@ import java.util.*;
  *        Created : 9 mars 2010
  */
 public class MailAction extends Action {
-    private transient static Logger logger = org.slf4j.LoggerFactory.getLogger(MailAction.class);
+    private transient static Logger logger = LoggerFactory.getLogger(MailAction.class);
     private MailService mailService;
     private JahiaUserManagerService userManagerService;
     private String mailTemplatePath;
