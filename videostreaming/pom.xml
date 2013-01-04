@@ -71,7 +71,6 @@
                             <package-name>${project.name}</package-name>
                             <root-folder>${project.artifactId}</root-folder>
                             <depends>Default Jahia Templates</depends>
-                            <resource-bundle>resources.VideoStreaming</resource-bundle>
                             <module-type>module</module-type>
                         </manifestEntries>
                     </archive>
@@ -80,3 +79,4 @@
         </plugins>
     </build>
 </project>
+
