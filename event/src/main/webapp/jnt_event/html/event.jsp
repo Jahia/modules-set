@@ -27,7 +27,11 @@
             </div>
             <div class="eventsBody"><!--start eventsBody -->
                 <p class="eventsLocation"><span>${currentNode.properties.location.string}</span></p>
-                <p class="eventsType"><span><fmt:message key='jnt_event.eventsType.${currentNode.properties.eventsType.string}' /></span></p>
+		<c:if test="${not empty currentNode.properties.eventsType.string}">
+                <p class="eventsType"><span>
+			<fmt:message key='jnt_event.eventsType.${currentNode.properties.eventsType.string}' />
+		</span></p>
+		</c:if>
                 <h4><jcr:nodeProperty node="${currentNode}" name="jcr:title"/></h4>
 
                 <div class="eventsResume">
