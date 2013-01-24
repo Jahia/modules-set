@@ -82,20 +82,6 @@
         </pluginRepository>
     </pluginRepositories>
 
-    <distributionManagement>
-        <repository>
-            <id>jahia-internal-releases</id>
-            <url>https://devtools.jahia.com/nexus/content/repositories/jahia-internal-releases</url>
-        </repository>
-        <snapshotRepository>
-            <id>jahia-internal-snapshots</id>
-            <url>https://devtools.jahia.com/nexus/content/repositories/jahia-internal-snapshots</url>
-        </snapshotRepository>
-        <site>
-            <id>jahia.website</id>
-            <url>file://${jahia.site.path}</url>
-        </site>
-    </distributionManagement>
     <profiles>
         <profile>
             <id>eclipse-integration</id>
