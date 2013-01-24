@@ -2,12 +2,12 @@
 *  FAQ
 ******************************************************************************/
 
-.bodywrapper .faqList li {
+ .faqList li {
 	margin-bottom:10px
 }
-.bodywrapper .faqList .faqQuestion{
+ .faqList .faqQuestion{
 	margin-bottom:0;
 }
-.bodywrapper .faqList .faqAnswer{
+ .faqList .faqAnswer{
 	margin:0 0 0 20px
 }

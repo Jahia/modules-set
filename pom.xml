@@ -46,7 +46,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>jahia-default-modules</artifactId>
-    <version>1.4-SNAPSHOT</version>
+    <version>2.0.0-SNAPSHOT</version>
     <name>Jahia Default Modules</name>
     <packaging>pom</packaging>
     <scm>
@@ -206,7 +206,6 @@
                 </property>
             </activation>
             <modules>
-                <!--
                 <module>article</module>
                 <module>bookmarks</module>
                 <module>calendar</module>
@@ -214,9 +213,7 @@
                 <module>docConverter</module>
                 <module>event</module>
                 <module>faq</module>
-                -->
                 <module>formbuilder</module>
-                <!--
                 <module>googleAnalytics</module>
                 <module>job</module>
                 <module>location</module>
@@ -238,7 +235,6 @@
                 <module>userregistration</module>
                 <module>videostreaming</module>
                 <module>webClipping</module>
-                -->
             </modules>
         </profile>
         <profile>

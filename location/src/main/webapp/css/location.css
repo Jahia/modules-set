@@ -1,16 +1,16 @@
 /******************************************************************************
 *  Location
 ******************************************************************************/
-.bodywrapper div.location{
+ div.location{
 	border: 1px solid #ccc;
 	background-color:#eaeaea;
 	padding:5px;
 	margin:1em 0;
 }
-.bodywrapper .location p{
+ .location p{
 	margin:0;
 	padding:0
 }
-.bodywrapper .location .location-label{
+ .location .location-label{
 	font-weight:bold;
 }

@@ -1,19 +1,19 @@
-.bodywrapper .socialsharing
+ .socialsharing
 {
     list-style-type :none;
 }
-.bodywrapper .socialsharing li
+ .socialsharing li
 {
      display:inline;
      margin:5px;
 }
 
-.bodywrapper .socialsharing-small
+ .socialsharing-small
 {
     list-style-type :none;
 	margin:1em;
 }
-.bodywrapper .socialsharing-small li
+ .socialsharing-small li
 {
      display:inline;
      margin:2px;

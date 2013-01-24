@@ -1,23 +1,23 @@
 /*****************************************************************************	*
 *  jobsSearchForm Form
 ******************************************************************************/
-.bodywrapper div.jobsSearchForm{
+ div.jobsSearchForm{
 	clear:both;
 	margin:1em auto;
 	background:#fff url(img/jobform.png) repeat-x top left;
 	border:1px solid #ccc;
 	padding:0.5em 0;
 }
-.bodywrapper div.jobsSearchForm p{
+ div.jobsSearchForm p{
 	clear:both;
 }
-.bodywrapper .jobsSearchForm legend{
+ .jobsSearchForm legend{
 	display:none;
 }
-.bodywrapper .jobsSearchForm fieldset{
+ .jobsSearchForm fieldset{
 	border:none;
 }
-.bodywrapper .jobsSearchForm label{
+ .jobsSearchForm label{
 	float:left; 
 	width:200px;
 	margin:0 1em 0 1em;
@@ -25,14 +25,14 @@
 	text-align:right;
 }
 
-.bodywrapper .jobsSearchForm .divButton{
+ .jobsSearchForm .divButton{
 	text-align:center;
 	margin:0.5em 0;
 }
-.bodywrapper .jobsSearchForm .Form input.button {
+ .jobsSearchForm .Form input.button {
 	margin-left:0.5em;
 }
-.bodywrapper .jobsSearchForm {
+ .jobsSearchForm {
 	margin-bottom:1em;
 	clear:both;
 	width:100%;
@@ -41,41 +41,41 @@
 /******************************************************************************
 *  job item
 ******************************************************************************/
-.bodywrapper .jobLabel {
+ .jobLabel {
 font-weight:bold;
 }
 
-.bodywrapper .jobInfo{
+ .jobInfo{
 	border:1px solid #ccc;
 	float:right;
 	padding:10px;
 	margin:0 0 0.5em 0.5em ;
 	width:200px;
 }
-.bodywrapper .jobInfo p{
+ .jobInfo p{
 	margin:0;
 	padding:0;
 }
-.bodywrapper .jobAction{
+ .jobAction{
 	font-size:85%;
 	font-weight:bold;
 	clear:both;
 }
-.bodywrapper .jobAction a,
-.bodywrapper .jobAction a:link,
-.bodywrapper .jobAction a:visited {
+ .jobAction a,
+ .jobAction a:link,
+ .jobAction a:visited {
 	margin-right:0.5em
 }
-.bodywrapper .jobAction a:hover,
-.bodywrapper .jobAction a:active {
+ .jobAction a:hover,
+ .jobAction a:active {
 	text-decoration:underline;
 }
-.bodywrapper a.jobApply{
+ a.jobApply{
 	float:right;
 	background:transparent url(img/jobapply.png) no-repeat 0% 50%;
 	padding-left:16px;
 }
-.bodywrapper a.returnJobsList{
+ a.returnJobsList{
 	float:left;
 	background:transparent url(img/returnjobslist.png) no-repeat 0% 50%;
 	padding-left:16px;
@@ -83,21 +83,21 @@ font-weight:bold;
 /*****************************************************************************	*
 *  jobsApplyForm
 ******************************************************************************/
-.bodywrapper div.jobsApplyForm{
+ div.jobsApplyForm{
 	clear:both;
 	margin:1em auto;
 	border:1px solid #ccc;
 	padding:0.5em 0;
 }
-.bodywrapper .jobsApplyForm legend{
+ .jobsApplyForm legend{
 	display:none;
 }
-.bodywrapper .jobsApplyForm fieldset{
+ .jobsApplyForm fieldset{
 	border:none;
 }
-.bodywrapper .jobsApplyForm input, .bodywrapper .jobsApplyForm textarea {
+ .jobsApplyForm input,  .jobsApplyForm textarea {
 	width:45%
 }
-.bodywrapper .jobsApplyForm input.button {
+ .jobsApplyForm input.button {
 	width:auto
 }
